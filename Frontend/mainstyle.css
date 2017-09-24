@@ -1,0 +1,157 @@
+body{
+    background-color: #f0f0ff;
+    min-width: 320px;
+    font-family: sans-serif;
+}
+a {
+    cursor: pointer;
+}
+body::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+
+body::-webkit-scrollbar-track{
+    background-color: rgba(155,155,155,0.8);
+}
+
+body::-webkit-scrollbar-thumb{
+    background-color: #2266aa;
+}
+.shadow {
+    box-shadow: 0px 5px 5px -5px #80808f;
+}
+/*hearder*/
+header {
+    min-width: 320px;
+    width: 100%;
+    height: 60px;
+    padding: 10px 0px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #80808f;
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+}
+header>div{
+    height: 40px;
+}
+.logocontain {
+    background-color: #155fa4;
+}
+header img{
+    height: 100%;
+}
+.menuButton {
+    cursor: pointer;
+    height: 100%;
+    font-size: 2em;
+    overflow: hidden;
+}
+
+/*main body*/
+.main {
+    width: 100%;
+    margin-top: 100px;
+}
+.widthNarrow{
+    margin: 0px auto;
+    max-width: 780px;
+}
+.selfclear:after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*footer*/
+footer{
+    min-width: 320px;
+    padding: 1em;
+    color: #ffffff;
+    margin-top: 30px;
+    background-color: #333333;
+}
+footer>div{
+    margin: 0px auto;
+    max-width: 960px;
+}
+.footerlink {
+    text-align: center;
+    letter-spacing: 1em;
+    font-size: 2em;
+}
+.footerlink a{
+    color: #ffffff;
+}
+.footercontactinfo{
+    font-size: 1em;
+}
+@media screen and (min-width: 992px){
+    .footercontactinfo{
+        text-align: right;
+    }
+}
+@media screen and (max-width: 992px){
+    .footercontactinfo{
+        text-align: center;
+    }
+}
+
+/*button*/
+.button{
+    cursor: pointer;
+    height: 40px;
+    padding: 0px 10px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #333333;
+    background-color: #ffffff;
+    border: 2px solid #666666;
+    line-height: 40px;
+    overflow: hidden;
+}
+.button:hover{
+
+}
+
+.buttonPrimary {
+    color: #ffffff;
+    background-color: #2266ff;
+    border: 0px;
+}
+.buttonPrimary:hover{
+    background-color: #1133ff;
+}
+
+/*form*/
+.formContain {
+    margin: 0 auto;
+    max-width: 640px;
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
+    background-color: #ffffff;
+}
+.formContain>div {
+    margin-top: 25px;
+}
+.inputText input{
+    width: 100%;
+    font-size: 1.5em;
+    padding: 0px 10px;
+    border: 0px solid #ffffff;
+    border-left: 2px solid #2266aa;
+    transition: border 0.5s, background 0.5s;
+}
+.inputText input:focus{
+    outline: 0px;
+    border-left: 4px solid #2266ff;
+    background-color: #eeeeee;
+}
+label {
+    display: block;
+    color: #666666;
+}
