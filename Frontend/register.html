@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tecknic | Login</title>
+    <title>Tecknic | Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="mainstyle.css">
@@ -14,7 +14,7 @@
 <body>
 <header>
     <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
-    <div class="logocontain shadow col-xs-2 col-sm-2 col-md-1 col-lg-1">
+    <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
         <a href="index.html">
             <img src="img/logo.svg"/>
         </a>
@@ -25,7 +25,7 @@
     <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3"></div>
     <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
         <a href="login.html">
-            <div class="button buttonPrimary shadow">Đăng nhập</div>
+            <button class="button buttonPrimary">Đăng nhập</button>
         </a>
     </div>
     <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
@@ -35,25 +35,25 @@
         <div class="formContain">
             <h1>Đăng kí</h1>
             <div class="inputText">
-                <label>Tên</label>
-                <input type="text" name="txtName" placeholder="Nguyễn Văn Tèo">
+                <label>Tên*</label>
+                <input type="text" name="txtName" placeholder="Họ và tên">
             </div>
             <div class="inputText">
-                <label>Tài khoản</label>
-                <input type="text" name="txtUsername" placeholder="TeoABC1234">
+                <label>Tài khoản*</label>
+                <input type="text" name="txtUsername" placeholder="TaiKhoan">
             </div>
             <hr/>
             <div class="inputText">
-                <label>Mật khẩu</label>
+                <label>Mật khẩu*</label>
                 <input type="password" name="txtPassword" placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;">
             </div>
             <div class="inputText">
-                <label>Nhập lại mật khẩu</label>
+                <label>Nhập lại mật khẩu*</label>
                 <input type="password" name="txtCheckPassword" placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;">
             </div>
             <hr/>
             <div class="">
-                <label>Giới tính</label>
+                <label>Giới tính*</label>
                 <p><input type="radio" name="cbxGender" value="M" checked> Nam</p>
                 <p><input type="radio" name="cbxGender" value="N"> Nữ</p>
                 <p><input type="radio" name="cbxGender" value="O"> Khác</p>
@@ -62,9 +62,21 @@
                 <label>Ngày sinh</label>
                 <input type="date" name="txtDob" value="1990-12-21">
             </div>
+            <div class="inputText">
+                <label>Email</label>
+                <input type="email" name="txtEmail" placeholder="example@gmail.com">
+            </div>
+            <div class="inputText">
+                <label>Số điện thoại</label>
+                <input type="text" name="txtPhoneNumber">
+            </div>
+            <div class="inputText">
+                <label>Địa chỉ</label>
+                <input type="text" name="txtAddress">
+            </div>
             <hr/>
             <div>
-                <p><input type="checkbox">Tôi đã đọc và đồng ý với <a href="rule.html" target="_blank">điều khoản và quy tắc</a></p>
+                <p><input type="checkbox" required>Tôi đã đọc và đồng ý với <a href="rule.html" target="_blank">điều khoản và quy tắc</a></p>
             </div>
             <div class="buttonGroup">
                 <div class="button buttonPrimary">Đăng kí</div>

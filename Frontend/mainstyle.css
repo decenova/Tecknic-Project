@@ -6,16 +6,16 @@ body{
 a {
     cursor: pointer;
 }
-body::-webkit-scrollbar{
+*::-webkit-scrollbar{
     width: 6px;
     height: 6px;
 }
 
-body::-webkit-scrollbar-track{
+*::-webkit-scrollbar-track{
     background-color: rgba(155,155,155,0.8);
 }
 
-body::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb{
     background-color: #2266aa;
 }
 .shadow {
@@ -28,7 +28,8 @@ header {
     height: 60px;
     padding: 10px 0px;
     background-color: #ffffff;
-    box-shadow: 0px 0px 10px #80808f;
+    /*box-shadow: 0px 0px 10px #80808f;*/
+    border-bottom: 1px solid #cccccc;
     position: fixed;
     top: 0px;
     z-index: 10;
@@ -143,12 +144,12 @@ footer>div{
     font-size: 1.5em;
     padding: 0px 10px;
     border: 0px solid #ffffff;
-    border-left: 2px solid #2266aa;
+    border-left: 2px solid #226699;
     transition: border 0.5s, background 0.5s;
 }
 .inputText input:focus{
     outline: 0px;
-    border-left: 4px solid #2266ff;
+    border-left: 2px solid #2266ff;
     background-color: #eeeeee;
 }
 label {

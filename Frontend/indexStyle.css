@@ -1,13 +1,15 @@
+.postContaint{
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .post {
     width: 100%;
     background-color: #ffffff;
-}
-.post {
     margin-top: 50px;
-    width: 100%;
-    border-radius: 3px;
+    border-radius: 5px;
     box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
     padding-top: 10px;
+    /*border: 1px solid #cccccc;*/
 }
 .fixPadding{
     padding: 0px 10px;
@@ -117,4 +119,82 @@
 .postControl .fa-comment-o {
     color: #ff6622;
 }
+
+
+/*Post Tran theme*/
+/*bonus*/
+.postTran {
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+    margin-top: 50px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
+}
+.postInfoTran{
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    padding-top: 20px;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
+.postTran .info a {
+    color: #eeeeee;
+}
+.postTran .datepost{
+    font-size: 1em;
+    color: #cccccc;
+    font-family: monospace;
+}
+.postTitle p {
+    font-size: 2em;
+    font-weight: 600;
+    color: #2266aa;
+}
+.postBody p {
+    font-size: 1.5em;
+    color: #333333;
+}
+.postBody img {
+    width: 100%;
+}
+
+/*comment*/
+.commentContain{
+    /*background-color: #cceeff;*/
+}
+.commentInfo {
+    /*background-color: #cceeff;*/
+    padding: 10px;
+}
+.commentInfo span, .commentInfo .datepost{
+    color: #555555;
+}
+.commentContent{
+    padding-left: 74px;
+    color: #333333;
+    font-size: 1.5em;
+}
+.commentContain .avatar{
+    width: 48px;
+    height: 48px;
+}
+.commentContain .info{
+    position: relative;
+    min-height: 48px;
+    padding: 0px;
+}
+.commentContain .poster {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.commentIndex {
+    text-align: right;
+}
+textarea {
+    width: 100%;
+}
+
+
 
