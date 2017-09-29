@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tecknic | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="managerStyle.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="jquery.min.js" type="application/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="UIControll.js" type="application/javascript"></script>
+</head>
+<body>
+<header>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+    <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
+        <a href="index.html">
+            <img src="img/logo.svg"/>
+        </a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-5 col-lg-4">
+        <div class="menuButton"><i class="fa fa-bars"></i> Menu</div>
+    </div>
+    <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3"></div>
+    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+        <a href="login.html">
+            <button class="button buttonPrimary">Đăng nhập</button>
+        </a>
+    </div>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+</header>
+<div class="main selfclear">
+    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+    <div class="managerContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="managerInfo">
+            <div class="info">
+                <p class="title">Manager page</p>
+                <p class="role">ADMIN</p>
+                <p class="numOfPost"><b>2</b> bài viết chưa duyệt</p>
+            </div>
+            <div class="tabControl selfclear">
+                <div class="tab tabSelect" onclick="showTab('#postHistory',this)">Bài viết</div>
+                <div class="tab" onclick="showTab('#searchProfile', this)">Thông tin thành viên</div>
+            </div>
+        </div>
+        <div class="profileMainContaint widthNarrow">
+            <div class="tabContent widthNarrow" id="searchProfile">
+                <form>
+                    <div class="formContain">
+                        <h1>Tìm kiếm thông tin thành viên</h1>
+                        <div class="inputText">
+                            <label>Tìm kiếm tài khoản</label>
+                            <input type="text" name="txtUsername">
+                            <div class="buttonGroup">
+                                <button class="button buttonPrimary"> <i class="fa fa-search"></i> </button>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="wall.html">Trẩu Ăn Tre</a></td>
+                                <td>trauantre@gmail.com</td>
+                                <td>Admin</td>
+                            </tr>
+                            <tr>
+                                <td><a href="wall.html">Tre Người</a></td>
+                                <td>tre@gmail.com</td>
+                                <td>Member</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="tabContent widthNarrow fixPadding" id="postHistory">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Create time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
+                        <td>12:30 12/3/2017</td>
+                    </tr>
+                    <tr>
+                        <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
+                        <td>11:30 12/3/2017</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+</div>
+<footer class="selfclear">
+    <div>
+        <div class="footerlink col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <a><span class="fa fa-facebook-official"></span></a>
+            <a><span class="fa fa-youtube-play"></span></a>
+            <a><span class="fa fa-linkedin-square"></span></a>
+            <a><span class="fa fa-google"></span></a>
+        </div>
+        <div class="footercontactinfo col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <p>Mai Đức Thắng &bullet; Tecknic News Co.</p>
+            <p>Công viên phần mềm Quang Trung, Tô Ký, Tân Chánh Hiệp, Hồ Chí Minh</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

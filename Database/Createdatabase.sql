@@ -21,6 +21,7 @@ create table [User] (
 	Username varchar(40) not null unique,
 	[Password] varchar(40) not null unique,
 	Name varchar(100) not null,
+	Avatar varchar(100),
 	Gender char(1) not null check (Gender in ('M','F','O')),
 	DateOfBirth datetime,
 	Email varchar(100) not null unique,

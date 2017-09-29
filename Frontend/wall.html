@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tecknic | Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="profileStyle.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <script src="jquery.min.js" type="application/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="UIControll.js" type="application/javascript"></script>
+</head>
+<body>
+<header>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+    <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
+        <a href="index.html">
+            <img src="img/logo.svg"/>
+        </a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-5 col-lg-4">
+        <div class="menuButton"><i class="fa fa-bars"></i> Menu</div>
+    </div>
+    <div class="col-xs-2 col-sm-4 col-md-4 col-lg-3"></div>
+    <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
+        <a href="login.html">
+            <button class="button buttonPrimary">Đăng nhập</button>
+        </a>
+    </div>
+    <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
+</header>
+<div class="main selfclear">
+    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+    <div class="profileContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
+        <div class="profileInfo">
+            <div class="avatar">
+                <img src="img/avartar01.jpg">
+            </div>
+            <div class="info">
+                <p class="member">Trẩu Ăn Tre</p>
+                <p class="role">ADMIN</p>
+                <p class="numOfPost"><b>2</b> bài viết</p>
+                <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span> </p>
+            </div>
+            <div class="tabControl selfclear">
+                <div class="tab tabSelect" onclick="showTab('#profile',this)">Thông tin cá nhân</div>
+                <div class="tab" onclick="showTab('#postHistory', this)">Bài viết</div>
+            </div>
+        </div>
+        <div class="profileMainContaint widthNarrow">
+            <div class="tabContent widthNarrow" id="profile">
+                    <div class="formContain">
+                        <h1>Thông tin cá nhân</h1>
+                        <div class="wallInfo">
+                            <p>Giới tính: Nam</p>
+                            <p>Email: trauantre@gmail.com</p>
+                        </div>
+                    </div>
+            </div>
+            <div class="tabContent widthNarrow fixPadding" id="postHistory">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Create time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
+                        <td>12:30 12/3/2017</td>
+                    </tr>
+                    <tr>
+                        <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
+                        <td>11:30 12/3/2017</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+</div>
+<footer class="selfclear">
+    <div>
+        <div class="footerlink col-xs-12 col-sm-12 col-md-5 col-lg-5">
+            <a><span class="fa fa-facebook-official"></span></a>
+            <a><span class="fa fa-youtube-play"></span></a>
+            <a><span class="fa fa-linkedin-square"></span></a>
+            <a><span class="fa fa-google"></span></a>
+        </div>
+        <div class="footercontactinfo col-xs-12 col-sm-12 col-md-7 col-lg-7">
+            <p>Mai Đức Thắng &bullet; Tecknic News Co.</p>
+            <p>Công viên phần mềm Quang Trung, Tô Ký, Tân Chánh Hiệp, Hồ Chí Minh</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

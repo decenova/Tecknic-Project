@@ -132,9 +132,11 @@ footer>div{
     max-width: 640px;
     padding: 50px;
     margin-top: 50px;
+    background-color: #ffffff;
+}
+.formBox{
     border-radius: 3px;
     box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
-    background-color: #ffffff;
 }
 .formContain>div {
     margin-top: 25px;
@@ -155,4 +157,88 @@ footer>div{
 label {
     display: block;
     color: #666666;
+}
+textarea {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+
+.wallInfo{
+    font-size: 1.5em;
+}
+
+/*nav*/
+nav {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    font-size: 2em;
+    z-index: 10;
+    display: none;
+}
+.closebackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,0.5);
+}
+.navContain{
+    position: absolute;
+    background-color: #ffffff;
+    height: 100%;
+}
+ul{
+    list-style-type: none;
+    padding: 10px;
+    margin: 0px;
+}
+ul hr {
+    margin: 0px;
+}
+
+ul a:hover{
+    text-decoration: none;
+}
+
+/*user*/
+.userInfoContain{
+    font-size: 1.5em;
+    line-height: 40px;
+    cursor: pointer;
+}
+.userAvatar{
+    width: 40px;
+    height: 40px;
+    float: right;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.userAvatar img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+
+}
+.userMenu{
+    position: fixed;
+    width: 100%;
+    right: 0px;
+    top: 50px;
+    z-index: 9;
+    display: none;
+}
+.userMenu ul{
+    background-color: #ffffff;
+    position: fixed;
+    right: 0px;
+    border: 1px solid #cccccc;
+}
+.userMenu li {
+    margin-top: 5px;
 }
