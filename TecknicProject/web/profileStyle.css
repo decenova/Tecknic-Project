@@ -1,0 +1,96 @@
+.profileContaint{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.profileInfo{
+    background-image: url("img/profileCover02.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 64px;
+    position: relative;
+
+}
+.avatar{
+    width: 96px;
+    height: 96px;
+    margin: 0px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.avatarProfile{
+    width: 96px;
+    height: 96px;
+    margin: 5px 0px;
+    overflow: hidden;
+    border-radius: 0%;
+}
+.avatar img {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+
+}
+.info{
+    position: relative;
+    min-height: 64px;
+}
+.info p {
+    color: #ffffff;
+    text-align: center;
+    margin: 8px 0px 0px 0px;
+}
+.member {
+    font-size: 3em;
+}
+.role{
+    font-size: 1.5em;
+}
+.date{
+    font-size: 1em;
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.tabControl {
+}
+.tabControl .tab {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 5px 0px 5px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #eeeeee;
+    /*background-color: #ccccdd;*/
+    /*border-radius: 4px 4px 0px 0px;*/
+}
+.tabControl .tabSelect {
+    background-color: #ffffff!important;
+    font-weight: 600;
+    color: #333333;
+}
+.profileMainContaint {
+
+}
+#profile {
+    display: block;
+}
+#postHistory {
+    display: none;
+}
+.tabContent {
+
+}
+.tabContent .formContain {
+    margin-top: 0px;
+}
+.fixPadding {
+    padding-top: 50px;
+}

@@ -1,0 +1,244 @@
+body{
+    background-color: #f0f0ff;
+    min-width: 320px;
+    font-family: sans-serif;
+}
+a {
+    cursor: pointer;
+}
+*::-webkit-scrollbar{
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track{
+    background-color: rgba(155,155,155,0.8);
+}
+
+*::-webkit-scrollbar-thumb{
+    background-color: #2266aa;
+}
+.shadow {
+    box-shadow: 0px 5px 5px -5px #80808f;
+}
+/*hearder*/
+header {
+    min-width: 320px;
+    width: 100%;
+    height: 60px;
+    padding: 10px 0px;
+    background-color: #ffffff;
+    /*box-shadow: 0px 0px 10px #80808f;*/
+    border-bottom: 1px solid #cccccc;
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+}
+header>div{
+    height: 40px;
+}
+.logocontain {
+    background-color: #155fa4;
+}
+header img{
+    height: 100%;
+}
+.menuButton {
+    cursor: pointer;
+    height: 100%;
+    font-size: 2em;
+    overflow: hidden;
+}
+
+/*main body*/
+.main {
+    width: 100%;
+    margin-top: 100px;
+}
+.widthNarrow{
+    margin: 0px auto;
+    max-width: 780px;
+}
+.selfclear:after{
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*footer*/
+footer{
+    min-width: 320px;
+    padding: 1em;
+    color: #ffffff;
+    margin-top: 30px;
+    background-color: #333333;
+}
+footer>div{
+    margin: 0px auto;
+    max-width: 960px;
+}
+.footerlink {
+    text-align: center;
+    letter-spacing: 1em;
+    font-size: 2em;
+}
+.footerlink a{
+    color: #ffffff;
+}
+.footercontactinfo{
+    font-size: 1em;
+}
+@media screen and (min-width: 992px){
+    .footercontactinfo{
+        text-align: right;
+    }
+}
+@media screen and (max-width: 992px){
+    .footercontactinfo{
+        text-align: center;
+    }
+}
+
+/*button*/
+.button{
+    cursor: pointer;
+    height: 40px;
+    padding: 0px 10px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: #333333;
+    background-color: #ffffff;
+    border: 2px solid #666666;
+    line-height: 40px;
+    overflow: hidden;
+}
+.button:hover{
+
+}
+
+.buttonPrimary {
+    color: #ffffff;
+    background-color: #2266ff;
+    border: 0px;
+}
+.buttonPrimary:hover{
+    background-color: #1133ff;
+}
+
+/*form*/
+.formContain {
+    margin: 0 auto;
+    max-width: 640px;
+    padding: 50px;
+    margin-top: 50px;
+    background-color: #ffffff;
+}
+.formBox{
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
+}
+.formContain>div {
+    margin-top: 25px;
+}
+.inputText input{
+    width: 100%;
+    font-size: 1.5em;
+    padding: 0px 10px;
+    border: 0px solid #ffffff;
+    border-left: 2px solid #226699;
+    transition: border 0.5s, background 0.5s;
+}
+.inputText input:focus{
+    outline: 0px;
+    border-left: 2px solid #2266ff;
+    background-color: #eeeeee;
+}
+label {
+    display: block;
+    color: #666666;
+}
+textarea {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+
+.wallInfo{
+    font-size: 1.5em;
+}
+
+/*nav*/
+nav {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    font-size: 2em;
+    z-index: 10;
+    display: none;
+}
+.closebackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51,51,51,0.5);
+}
+.navContain{
+    position: absolute;
+    background-color: #ffffff;
+    height: 100%;
+}
+ul{
+    list-style-type: none;
+    padding: 10px;
+    margin: 0px;
+}
+ul hr {
+    margin: 0px;
+}
+
+ul a:hover{
+    text-decoration: none;
+}
+
+/*user*/
+.userInfoContain{
+    font-size: 1.5em;
+    line-height: 40px;
+    cursor: pointer;
+}
+.userAvatar{
+    width: 40px;
+    height: 40px;
+    float: right;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.userAvatar img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+
+}
+.userMenu{
+    position: fixed;
+    width: 100%;
+    right: 0px;
+    top: 50px;
+    z-index: 9;
+    display: none;
+}
+.userMenu ul{
+    background-color: #ffffff;
+    position: fixed;
+    right: 0px;
+    border: 1px solid #cccccc;
+}
+.userMenu li {
+    margin-top: 5px;
+}

@@ -1,0 +1,200 @@
+.postContaint{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.post {
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
+    padding-top: 10px;
+    /*border: 1px solid #cccccc;*/
+}
+.fixPadding{
+    padding: 0px 10px;
+}
+
+/*post info*/
+.postInfo{
+}
+.avatar{
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin-right: 16px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.avatar img {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+
+}
+.info{
+    position: relative;
+    min-height: 64px;
+    padding: 5px 0px 0px 0px;
+}
+.info a {
+    color: #888888;
+}
+.poster {
+    font-size: 2em;
+    margin-right: 10px;
+}
+.datepost{
+    font-size: 1em;
+    color: #555555;
+    font-family: monospace;
+}
+
+/*post image*/
+.postImage{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+}
+@media screen and (min-width: 768px){
+    .postImage{
+        height: 360px;
+    }
+}
+@media screen and (max-width: 768px){
+    .postImage{
+        height: 50vw;
+    }
+}
+@media screen and (max-width: 320px){
+    .postImage{
+        height: 160px;
+    }
+}
+.postImage img {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+
+/*post Title*/
+.postTitle {
+    margin-top: 20px;
+}
+.postTitle a {
+    font-size: 2em;
+    font-weight: 600;
+    color: #2266aa;
+}
+
+
+/*post body*/
+.postBody {
+    margin-top: 20px;
+}
+.postBody a {
+    font-size: 1.5em;
+    color: #333333;
+    text-decoration: none;
+}
+
+/*post control*/
+.postControl {
+    min-height: 50px;
+    margin-top: 20px;
+}
+.postControl span {
+    font-size: 1em;
+    color: #000000;
+    text-decoration: none;
+    padding-right: 5em;
+}
+.postControl .fa-eye {
+    color: #2266ff;
+}
+.postControl .fa-comment-o {
+    color: #ff6622;
+}
+
+
+/*Post Tran theme*/
+/*bonus*/
+.postTran {
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+    margin-top: 50px;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px -5px rgba(100,100,100,0.5);
+}
+.postInfoTran{
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
+    padding-top: 20px;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
+.postTran .info a {
+    color: #eeeeee;
+}
+.postTran .datepost{
+    font-size: 1em;
+    color: #cccccc;
+    font-family: monospace;
+}
+.postTitle p {
+    font-size: 2em;
+    font-weight: 600;
+    color: #2266aa;
+}
+.postBody p {
+    font-size: 1.5em;
+    color: #333333;
+}
+.postBody img {
+    width: 100%;
+}
+
+/*comment*/
+.commentContain{
+    /*background-color: #cceeff;*/
+}
+.commentInfo {
+    /*background-color: #cceeff;*/
+    padding: 10px;
+}
+.commentInfo span, .commentInfo .datepost{
+    color: #555555;
+}
+.commentContent{
+    padding-left: 74px;
+    color: #333333;
+    font-size: 1.5em;
+}
+.commentContain .avatar{
+    width: 48px;
+    height: 48px;
+}
+.commentContain .info{
+    position: relative;
+    min-height: 48px;
+    padding: 0px;
+}
+.commentContain .poster {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.commentIndex {
+    text-align: right;
+}
+textarea {
+    width: 100%;
+}
+
+
+
