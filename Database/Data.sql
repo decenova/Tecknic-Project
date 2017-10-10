@@ -16,3 +16,7 @@ insert into [Tag](Name) values ('Laptop');
 insert into [Tag](Name) values ('Điện thoại');
 insert into [Tag](Name) values ('Khác');
 go
+
+insert into [User](Username, [Password], Name, Gender, Email, RoleId) values ('admin','admin','Mai Đức Thắng', 'M', 'tknadmin@gmail.com', 4)
+insert into [User](Username, [Password], Name, Gender, Email, RoleId) values ('trung3d','trung3d','Trung Ba Đê', 'O', 'trung3d@gmail.com', 3)
+insert into [User](Username, [Password], Name, Gender, Email, RoleId) values ('hoanhtungxy','hoanhtungxy','Võ Thanh Tung', 'M', 'tungxy@gmail.com', 2)
