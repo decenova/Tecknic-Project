@@ -1,0 +1,85 @@
+.managerContaint{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.managerInfo{
+    background-image: url("img/profileCover02.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 64px;
+    position: relative;
+
+}
+
+.info{
+    position: relative;
+    min-height: 64px;
+}
+.info p {
+    color: #ffffff;
+    text-align: center;
+    margin: 8px 0px 0px 0px;
+}
+.title {
+    font-size: 3em;
+}
+.role{
+    font-size: 1.5em;
+}
+.numOfPost{
+    font-size: 1.5em;
+}
+
+.tabControl {
+}
+.tabControl .tab {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 5px 0px 5px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #eeeeee;
+    /*background-color: #ccccdd;*/
+    /*border-radius: 4px 4px 0px 0px;*/
+}
+.tabControl .tabSelect {
+    background-color: #ffffff!important;
+    font-weight: 600;
+    color: #333333;
+}
+.profileMainContaint {
+
+}
+#searchProfile {
+    display: none;
+}
+#postHistory {
+    display: block;
+}
+.tabContent {
+
+}
+.tabContent .formContain {
+    margin-top: 0px;
+}
+.fixPadding {
+    padding-top: 50px;
+}
+.inputText{
+    position: relative;
+}
+.buttonGroup {
+    position: absolute;
+    right: 0px;
+    transform: translate(0%,-100%);
+}
+.button{
+    height: 30px;
+    line-height: 30px;
+}
