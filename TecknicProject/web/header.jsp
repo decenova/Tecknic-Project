@@ -40,7 +40,7 @@
                 <s:else>
                     <div class="userInfoContain" onclick="userMenuToggle()">
                         <div class="userAvatar">
-                            <img src="img/avartar01.jpg">
+                            <img src="<s:property value="%{#session.AVATAR}"/>">
                         </div>
                     </div>
                 </s:else>
@@ -54,11 +54,11 @@
                     
                     <a onclick="closeNav()"><li><i class="fa fa-times"></i></li></a>
                     <hr/>
-                    <s:if test="%{#session.ROLE == 'Colaborator' || #session.ROLE == 'Moderator' || #session.ROLE == 'Admin'}">
+                    <s:if test="%{#session.ROLE == 'Colaborator' || #session.ROLE == 'Moderator' || #session.ROLE == 'Administrator'}">
                     <a href="articlePost.html"><li>Đăng bài</li></a>
                     <hr/>
                     </s:if>
-                    <s:if test="%{#session.ROLE == 'Admin' || #session.ROLE == 'Moderator'}">
+                    <s:if test="%{#session.ROLE == 'Administrator' || #session.ROLE == 'Moderator'}">
                     <a href="managerPage.html"><li>Quản lý</li></a>
                     <hr/>
                     </s:if>
@@ -75,7 +75,7 @@
                     <a><li>Tường nhà bạn</li></a>
                     <a><li>Quản lý cá nhân</li></a>
                     <a><li>Đổi mật khẩu</li></a>
-                    <a><li>Đăng xuất</li></a>
+                    <a href="logout"><li>Đăng xuất</li></a>
                 </ul>
             </div>
         </s:if>

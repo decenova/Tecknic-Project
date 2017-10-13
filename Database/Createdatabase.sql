@@ -1,15 +1,15 @@
---create database Tecknic
+create database Tecknic
 go
---use Tecknic
+use Tecknic
 go
 
 create table [Role] (
 	Id int primary key identity,
-	Name varchar(20) not null unique
+	Name nvarchar(20) not null unique
 )
 create table [Status] (
 	Id int primary key identity,
-	Name varchar(20) not null unique
+	Name nvarchar(20) not null unique
 )
 create table Tag (
 	Id int primary key identity,
@@ -20,7 +20,7 @@ create table [User] (
 	Id int primary key identity,
 	Username varchar(40) not null unique,
 	[Password] varchar(40) not null unique,
-	Name varchar(100) not null,
+	Name nvarchar(100) not null,
 	Avatar varchar(100),
 	Gender char(1) not null check (Gender in ('M','F','O')),
 	DateOfBirth datetime,

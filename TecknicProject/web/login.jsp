@@ -24,7 +24,7 @@
         <s:include value="header.jsp"></s:include>
         <s:if test="%{#session.ROLE == null}">
             <div class="main selfclear">
-                <form>
+                <form action="login" method="POST">
                     <div class="formContain formBox">
                         <h1>Đăng nhập</h1>
                         <div class="inputText">
@@ -36,7 +36,7 @@
                             <input type="password" name="txtPassword">
                         </div>
                         <div class="buttonGroup">
-                            <div class="button buttonPrimary">Đăng nhập</div>
+                            <input type="submit" class="button buttonPrimary" value="Đăng nhập">
                         </div>
                         <div>
                             <p>Bạn chưa có tài khoản? <a href="register.jsp">Hãy đăng ký ngay</a>.</p>
