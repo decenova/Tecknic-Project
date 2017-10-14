@@ -56,7 +56,6 @@ public class UserDAO {
                 if (rs.getString(3) != null)
                     dto.setAvatar(rs.getString(3));
                 dto.setRole(rs.getString(4));
-                System.out.println(dto);
             }
         } catch (Exception e) {
             e.printStackTrace();

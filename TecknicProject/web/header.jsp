@@ -21,7 +21,7 @@
                 </a>
             </div>
             <div class="col-xs-2 col-sm-4 col-md-5 col-lg-4">
-                <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i> Menu</div>
+                <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i></div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
                 <form>
