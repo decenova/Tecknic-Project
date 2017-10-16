@@ -24,11 +24,20 @@ class MainTest {
             System.out.println(dto.toString());
         }
         
-        System.out.println("\n**** Find other profile by UserId = 1 ****");
+        System.out.println("\n**** Find other profile by UserId = 2 ****");
         UserDAO uDao = new UserDAO();
-        System.out.println(uDao.findOtherProfileByUserID(1).toString());
+        System.out.println(uDao.findOtherProfileByUserID(2).toString());
         
         System.out.println("\n**** Total of post by UserId = 2 ****");
         System.out.println(uDao.getNumberOfArticleByUserID(2));
+        
+        System.out.println("\n**** View Article for update ArticleID = 1 ****");
+        System.out.println(dao.viewArticleForUpdate(1));
+        
+        System.out.println("\n**** Update Role UserID = 2 Role = 4 ****");
+        System.out.println(uDao.updateRole(2, 4));
+        
+        System.out.println("\n**** Update NumOfView ArticleID = 1 ****");
+        dao.updateNumOfView(1);
     }
 }

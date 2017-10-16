@@ -44,7 +44,7 @@ public class UserDAO {
     //Thông tin lấy ra gồm Id, Avatar, Name, Role, [Ngày gia nhập], Gender, Email
     //Tra về 1 dto
     public UserDTO findOtherProfileByUserID(int userId) {
-        UserDTO result = new UserDTO();
+        UserDTO result = null;
         
         try {
             conn = MyConnection.getConnection();
@@ -56,6 +56,7 @@ public class UserDAO {
             rs = pre.executeQuery();
             
             if (rs.next()) {
+                result = new UserDTO();
                 result.setId(userId);
                 result.setName(rs.getString("Name"));
                 result.setRole(rs.getString("Role"));
@@ -98,6 +99,26 @@ public class UserDAO {
             closeConnection();
         }
         
+        return result;
+    }
+    
+    public boolean updateRole(int userId, int roleId) {
+        boolean result = false;
+        
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "update [User] set RoleId = ? where Id = ?";
+            pre = conn.prepareStatement(sql);
+            pre.setInt(1, roleId);
+            pre.setInt(2, userId);
+            pre.execute();
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+                
         return result;
     }
 }
