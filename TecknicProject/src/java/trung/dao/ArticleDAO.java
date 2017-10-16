@@ -43,6 +43,7 @@ public class ArticleDAO {
     //Các member xem bài post của chính mình
     //Dựa vào ID của member lấy ra ArrayList<ArticleDTO>
     //Lấy ra gồm ID, Title, CreateTime, Status
+    //Tra về array list các dto
     public ArrayList<ArticleDTO> findArticleByUserID(int userID) {
         ArrayList<ArticleDTO> result = new ArrayList<>();
         
