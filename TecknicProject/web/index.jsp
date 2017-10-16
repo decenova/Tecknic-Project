@@ -36,6 +36,7 @@
                             </div>
                             <div class="info">
                                 <%--cho tên vào thẻ này --%>
+                                <%--cho đường link đến action tạo ra trang cá nhân vào đây --%>
                                 <a><span class="poster">Trẩu Ăn Tre</span></a>
                                 <br/>
                                 <%--cho ngày đăng vào thẻ này --%>
@@ -48,10 +49,12 @@
                         </div>
                         <div class="postTitle fixPadding widthNarrow">
                             <%--cho tiêu đề bài viết vào thẻ này --%>
+                            <%--cho đường link đến action tạo ra bài viết vào đây --%>
                             <a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
                         </div>
                         <div class="postBody fixPadding widthNarrow">
                             <%--cho một phần nội dung vào thẻ này, cái này phải xử lý SQL nên tính sau --%>
+                            <%--cho đường link đến action tạo ra bài viết vào đây --%>
                             <a href="post.html">
                                 Ra đời cách đây khá lâu, phiên bản một của tựa game Child of light đã thu hút rất nhiều người chơi
                                 trên toàn thế giới. Và phiên bản này sẽ được tái xuất với phần hai The dark of Luis V
