@@ -40,13 +40,45 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+        //sửa lại ID -  đang là username làm query
+        public UserDTO loadUser(String userID) {
+        UserDTO user = new UserDTO();
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select u.Username,u.Name,u.Avatar,u.Gender,u.DateOfBirth,u.Email,u.PhoneNum,u.Address,"
+                    + "r.Name as [RoleName]"
+                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.Username = ?";
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, userID);
+            rs = preStm.executeQuery();
+            if (rs.next()) {
+                user.setUsername(rs.getString("Username"));
+                user.setName(rs.getString("Name"));
+                String avatar = rs.getString("Avatar"); 
+                if (avatar != null) //nếu không rỗng thì lấy avatar trong db. ngược lại thì lấy avatar default
+                    user.setAvatar(avatar);
+                user.setGender(rs.getString("Gender").charAt(0));
+                user.setDob(rs.getTimestamp("DateOfBirth"));
+                user.setEmail(rs.getString("Email"));
+                user.setPhoneNum(rs.getString("PhoneNum"));
+                user.setAddress(rs.getString("Address"));
+                user.setRole(rs.getString("RoleName"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return user;
+    }
 
     public boolean updateUser(UserDTO user) {
         boolean result = false;
         try {
             conn = MyConnection.getConnection();
             String sql = "update User set Name=?,Gender=?,DateOfBirth=?,"
-                    + "Email=?,PhoneNum=?,Address=?,AvatarLink=?";
+                    + "Email=?,PhoneNum=?,Address=?,AvatarLink=? where ID=?";
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, user.getName());
             preStm.setNull(2, user.getGender());
@@ -55,6 +87,7 @@ public class UserDAO {
             preStm.setString(5, user.getPhoneNum());
             preStm.setString(6, user.getAddress());
             preStm.setString(7, user.getAvatar());
+            preStm.setInt(8, user.getId());
             if (preStm.executeUpdate() > 0) {
                 result = true;
             }

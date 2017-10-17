@@ -26,14 +26,16 @@
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
                 <div class="profileContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <div class="profileInfo">
-                    <%-- làm giống bên trang prifile.jsp --%>
+                    <%-- làm giống bên trang profile.jsp --%>
                     <div class="avatar">
                         <img src="img/avartar01.jpg">
                     </div>
                     <div class="info">
-                        <p class="member">Trẩu Ăn Tre</p>
-                        <p class="role">ADMIN</p>
-                        <p class="numOfPost"><b>2</b> bài viết</p>
+<!--                        <p class="member">Trẩu Ăn Tre</p>-->
+                        <p class="member"><s:property value="%{#request.Profile.name}"/></p>
+                        <p class="role"><s:property value="%{#request.Profile.role}"/></p>
+<!--                    tính sau-->
+                        <p class="numOfPost"><b>2</b> bài viết</p> 
                         <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span> </p>
                     </div>
                     <div class="tabControl selfclear">
@@ -43,7 +45,7 @@
                 </div>
                 <div class="profileMainContaint widthNarrow">
                     <div class="tabContent widthNarrow" id="profile">
-                        <form>
+                        <form action="updateProfile" method="POST">
                             <%-- làm form --%>
                             <div class="formContain">
                                 <h1>Thông tin cá nhân</h1>
@@ -51,20 +53,21 @@
                                     <label>Avatar</label>
                                     <div class="avatar avatarProfile">
                                         <%-- avatar hiện tại, sẽ là avatar mới nếu input hình lên, nên dùng javascript để thực hiện --%>
-                                        <img src="img/avartar01.jpg">
+<!--                                        <img src="img/avartar01.jpg">-->
+                                        <img src="<s:property value="%{#request.Profile.avatar}"/>">
                                     </div>
                                     <input type="file" name="flAvatar" placeholder="Url hình ảnh">
                                 </div>
                                 <div class="inputText">
                                     <label>Tên</label>
-                                    <input type="text" name="txtName" placeholder="Họ và tên">
+                                    <input type="text" name="txtName" placeholder="Họ và tên" value="<s:property value="%{#request.Profile.name}"/>" required>
                                 </div>
                                 <hr/>
                                 <div class="">
                                     <label>Giới tính*</label>
-                                    <p><input type="radio" name="cbxGender" value="M" checked> Nam</p>
-                                    <p><input type="radio" name="cbxGender" value="N"> Nữ</p>
-                                    <p><input type="radio" name="cbxGender" value="O"> Giới tính khác</p>
+                                    <p><input type="radio" name="cbxGender" value="M" <s:if test="%{#request.Profile.gender eq 'M'}">checked</s:if>> Nam</p>
+                                    <p><input type="radio" name="cbxGender" value="F" <s:if test="%{#request.Profile.gender eq 'F'}">checked</s:if>> Nữ</p>
+                                    <p><input type="radio" name="cbxGender" value="O" <s:if test="%{#request.Profile.gender eq 'O'}">checked</s:if>> Giới tính khác</p>
                                 </div>
                                 <div class="inputText">
                                     <label>Ngày sinh</label>
@@ -72,19 +75,21 @@
                                 </div>
                                 <div class="inputText">
                                     <label>Email</label>
-                                    <input type="email" name="txtEmail" placeholder="example@gmail.com">
+                                    <input type="email" name="txtEmail" value="<s:property value="%{#request.Profile.email}"/>" placeholder="example@gmail.com" required>
                                 </div>
                                 <div class="inputText">
                                     <label>Số điện thoại</label>
-                                    <input type="text" name="txtPhoneNumber">
+                                    <input type="text" value="<s:property value="%{#request.Profile.phoneNum}"/>" name="txtPhoneNumber">
                                 </div>
                                 <div class="inputText">
                                     <label>Địa chỉ</label>
-                                    <input type="text" name="txtAddress">
+                                    <input type="text" name="txtAddress" value="<s:property value="%{#request.Profile.address}"/>">
                                 </div>
                                 <hr/>
                                 <div class="buttonGroup">
-                                    <div class="button buttonPrimary">Lưu thay đổi</div>
+                                    <div class="button buttonPrimary">
+                                        <input style="background: inherit; border: 0" type="submit" value="Lưu thay đổi">
+                                    </div>
                                 </div>
                             </div>
                         </form>

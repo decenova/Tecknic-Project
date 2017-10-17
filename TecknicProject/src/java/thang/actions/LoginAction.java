@@ -46,6 +46,7 @@ public class LoginAction extends ActionSupport {
             session.put("NAME", dto.getName());
             session.put("AVATAR", dto.getAvatar());
             session.put("ROLE", dto.getRole());
+//            session.put("ID", dto.getId()); // tung thêm
         }
         return "success";
     }
