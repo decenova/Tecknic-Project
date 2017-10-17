@@ -2,6 +2,7 @@
  * Created by Decen on 28/09/2017.
  */
 $(document).ready(function(){
+    document.addEventListener("scroll", headerControl);
 })
 
 function showTab(id,tag) {
@@ -18,4 +19,9 @@ function closeNav() {
 }
 function userMenuToggle() {
     $(".userMenu").fadeToggle(100);
+}
+
+function headerControl() {
+    if (window.pageYOffset <= 600)
+        $('header')[0].style.backgroundColor = 'rgba(255,255,255,' + (0.4 + 0.5 * window.pageYOffset / 600) + ')';
 }

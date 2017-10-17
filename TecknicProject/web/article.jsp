@@ -22,9 +22,8 @@
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
-            <div class="main selfclear">
-                <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-                <div class="postContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
+            <div class="main selfclear fixPadingTop">
+                <div class="postContaint">
                     <div class="postTran">
                         <div class="postInfoTran fixPadding selfclear">
                             <div class="avatar">
@@ -162,7 +161,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
             </div>
         <s:include value="footer.jsp"></s:include>
     </body>
