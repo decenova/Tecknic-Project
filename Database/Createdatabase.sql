@@ -24,6 +24,7 @@ create table [User] (
 	Avatar varchar(100),
 	Gender char(1) not null check (Gender in ('M','F','O')),
 	DateOfBirth datetime,
+	DateOfJoin datetime,
 	Email varchar(100) not null unique,
 	PhoneNum varchar(20),
 	[Address] varchar(200),

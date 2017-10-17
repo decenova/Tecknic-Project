@@ -42,6 +42,7 @@ public class LoginAction extends ActionSupport {
         else {
             isFalse = false;
             Map session = ActionContext.getContext().getSession();
+            session.put("ID", dto.getId());
             session.put("USERNAME", dto.getUsername());
             session.put("NAME", dto.getName());
             session.put("AVATAR", dto.getAvatar());

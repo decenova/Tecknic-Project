@@ -22,7 +22,7 @@
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
-            <div class="main selfclear">
+            <div class="main selfclear fixPadingTop">
                 <form>
                     <div class="formContain formBox">
                         <h1>Đổi mật khẩu</h1>

@@ -23,7 +23,7 @@
     <body>
         <s:include value="header.jsp"></s:include>
         <s:if test="%{#session.ROLE == null}">
-            <div class="main selfclear">
+            <div class="main selfclear fixPadingTop">
                 <form action="login" method="POST">
                     <div class="formContain formBox">
                         <h1>Đăng nhập</h1>

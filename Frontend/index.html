@@ -17,23 +17,23 @@
     <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
     <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
         <a href="index.html">
-            <img src="img/logo.svg"/>
+            <img src="img/newlogo.svg"/>
         </a>
     </div>
     <div class="col-xs-2 col-sm-4 col-md-5 col-lg-4">
-        <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i> Menu</div>
+        <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i></div>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
         <form>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input id="search" type="text" class="form-control" name="search" placeholder="search...">
-        </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input id="search" type="text" class="form-control" name="search" placeholder="search...">
+            </div>
         </form>
     </div>
     <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
         <!--<a href="login.html">-->
-            <!--<button class="button buttonPrimary">Đăng nhập</button>-->
+        <!--<button class="button buttonPrimary">Đăng nhập</button>-->
         <!--</a>-->
         <div class="userInfoContain" onclick="userMenuToggle()">
             <div class="userAvatar">
@@ -47,29 +47,67 @@
     <div class="closebackground" onclick="closeNav()"></div>
     <div class="navContain col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <ul>
-            <a onclick="closeNav()"><li><i class="fa fa-times"></i></li></a>
+            <a onclick="closeNav()">
+                <li><i class="fa fa-times"></i></li>
+            </a>
             <hr/>
-            <a href="articlePost.html"><li>Đăng bài</li></a>
+            <a href="articlePost.html">
+                <li>Đăng bài</li>
+            </a>
             <hr/>
-            <a href="managerPage.html"><li>Quản lý</li></a>
+            <a href="managerPage.html">
+                <li>Quản lý</li>
+            </a>
             <hr/>
-            <a><li>Điện thoại</li></a>
-            <a><li>Laptop</li></a>
-            <a><li>Khác</li></a>
+            <a>
+                <li>Điện thoại</li>
+            </a>
+            <a>
+                <li>Laptop</li>
+            </a>
+            <a>
+                <li>Khác</li>
+            </a>
         </ul>
     </div>
 </nav>
 <div class="userMenu">
     <ul class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-        <a><li>Tường nhà bạn</li></a>
-        <a><li>Quản lý cá nhân</li></a>
-        <a><li>Đổi mật khẩu</li></a>
-        <a><li>Đăng xuất</li></a>
+        <a>
+            <li>Tường nhà bạn</li>
+        </a>
+        <a>
+            <li>Quản lý cá nhân</li>
+        </a>
+        <a>
+            <li>Đổi mật khẩu</li>
+        </a>
+        <a>
+            <li>Đăng xuất</li>
+        </a>
     </ul>
 </div>
+<div class="slideShow">
+    <div class="slideContain selfclear">
+        <div class="slide" style="background-image: url('img/cover01.jpg')">
+            <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
+        </div>
+        <div class="slide" style="background-image: url('img/cover02.jpg')">
+            <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
+        </div>
+        <div class="slide" style="background-image: url('img/profileCover.jpg')">
+            <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
+        </div>
+        <div class="slide" style="background-image: url('img/post02.jpg')">
+            <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
+        </div>
+        <div class="slide" style="background-image: url('img/post03.jpg')">
+            <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
+        </div>
+    </div>
+</div>
 <div class="main selfclear">
-    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-    <div class="postContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
+    <div class="postContaint">
         <div class="post">
             <div class="postInfo fixPadding widthNarrow selfclear">
                 <div class="avatar">
@@ -130,7 +168,6 @@
             </div>
         </div>
     </div>
-    <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
 </div>
 <footer class="selfclear">
     <div>

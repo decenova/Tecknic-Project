@@ -17,7 +17,7 @@
             <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
             <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
                 <a href="index.jsp">
-                    <img src="img/logo.svg"/>
+                    <img src="img/newlogo.svg"/>
                 </a>
             </div>
             <div class="col-xs-2 col-sm-4 col-md-5 col-lg-4">

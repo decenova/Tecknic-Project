@@ -44,7 +44,7 @@ public class UserDAO {
         dto.setRole("false");
         try {
             con = MyConnection.getConnection();
-            prestmt = con.prepareStatement("select [User].Name, [User].[Password], [User].Avatar, [Role].Name \n"
+            prestmt = con.prepareStatement("select [User].Name, [User].[Password], [User].Avatar, [Role].Name,[User].Id \n"
                     + "from [User] inner join [Role] on [User].RoleId = [Role].Id \n"
                     + "where Username = ? and [Password] = ?");
             prestmt.setString(1, username);
@@ -56,6 +56,7 @@ public class UserDAO {
                 if (rs.getString(3) != null)
                     dto.setAvatar(rs.getString(3));
                 dto.setRole(rs.getString(4));
+                dto.setId(rs.getInt(5));
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -22,7 +22,7 @@
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
-            <div class="main selfclear">
+            <div class="main selfclear fixPadingTop">
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
                 <div class="postContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <div class="post">
