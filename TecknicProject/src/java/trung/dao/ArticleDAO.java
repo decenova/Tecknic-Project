@@ -75,7 +75,7 @@ public class ArticleDAO {
     
     //Người dùng xem lại nội dung của Article trước khi chỉnh sửa
     //Lấy ra dựa vào ArticleID
-    //Lấy Title, [Content], CoverImage
+    //Lấy Title, [Content], CoverImage, Taglist
     //Trả về ArticleDTO
     public ArticleDTO viewArticleForUpdate(int articleID) {
         ArticleDTO result = null;
@@ -92,6 +92,17 @@ public class ArticleDAO {
                 result.setTitle(rs.getString("Title"));
                 result.setContent(rs.getString("Content"));
                 result.setCoverImage(rs.getString("CoverImage"));
+                
+                //Lấy TagList
+                sql = "select TagId from ArticleTag where ArticleId = ?";
+                pre = conn.prepareStatement(sql);
+                pre.setInt(1, articleID);
+                rs = pre.executeQuery();
+                //Tạo đối tượng TagList khi đã query đc.
+                result.setTagList(new ArrayList<Integer>());
+                while (rs.next()) {
+                    result.getTagList().add(rs.getInt("TagId"));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,24 +113,47 @@ public class ArticleDAO {
         return result;
     }
     
-    //Member muốn sửa các bài post đang ở trạng thái draf, remove, reject
-    //Sửa article dựa vào ArticleID
-    //Lấy ra
-    //Trả về giá trị boolean
-//    public boolean updateArticle(ArticleDTO dto) {
-//        boolean result = false;
-//        
-//        try {
-//            conn = MyConnection.getConnection();
-//            String sql = "update Article set Title  = ?, [Content] = ?, CorverImage = ?, , "
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            closeConnection();
-//        }
-//                
-//        return result;
-//    }
+//    Member muốn sửa các bài post đang ở trạng thái draf, remove, reject
+//    Sửa article dựa vào ArticleID
+//    Lấy ra
+//    Trả về giá trị boolean
+    public boolean updateArticle(ArticleDTO dto) {
+        boolean result = false;
+        
+        try {
+            conn = MyConnection.getConnection();
+            
+            //Update bảng Article
+            String sql = "update Article set Title  = ?, [Content] = ?, CoverImage = ? where Id = ?";
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, dto.getTitle());
+            pre.setString(2, dto.getContent());
+            pre.setString(3, dto.getCoverImage());
+            pre.setInt(4, dto.getId());
+            pre.executeUpdate();
+            
+            //Update bảng ArticleTag
+            //Xóa hết tất cả các ArticleTag r sau đó add vào lại
+            sql = "delete from ArticleTag where ArticleId = ?";
+            pre = conn.prepareStatement(sql);
+            pre.setInt(1, dto.getId());
+            pre.executeUpdate();
+            for (int tagId : dto.getTagList()) {
+                sql = "insert into ArticleTag (ArticleId, TagId) values (?,?)";
+                pre = conn.prepareStatement(sql);
+                pre.setInt(1, dto.getId());
+                pre.setInt(2, tagId);
+                pre.execute();
+            }
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+                
+        return result;
+    }
     
     public void updateNumOfView(int articleID) {
         try {
