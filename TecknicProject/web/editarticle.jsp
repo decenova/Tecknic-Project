@@ -23,7 +23,7 @@
     <body>
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form>
+                <form action="addArticle" method="POST">
                     <div class="formContain formBox">
                         <h1>Đăng bài</h1>
                         <div class="inputText">
@@ -37,7 +37,7 @@
                         <hr/>
                         <div class="inputText">
                             <label>Nội dung*</label>
-                            <textarea name="txtComment" rows="4"></textarea>
+                            <textarea name="txtContent" rows="4"></textarea>
                         </div>
                         <hr/>
                         <div class="">
@@ -48,7 +48,9 @@
                         </div>
                         <hr/>
                         <div class="buttonGroup">
-                            <div class="button buttonPrimary">Đăng bài</div>
+                            <div class="button buttonPrimary">
+                            <input style="background: inherit; border: 0" type="submit" value="Đăng bài">
+                            </div>
                         </div>
                     </div>
                 </form>
