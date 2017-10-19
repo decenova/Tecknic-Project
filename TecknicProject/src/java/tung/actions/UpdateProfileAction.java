@@ -5,10 +5,12 @@
  */
 package tung.actions;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import tung.dao.UserDAO;
@@ -26,6 +28,8 @@ public class UpdateProfileAction extends ActionSupport {
     private String txtDob;
     private String txtEmail;
     private String txtAddress;
+    private String txtPhoneNum;
+    private String flAvatar;
 
     
     public UpdateProfileAction() {
@@ -33,7 +37,9 @@ public class UpdateProfileAction extends ActionSupport {
 
     @Action(value = "/updateProfile", results = {
 //        @Result(name = "input", location = "/error.jsp"),
-        @Result(name = "success", location = "/profilemanager.jsp"),
+        @Result(name = "success", type = "redirectAction", params = {
+            "actionName", "loadProfile"
+        }),
         @Result(name = "fail", location = "/profilemanager.jsp"),
     
     })
@@ -43,13 +49,21 @@ public class UpdateProfileAction extends ActionSupport {
         char gender = cbxGender.charAt(0);
         Timestamp dob = Utils.parseToDate(txtDob);
         UserDTO user = new UserDTO();
+        Map session = ActionContext.getContext().getSession();
+        //code cứng tạm
+        user.setAvatar("img/" + flAvatar);
+        user.setUsername((String)session.get("USERNAME"));
         user.setName(txtName);
         user.setGender(gender);
         user.setDob(dob);
         user.setEmail(txtEmail);
         user.setAddress(txtAddress);
-        if (dao.updateUser(user))
+        user.setPhoneNum(txtPhoneNum);
+        if (dao.updateUser(user)) {
+            session.put("AVATAR", user.getAvatar());
             url = SUCCESS;
+        }
+            
         return url;
     }
 
@@ -93,4 +107,25 @@ public class UpdateProfileAction extends ActionSupport {
         this.txtAddress = txtAddress;
     }
 
+    public String getTxtPhoneNum() {
+        return txtPhoneNum;
+    }
+
+    public void setTxtPhoneNum(String txtPhoneNum) {
+        this.txtPhoneNum = txtPhoneNum;
+    }
+
+    public String getFlAvatar() {
+        return flAvatar;
+    }
+
+    public void setFlAvatar(String flAvatar) {
+        this.flAvatar = flAvatar;
+    }
+
+
+
+
+
+    
 }

@@ -28,7 +28,7 @@
                     <div class="profileInfo">
                     <%-- làm giống bên trang profile.jsp --%>
                     <div class="avatar">
-                        <img src="img/avartar01.jpg">
+                        <img src="<s:property value="%{#request.Profile.avatar}"/>">
                     </div>
                     <div class="info">
 <!--                        <p class="member">Trẩu Ăn Tre</p>-->
@@ -36,7 +36,7 @@
                         <p class="role"><s:property value="%{#request.Profile.role}"/></p>
 <!--                    tính sau-->
                         <p class="numOfPost"><b>2</b> bài viết</p> 
-                        <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span> </p>
+                        <p class="datejoin">Ngày gia nhập: <span class="date"><s:property value="%{#request.JoiningDate}"/></span> </p>
                     </div>
                     <div class="tabControl selfclear">
                         <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="inputText">
                                     <label>Ngày sinh</label>
-                                    <input type="date" name="txtDob" value="1990-12-21">
+                                    <input type="date" name="txtDob" value="<s:property value="%{#request.BirthDate}"/>">
                                 </div>
                                 <div class="inputText">
                                     <label>Email</label>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="inputText">
                                     <label>Số điện thoại</label>
-                                    <input type="text" value="<s:property value="%{#request.Profile.phoneNum}"/>" name="txtPhoneNumber">
+                                    <input type="text" name="txtPhoneNum" value="<s:property value="%{#request.Profile.phoneNum}"/>" name="txtPhoneNumber">
                                 </div>
                                 <div class="inputText">
                                     <label>Địa chỉ</label>

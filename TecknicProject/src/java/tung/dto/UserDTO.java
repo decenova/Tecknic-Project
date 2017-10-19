@@ -21,23 +21,20 @@ public class UserDTO {
     private Timestamp dob;
     private String email;
     private String phoneNum;
+    private Timestamp doj;
+
+    public Timestamp getDoj() {
+        return doj;
+    }
+
+    public void setDoj(Timestamp doj) {
+        this.doj = doj;
+    }
     private String address;
     private String role;
 
     public UserDTO() {
         avatar = "img/defaultavatar.jpg";
-    }
-
-    public UserDTO(String username, String name, char gender, Timestamp dob, String email, String phoneNum, String address, String role) {
-        avatar = "img/defaultavatar.jpg";
-        this.username = username;
-        this.name = name;
-        this.gender = gender;
-        this.dob = dob;
-        this.email = email;
-        this.phoneNum = phoneNum;
-        this.address = address;
-        this.role = role;
     }
     
     

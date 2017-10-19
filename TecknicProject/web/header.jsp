@@ -56,7 +56,7 @@
                     <a onclick="closeNav()"><li><i class="fa fa-times"></i></li></a>
                     <hr/>
                     <s:if test="%{#session.ROLE == 'Colaborator' || #session.ROLE == 'Moderator' || #session.ROLE == 'Administrator'}">
-                        <a href="articlePost.html"><li>Đăng bài</li></a>
+                        <a href="editarticle.jsp"><li>Đăng bài</li></a>
                         <hr/>
                     </s:if>
                     <s:if test="%{#session.ROLE == 'Administrator' || #session.ROLE == 'Moderator'}">

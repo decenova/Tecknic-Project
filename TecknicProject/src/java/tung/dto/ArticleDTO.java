@@ -36,6 +36,10 @@ public class ArticleDTO {
         this.numOfView = numOfView;
     }
 
+    public ArticleDTO() {
+    }
+    
+
     public int getID() {
         return ID;
     }
