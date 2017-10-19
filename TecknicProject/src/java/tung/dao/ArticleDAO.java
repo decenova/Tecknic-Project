@@ -20,7 +20,7 @@ import tung.utils.Utils;
 public class ArticleDAO {
 
     private final int REVIEWING = 2;
-    private final int VIEWDEFAUL = 0;
+    private final int VIEWDEFAULT = 0;
 
     private Connection conn;
     private PreparedStatement preStm;
@@ -47,16 +47,17 @@ public class ArticleDAO {
         try {
             conn = MyConnection.getConnection();
             String sql = "insert into Article(Title,Content,CoverImage,CreateTime,"
-                    + "CreatorId,StatusId,NumOfView)"
-                    + " values(?,?,?,?,?,?,?)";
+                    + "CreatorId,ModifyTime,StatusId,NumOfView)"
+                    + " values(?,?,?,?,?,?,?,?)";
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, article.getTitle());
             preStm.setString(2, article.getContent());
             preStm.setString(3, article.getCoverImage());
             preStm.setTimestamp(4, Utils.getTimeSystem());
             preStm.setInt(5, article.getCreatorID());
-            preStm.setInt(6, REVIEWING);
-            preStm.setInt(7, VIEWDEFAUL);
+            preStm.setTimestamp(6, Utils.getTimeSystem());
+            preStm.setInt(7, REVIEWING);
+            preStm.setInt(8, VIEWDEFAULT);
             if (preStm.executeUpdate() > 0) {
                 result = true;
             }
