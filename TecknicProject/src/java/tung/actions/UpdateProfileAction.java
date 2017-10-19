@@ -50,8 +50,8 @@ public class UpdateProfileAction extends ActionSupport {
         Timestamp dob = Utils.parseToDate(txtDob);
         UserDTO user = new UserDTO();
         Map session = ActionContext.getContext().getSession();
-        //code cứng tạm
-        user.setAvatar("img/" + flAvatar);
+        if (!flAvatar.isEmpty())
+            user.setAvatar("img/" + flAvatar);
         user.setUsername((String)session.get("USERNAME"));
         user.setName(txtName);
         user.setGender(gender);

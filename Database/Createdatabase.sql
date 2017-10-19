@@ -27,7 +27,7 @@ create table [User] (
 	DateOfJoin datetime,
 	Email varchar(100) not null unique,
 	PhoneNum varchar(20),
-	[Address] varchar(200),
+	[Address] nvarchar(200),
 	RoleId int not null,
 	constraint FK_USER_ROLE foreign key (RoleId) references [Role](Id)
 )
