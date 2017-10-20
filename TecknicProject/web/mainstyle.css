@@ -154,6 +154,49 @@ footer>div{
     background-color: #4488cc;
 }
 
+.buttonCircle{
+    width: 48px;
+    height: 48px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.buttonSuccess{
+    color: #ffffff;
+    background-color: #55dd55;
+    border: 0px;
+}
+.buttonDanger{
+    color: #ffffff;
+    background-color: #dd5555;
+    border: 0px;
+}
+.buttonWarning{
+    color: #ffffff;
+    background-color: #dd9922;
+    border: 0px;
+}
+.buttonCircle:hover::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #333333;
+    opacity: 0.3;
+    text-align: center;
+}
+.buttonCircle i {
+    font-size: 36px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.floatRight{
+    float: right;
+}
 /*form*/
 .formContain {
     margin: 0 auto;

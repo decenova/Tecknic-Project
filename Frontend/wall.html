@@ -47,30 +47,54 @@
     <div class="closebackground" onclick="closeNav()"></div>
     <div class="navContain col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <ul>
-            <a onclick="closeNav()"><li><i class="fa fa-times"></i></li></a>
+            <a onclick="closeNav()">
+                <li><i class="fa fa-times"></i></li>
+            </a>
             <hr/>
-            <a href="articlePost.html"><li>Đăng bài</li></a>
+            <a href="articlePost.html">
+                <li>Đăng bài</li>
+            </a>
             <hr/>
-            <a href="managerPage.html"><li>Quản lý</li></a>
+            <a href="managerPage.html">
+                <li>Quản lý</li>
+            </a>
             <hr/>
-            <a><li>Điện thoại</li></a>
-            <a><li>Laptop</li></a>
-            <a><li>Khác</li></a>
+            <a>
+                <li>Điện thoại</li>
+            </a>
+            <a>
+                <li>Laptop</li>
+            </a>
+            <a>
+                <li>Khác</li>
+            </a>
         </ul>
     </div>
 </nav>
 <div class="userMenu">
     <ul class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-        <a><li>Tường nhà bạn</li></a>
-        <a><li>Quản lý cá nhân</li></a>
-        <a><li>Đổi mật khẩu</li></a>
-        <a><li>Đăng xuất</li></a>
+        <a>
+            <li>Tường nhà bạn</li>
+        </a>
+        <a>
+            <li>Quản lý cá nhân</li>
+        </a>
+        <a>
+            <li>Đổi mật khẩu</li>
+        </a>
+        <a>
+            <li>Đăng xuất</li>
+        </a>
     </ul>
 </div>
 <div class="main selfclear">
     <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
     <div class="profileContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
         <div class="profileInfo">
+            <div class="controlButton">
+                <div class="buttonCircle buttonSuccess"><i class="fa fa-arrow-up"></i></div>
+                <div class="buttonCircle buttonDanger"><i class="fa fa-ban"></i></div>
+            </div>
             <div class="avatar">
                 <img src="img/avartar01.jpg">
             </div>
@@ -78,7 +102,7 @@
                 <p class="member">Trẩu Ăn Tre</p>
                 <p class="role">ADMIN</p>
                 <p class="numOfPost"><b>2</b> bài viết</p>
-                <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span> </p>
+                <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span></p>
             </div>
             <div class="tabControl selfclear">
                 <div class="tab tabSelect" onclick="showTab('#profile',this)">Thông tin cá nhân</div>
@@ -87,13 +111,13 @@
         </div>
         <div class="profileMainContaint widthNarrow">
             <div class="tabContent widthNarrow" id="profile">
-                    <div class="formContain">
-                        <h1>Thông tin cá nhân</h1>
-                        <div class="wallInfo">
-                            <p>Giới tính: Nam</p>
-                            <p>Email: trauantre@gmail.com</p>
-                        </div>
+                <div class="formContain">
+                    <h1>Thông tin cá nhân</h1>
+                    <div class="wallInfo">
+                        <p>Giới tính: Nam</p>
+                        <p>Email: trauantre@gmail.com</p>
                     </div>
+                </div>
             </div>
             <div class="tabContent widthNarrow fixPadding" id="postHistory">
                 <table class="table table-hover">

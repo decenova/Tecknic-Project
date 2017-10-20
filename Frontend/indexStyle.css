@@ -116,10 +116,21 @@ svg {
     transform: translate(0%,-50%);
 
 }
+.avatarAbsolute{
+    position: absolute!important;
+}
 .info{
     position: relative;
     min-height: 64px;
     padding: 5px 0px 0px 0px;
+}
+.info .buttonCircle{
+    float: right;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+.infoFixPaddingLeft{
+    padding-left: 80px;
 }
 .info a {
     color: #888888;
