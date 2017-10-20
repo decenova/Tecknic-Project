@@ -18,11 +18,13 @@ public class UserDTO {
     private String name;
     private String avatar;
     private char gender;
-    private Timestamp datetime;
+    private Timestamp dob;
+    private Timestamp doj;
     private String email;
     private String phoneNum;
     private String address;
     private String role;
+    private int roleId;
 
     public UserDTO() {
         avatar = "img/defaultavatar.jpg";
@@ -76,12 +78,20 @@ public class UserDTO {
         this.gender = gender;
     }
 
-    public Timestamp getDatetime() {
-        return datetime;
+    public Timestamp getDob() {
+        return dob;
     }
 
-    public void setDatetime(Timestamp datetime) {
-        this.datetime = datetime;
+    public void setDob(Timestamp dob) {
+        this.dob = dob;
+    }
+
+    public Timestamp getDoj() {
+        return doj;
+    }
+
+    public void setDoj(Timestamp doj) {
+        this.doj = doj;
     }
 
     public String getEmail() {
@@ -116,9 +126,17 @@ public class UserDTO {
         this.role = role;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
-        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", avatar=" + avatar + ", gender=" + gender + ", datetime=" + datetime + ", email=" + email + ", phoneNum=" + phoneNum + ", address=" + address + ", role=" + role + '}';
+        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", avatar=" + avatar + ", gender=" + gender + ", datetime=" + dob + ", email=" + email + ", phoneNum=" + phoneNum + ", address=" + address + ", role=" + role + '}';
     }
 
 }
