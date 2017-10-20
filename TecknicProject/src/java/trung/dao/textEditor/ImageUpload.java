@@ -53,7 +53,7 @@ public class ImageUpload extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         // The route on which the file is saved.
-        File uploads = new File("..\\..\\img\\");
+        File uploads = new File("..\\..\\NetbeanProject\\TestEditor2\\web\\img\\");
         String multipartContentType = "multipart/form-data";
         String fieldname = "file";
         Part filePart = request.getPart(fieldname);
