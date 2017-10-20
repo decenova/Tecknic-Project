@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tung.dto;
+package thang.dto;
 
 import java.sql.Timestamp;
 
@@ -20,6 +20,7 @@ public class ArticleDTO {
     private int creatorID;
     private Timestamp modifyTime;
     private int statusID;
+    private String status;
     private String reason;
     private int numOfView;
 
@@ -34,6 +35,14 @@ public class ArticleDTO {
         this.statusID = statusID;
         this.reason = reason;
         this.numOfView = numOfView;
+    }
+
+    public ArticleDTO(int ID, String title, Timestamp createTime,int statusId, String status) {
+        this.ID = ID;
+        this.title = title;
+        this.createTime = createTime;
+        this.statusID = statusId;
+        this.status = status;
     }
 
     public ArticleDTO() {
@@ -102,6 +111,14 @@ public class ArticleDTO {
 
     public void setStatusID(int statusID) {
         this.statusID = statusID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getReason() {
