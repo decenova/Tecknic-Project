@@ -23,5 +23,5 @@ function userMenuToggle() {
 
 function headerControl() {
     if (window.pageYOffset <= 600)
-        $('header')[0].style.backgroundColor = 'rgba(255,255,255,' + (0.4 + 0.5 * window.pageYOffset / 600) + ')';
+        $('header')[0].style.backgroundColor = 'rgba(255,255,255,' + (0.6 + 0.4 * window.pageYOffset / 600) + ')';
 }

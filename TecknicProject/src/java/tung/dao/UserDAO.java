@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import tung.dto.UserDTO;
 
 /**
@@ -40,23 +41,25 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
-        //sửa lại ID -  đang là username làm query
-        public UserDTO loadUser(String userID) {
+
+    public UserDTO loadUser(int userID) {
         UserDTO user = new UserDTO();
         try {
             conn = MyConnection.getConnection();
             String sql = "select u.Username,u.Name,u.Avatar,u.Gender,u.DateOfBirth,"
                     + "u.Email,u.PhoneNum,u.Address,u.DateOfJoin,r.Name as [RoleName]"
-                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.Username = ?";
+                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.ID = ?";
             preStm = conn.prepareStatement(sql);
-            preStm.setString(1, userID);
+            preStm.setInt(1, userID);
             rs = preStm.executeQuery();
             if (rs.next()) {
                 user.setUsername(rs.getString("Username"));
                 user.setName(rs.getString("Name"));
-                String avatar = rs.getString("Avatar"); 
+                String avatar = rs.getString("Avatar");
                 if (avatar != null) //nếu không rỗng thì lấy avatar trong db. ngược lại thì lấy avatar default
+                {
                     user.setAvatar(avatar);
+                }
                 user.setGender(rs.getString("Gender").charAt(0));
                 user.setDob(rs.getTimestamp("DateOfBirth"));
                 user.setEmail(rs.getString("Email"));
@@ -72,6 +75,33 @@ public class UserDAO {
             closeConnection();
         }
         return user;
+    }
+
+    public ArrayList<UserDTO> getAllUser(int userID) { //trừ thằng admin và moderator
+        ArrayList<UserDTO> result = new ArrayList<>();
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select u.Username,u.Name,u.Email,r.Name as [RoleName]"
+                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.ID != ?";
+            preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, userID);
+            rs = preStm.executeQuery();
+            UserDTO user;
+            while (rs.next()) {
+                user = new UserDTO();
+                user.setUsername(rs.getString("Username"));
+                user.setName(rs.getString("Name"));
+                user.setEmail(rs.getString("Email"));
+                user.setRole(rs.getString("RoleName"));
+                result.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
+
     }
 
     public boolean updateUser(UserDTO user) {
@@ -121,7 +151,7 @@ public class UserDAO {
                 String phone = rs.getString("PhoneNum");
                 String address = rs.getString("Address");
                 String role = rs.getString("RoleName");
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();

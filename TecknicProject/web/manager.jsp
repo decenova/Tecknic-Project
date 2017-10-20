@@ -51,6 +51,7 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
+                                                <th>No.</th>
                                                 <th>Username</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
@@ -58,48 +59,45 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                     <%-- hiện thông tin ở đây --%>
-                                           <tr>
-                                                <td><a href="wall.html">trautre</a></td>
-                                                <td><a href="wall.html">Trẩu Ăn Tre</a></td>
-                                                <td>trauantre@gmail.com</td>
-                                                <td>Admin</td>
-                                            </tr>
+                                        <%-- hiện thông tin ở đây --%>
+                                        <s:iterator value="MemberList" var="dto" status="counter" >
                                             <tr>
-                                                <td><a href="wall.html">tre1232</a></td>
-                                                <td><a href="wall.html">Tre Người</a></td>
-                                                <td>tre@gmail.com</td>
-                                                <td>Member</td>
+                                                <td><s:property value="%{#counter.count}"/></td>
+                                                <td><a href="wall.html"><s:property value="%{#dto.username}"/></a></td>
+                                                <td><a href="wall.html"><s:property value="%{#dto.name}"/></a></td>
+                                                <td><s:property value="%{#dto.email}"/></td>
+                                                <td><s:property value="%{#dto.role}"/></td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tabContent widthNarrow fixPadding" id="postHistory">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Create time</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
-                                        <td>12:30 12/3/2017</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
-                                        <td>11:30 12/3/2017</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                        </s:iterator>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tabContent widthNarrow fixPadding" id="postHistory">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Create time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
+                                    <td>12:30 12/3/2017</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
+                                    <td>11:30 12/3/2017</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
             </div>
+            <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+        </div>
         <s:include value="header.jsp"></s:include>        
     </body>
 </html>
