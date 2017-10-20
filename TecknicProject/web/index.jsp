@@ -30,13 +30,13 @@
                     <div class="slide" style="background-image: url('img/cover02.jpg')">
                         <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
                     </div>
-                    <div class="slide" style="background-image: url('img/profileCover.jpg')">
+                    <div class="slide" style="background-image: url('img/cover01.jpg')">
                         <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
                     </div>
-                    <div class="slide" style="background-image: url('img/post02.jpg')">
+                    <div class="slide" style="background-image: url('img/cover02.jpg')">
                         <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
                     </div>
-                    <div class="slide" style="background-image: url('img/post03.jpg')">
+                    <div class="slide" style="background-image: url('img/cover01.jpg')">
                         <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
                     </div>
                 </div>

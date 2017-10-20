@@ -77,6 +77,7 @@ header img{
 .main {
     width: 100%;
     margin-top: 60px;
+    min-height: 100vh;
 }
 .widthNarrow{
     margin: 0px auto;
@@ -146,11 +147,11 @@ footer>div{
 
 .buttonPrimary {
     color: #ffffff;
-    background-color: #2266ff;
+    background-color: #4488ff;
     border: 0px;
 }
 .buttonPrimary:hover{
-    background-color: #1133ff;
+    background-color: #4488cc;
 }
 
 /*form*/
@@ -259,16 +260,28 @@ ul a:hover{
     position: fixed;
     width: 100%;
     right: 0px;
-    top: 50px;
-    z-index: 9;
+    top: 60px;
+    z-index: 11;
     display: none;
+}
+.userMenu ul::before{
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    position: absolute;
+    top: -10px;
+    right: 25px;
+    transform: rotate(45deg);
+    z-index: 8;
 }
 .userMenu ul{
     background-color: #ffffff;
-    position: fixed;
-    right: 0px;
-    border: 1px solid #cccccc;
+
+    /*position: fixed;*/
+    /*right: 0px;*/
+    /*border: 1px solid #cccccc;*/
 }
-.userMenu li {
+.userMenu ul li{
     margin-top: 5px;
 }
