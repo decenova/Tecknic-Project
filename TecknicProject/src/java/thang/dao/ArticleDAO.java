@@ -40,8 +40,8 @@ public class ArticleDAO {
         }
     }
 
-    public ArrayList findAllBySubmitedOrCheckingArticle() {
-        ArrayList list = new ArrayList();
+    public ArrayList<ArticleDTO> findAllBySubmitedOrCheckingArticle() {
+        ArrayList<ArticleDTO> list = new ArrayList<>();
         ArticleDTO dto;
         try {
             con = MyConnection.getConnection();
