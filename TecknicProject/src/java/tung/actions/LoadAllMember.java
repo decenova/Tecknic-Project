@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import tung.dao.UserDAO;
 import tung.dto.UserDTO;
@@ -20,6 +21,7 @@ import tung.dto.UserDTO;
  *
  * @author hoanh
  */
+@ParentPackage("json-default")
 public class LoadAllMember extends ActionSupport {
     
     private ArrayList<UserDTO> memberList;
@@ -27,15 +29,15 @@ public class LoadAllMember extends ActionSupport {
     public LoadAllMember() {
     }
     @Action(value = "/loadAll", results = {
-        @Result(name = "success", location = "/manager.jsp")
+        @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         Map session = ActionContext.getContext().getSession();
         int id = (int) session.get("ID");
         memberList = dao.getAllUser(id);
-        HttpServletRequest request = ServletActionContext.getRequest();
-        request.setAttribute("MemberList", memberList);
+//        HttpServletRequest request = ServletActionContext.getRequest();
+//        request.setAttribute("MemberList", memberList);
         return SUCCESS;
     }
 

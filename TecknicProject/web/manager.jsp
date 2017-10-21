@@ -58,18 +58,9 @@
                                                 <th>Role</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="allUserContain">
                                         <%-- hiện thông tin ở đây --%>
-                                        <s:iterator value="MemberList" var="dto" status="counter" >
-                                            <tr>
-                                                <td><s:property value="%{#counter.count}"/></td>
-                                                <td><a href="wall.html"><s:property value="%{#dto.username}"/></a></td>
-                                                <td><a href="wall.html"><s:property value="%{#dto.name}"/></a></td>
-                                                <td><s:property value="%{#dto.email}"/></td>
-                                                <td><s:property value="%{#dto.role}"/></td>
-                                            </tr>
-                                        </s:iterator>
-                                    </tbody>
+                                        </tbody>
                                 </table>
                             </div>
                         </form>
@@ -117,7 +108,35 @@
                 </div>
             </div>
             <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-        </div>
+        </div>                          
+        <script>
+            function getAllUser() {
+                $.ajax({
+                    type: "POST",
+                    url: "/Tecknic/loadAll",
+                    success: function (data) {
+                        var div = $("#allUserContain");
+                        div.empty();
+                        var memberList = data.memberList;
+                        console.log(data);
+                        if (memberList.length > 0) {
+                            var s = "";
+                            for (var i = 0; i < memberList.length; i++) {
+                                s += '<tr>';
+                                s += '<td>' + (i + 1) + '</td>';
+                                s += '<td>' + memberList[i].username + '</td>';
+                                s += '<td>' + memberList[i].name + '</td>';
+                                s += '<td>' + memberList[i].email + '</td>';
+                                s += '<td>' + memberList[i].role + '</td>';
+                                s += '</tr>';
+                            }
+                        }
+                        div.append(s);
+                    }
+                });
+            }
+            getAllUser();
+        </script>                              
         <s:include value="footer.jsp"></s:include>        
     </body>
 </html>
