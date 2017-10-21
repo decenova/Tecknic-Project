@@ -146,6 +146,25 @@ public class UserDAO {
         }
         return result;
     }
+    public boolean isUsernameExsisted(String username){
+        boolean check = true;
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select Username \n"
+                    + "from [User] where Username = ?");
+            prestmt.setString(1, username);
+            rs = prestmt.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs.toString());
+                check = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
     public boolean verifyPassword(String username, String password) {
         boolean check = false;
         try {

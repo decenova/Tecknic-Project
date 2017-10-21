@@ -47,7 +47,7 @@ public class ArticleDAO {
             con = MyConnection.getConnection();
             prestmt = con.prepareStatement("select A.Id, A.Title, A.CreateTime, S.Id, S.Name \n"
                     + "from Article A inner join [Status] S on A.StatusId = S.Id \n"
-                    + "where S.Name = 'draft' or S.Name = 'reviewing'");
+                    + "where S.Name = 'submited' or S.Name = 'reviewing'");
             rs = prestmt.executeQuery();
             while (rs.next()) {
                 dto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getTimestamp(3), rs.getInt(4), rs.getString(5));

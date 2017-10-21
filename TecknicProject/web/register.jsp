@@ -19,29 +19,30 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="ajaxcontrol.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form>
+                <form action="" method="post" id="form">
                     <div class="formContain formBox">
                         <h1>Đăng kí</h1>
                         <div class="inputText">
                             <label>Tên*</label>
-                            <input type="text" name="txtName" placeholder="Họ và tên">
+                            <input type="text" name="txtName" id="name" onblur="checkName()" placeholder="Họ và tên">
                         </div>
                         <div class="inputText">
                             <label>Tài khoản*</label>
-                            <input type="text" name="txtUsername" placeholder="TaiKhoan">
+                            <input type="text" name="txtUsername" id="username" onblur="checkUsername()" placeholder="TaiKhoan"/>
                         </div>
                         <hr/>
                         <div class="inputText">
                             <label>Mật khẩu*</label>
-                            <input type="password" name="txtPassword" placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;">
+                            <input type="password" name="txtPassword" id="password" onblur="checkPassword()">
                         </div>
                         <div class="inputText">
                             <label>Nhập lại mật khẩu*</label>
-                            <input type="password" name="txtCheckPassword" placeholder="&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;&bullet;">
+                            <input type="password" name="txtCheckPassword" id="confirmPassword" onblur="checkConfirmPassword()">
                         </div>
                         <hr/>
                         <div class="">
@@ -52,15 +53,15 @@
                         </div>
                         <div class="inputText">
                             <label>Ngày sinh</label>
-                            <input type="date" name="txtDob" value="1990-12-21">
+                            <input type="date" name="txtDob" id="date" value="1990-12-21">
                         </div>
                         <div class="inputText">
                             <label>Email</label>
-                            <input type="email" name="txtEmail" placeholder="example@gmail.com">
+                            <input type="email" name="txtEmail" id="email" onblur="checkEmail()" placeholder="example@gmail.com">
                         </div>
                         <div class="inputText">
                             <label>Số điện thoại</label>
-                            <input type="text" name="txtPhoneNumber">
+                            <input type="text" name="txtPhoneNumber" id="phone">
                         </div>
                         <div class="inputText">
                             <label>Địa chỉ</label>
@@ -68,10 +69,10 @@
                         </div>
                         <hr/>
                         <div>
-                            <p><input type="checkbox" required>Tôi đã đọc và đồng ý với <a href="rule.jsp" target="_blank">điều khoản và quy tắc</a></p>
+                            <p><input type="checkbox" id="checkbox">Tôi đã đọc và đồng ý với <a href="rule.jsp" target="_blank">điều khoản và quy tắc</a></p>
                         </div>
                         <div class="buttonGroup">
-                            <div class="button buttonPrimary">Đăng kí</div>
+                            <div class="button buttonPrimary" onclick="submit('#form')">Đăng kí</div>
                         </div>
                     </div>
                 </form>

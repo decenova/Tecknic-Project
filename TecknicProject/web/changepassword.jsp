@@ -44,6 +44,6 @@
                     </div>
                 </form>
             </div>
-        <s:include value="header.jsp"></s:include>
+        <s:include value="footer.jsp"></s:include>
     </body>
 </html>
