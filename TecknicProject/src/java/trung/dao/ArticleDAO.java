@@ -117,7 +117,7 @@ public class ArticleDAO {
 //    Sửa article dựa vào ArticleID
 //    Lấy ra
 //    Trả về giá trị boolean
-    public boolean updateArticle(ArticleDTO dto) {
+    public boolean updateArticle(ArticleDTO dto) { //sua lai
         boolean result = false;
         
         try {
