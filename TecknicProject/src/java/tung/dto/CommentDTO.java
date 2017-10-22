@@ -17,7 +17,10 @@ public class CommentDTO {
     private int articleID;
     private String content;
     private Timestamp createTime;
+    private String txtCreateTime;
     private boolean status;
+    private String nameUser;
+    private String avatarUser;
 
     public CommentDTO(int ID, int userID, int articleID, String content, Timestamp createTime, boolean status) {
         this.ID = ID;
@@ -27,6 +30,10 @@ public class CommentDTO {
         this.createTime = createTime;
         this.status = status;
     }
+
+    public CommentDTO() {
+    }
+    
 
     public int getID() {
         return ID;
@@ -75,6 +82,32 @@ public class CommentDTO {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public String getNameUser() {
+        return nameUser;
+    }
+
+    public void setNameUser(String nameUser) {
+        this.nameUser = nameUser;
+    }
+
+    public String getAvatarUser() {
+        return avatarUser;
+    }
+
+    public void setAvatarUser(String avatarUser) {
+        this.avatarUser = avatarUser;
+    }
+
+    public String getTxtCreateTime() {
+        return txtCreateTime;
+    }
+
+    public void setTxtCreateTime(String txtCreateTime) {
+        this.txtCreateTime = txtCreateTime;
+    }
+    
+    
     
     
 }
