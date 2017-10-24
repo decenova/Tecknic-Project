@@ -7,6 +7,7 @@ package trung.dto;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -24,12 +25,12 @@ public class ArticleDTO {
     private int statusId;
     private String reason;
     private int numOfView;
-    private ArrayList<Integer> tagList;
-
+    private Map<Integer, Integer> tagList;
+    
     public ArticleDTO() {
     }
 
-    public ArticleDTO(int id, String title, String content, String CoverImage, Timestamp CreateTime, int CreatorId, Timestamp ModifyTime, int ModifierId, int statusId, String reason, int numOfView, ArrayList<Integer> tagList) {
+    public ArticleDTO(int id, String title, String content, String CoverImage, Timestamp CreateTime, int CreatorId, Timestamp ModifyTime, int ModifierId, int statusId, String reason, int numOfView, Map<Integer, Integer> tagList) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -132,11 +133,11 @@ public class ArticleDTO {
         this.numOfView = numOfView;
     }
 
-    public ArrayList<Integer> getTagList() {
+    public Map<Integer, Integer> getTagList() {
         return tagList;
     }
 
-    public void setTagList(ArrayList<Integer> tagList) {
+    public void setTagList(Map<Integer, Integer> tagList) {
         this.tagList = tagList;
     }
 
@@ -144,5 +145,6 @@ public class ArticleDTO {
     public String toString() {
         return "ArticleDTO{" + "id=" + id + ", title=" + title + ", content=" + content + ", CoverImage=" + CoverImage + ", CreateTime=" + CreateTime + ", CreatorId=" + CreatorId + ", ModifyTime=" + ModifyTime + ", ModifierId=" + ModifierId + ", statusId=" + statusId + ", reason=" + reason + ", numOfView=" + numOfView + ", tagList=" + tagList + '}';
     }
-
+    
+    
 }

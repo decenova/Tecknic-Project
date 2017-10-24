@@ -10,8 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import trung.dto.ArticleDTO;
 
 /**
@@ -90,21 +93,15 @@ public class ArticleDAO {
             rs = pre.executeQuery();
 
             if (rs.next()) {
+                //Khởi tạo đối tượng khi tìm thấy
                 result = new ArticleDTO();
+                result.setId(articleID);
                 result.setTitle(rs.getString("Title"));
                 result.setContent(rs.getString("Content"));
                 result.setCoverImage(rs.getString("CoverImage"));
 
                 //Lấy TagList
-                sql = "select TagId from ArticleTag where ArticleId = ?";
-                pre = conn.prepareStatement(sql);
-                pre.setInt(1, articleID);
-                rs = pre.executeQuery();
-                //Tạo đối tượng TagList khi đã query đc.
-                result.setTagList(new ArrayList<Integer>());
-                while (rs.next()) {
-                    result.getTagList().add(rs.getInt("TagId"));
-                }
+                result.setTagList(getArticleTag(articleID));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +117,7 @@ public class ArticleDAO {
 //    Lấy ra
 //    Trả về giá trị 
 //    Ghi chú: 0(Không sửa), 1(Thêm), 2(Xóa)
-    public boolean updateArticle(ArticleDTO dto, Map<Integer, Integer> tagList) {
+    public boolean updateArticle(ArticleDTO dto, Map<Integer, Integer> changeTagList) {
         boolean result = false;
 
         try {
@@ -136,18 +133,18 @@ public class ArticleDAO {
             if (pre.executeUpdate() == 1) { //nếu update đúng 1 Article
 
                 //Update bảng ArticleTag
-                for (int i = 0; i < tagList.size(); i++) {
-                    if (tagList.get(i) == 1) { //Nếu giá trị của TagID là 1 ta thêm vào DB
+                for (Map.Entry<Integer, Integer> entry : changeTagList.entrySet()) {
+                    if (entry.getValue() == 1) { //Nếu giá trị của TagID là 1 ta thêm vào DB
                         sql = "insert into ArticleTag (ArticleId, TagId) values (?,?)";
                         pre = conn.prepareStatement(sql);
                         pre.setInt(1, dto.getId());
-                        pre.setInt(2, i);
+                        pre.setInt(2, entry.getKey());
                         pre.execute();
-                    } else if (tagList.get(i) == 2) { //Nếu giá trị của TagID là 2 ta xóa
+                    } else if (entry.getValue() == 2) { //Nếu giá trị của TagID là 2 ta xóa
                         sql = "delete from ArticleTag where ArticleId  = ? and TagId = ?";
                         pre = conn.prepareStatement(sql);
                         pre.setInt(1, dto.getId());
-                        pre.setInt(2, i);
+                        pre.setInt(2, entry.getKey());
                         pre.execute();
                     }
                 }
@@ -182,5 +179,53 @@ public class ArticleDAO {
         } finally {
             closeConnection();
         }
+    }
+    
+    //trả về map các tag của 1 article vs giá trị của tagId k có trong
+    //article là 0 và có là 1
+    public Map<Integer, Integer> getArticleTag(int articleId) {
+        Map<Integer, Integer> result = getAllTag();
+        
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select TagId from ArticleTag where ArticleId = ? order by TagId ASC";
+            pre = conn.prepareStatement(sql);
+            pre.setInt(1, articleId);
+            rs = pre.executeQuery();
+            
+            while (rs.next()) {
+                //Nếu có key TagId trong map
+                if (result.containsKey(rs.getInt("TagId"))) {
+                    result.put(rs.getInt("TagId"), 1);
+                }
+            }   
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        
+        return result;
+    }    
+    
+    //Lấy ra 1 Map tất cả các tag vs key là tagId và value là 0
+    public Map<Integer, Integer> getAllTag() {
+        Map<Integer, Integer> result = new HashMap<>();
+        
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select Id from Tag order by Id ASC";
+            pre = conn.prepareStatement(sql);
+            rs = pre.executeQuery();
+            while (rs.next()) {
+                result.put(rs.getInt("Id"), 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        
+        return result;
     }
 }
