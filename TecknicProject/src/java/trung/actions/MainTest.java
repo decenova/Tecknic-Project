@@ -47,7 +47,7 @@ class MainTest {
         arr.add(3);
         ArticleDTO dto = new ArticleDTO(1, "LoloLand", "This is not a movie", "default", null, 0, null, 0, 0, null, 0, arr);
         System.out.println("Before: " + aDao.viewArticleForUpdate(1));
-        aDao.updateArticle(dto);
+//        aDao.updateArticle(dto);
         System.out.println("After : " + aDao.viewArticleForUpdate(1));
     }
 }
