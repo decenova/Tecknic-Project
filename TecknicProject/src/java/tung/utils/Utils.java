@@ -29,19 +29,28 @@ public class Utils {
         return false;
 
     }
+
     public static Timestamp getTimeSystem() {
         Date time = new Date();
         return new Timestamp(time.getTime());
 
     }
 
+    //dành cho truyền được kiểu Date trong html
     public static String convertToDate(Timestamp date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return date != null ? sdf.format(date.getTime()) : "";
     }
 
+    //in ra theo kiểu hiển thị ngày Việt Nam
     public static String convertToDateV2(Timestamp date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return date != null ? sdf.format(date.getTime()) : "";
+    }
+
+    //in ra theo kiểu hiển thị ngày giờ Việt Nam
+    public static String convertToDateV3(Timestamp date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm dd/MM/yyyy");
         return date != null ? sdf.format(date.getTime()) : "";
     }
 

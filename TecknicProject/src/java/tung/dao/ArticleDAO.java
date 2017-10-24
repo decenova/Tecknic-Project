@@ -18,7 +18,7 @@ import tung.utils.Utils;
  * @author hoanh
  */
 public class ArticleDAO {
-
+    private final int SUBMITED = 1;
     private final int REVIEWING = 2;
     private final int VIEWDEFAULT = 0;
 
@@ -56,7 +56,7 @@ public class ArticleDAO {
             preStm.setTimestamp(4, Utils.getTimeSystem());
             preStm.setInt(5, article.getCreatorID());
             preStm.setTimestamp(6, Utils.getTimeSystem());
-            preStm.setInt(7, REVIEWING);
+            preStm.setInt(7, SUBMITED);
             preStm.setInt(8, VIEWDEFAULT);
             if (preStm.executeUpdate() > 0) {
                 result = true;
@@ -110,8 +110,30 @@ public class ArticleDAO {
     }
 
     public ArrayList<ArticleDTO> findByLikeTitle(String title) {
-
-        return null;
+        ArrayList<ArticleDTO> result = new ArrayList<>();
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select ID, Title, CreateTime from Article" +
+                    " where Title like ? and (StatusId = ? or StatusId = ?)";
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, "%" + title + "%");
+            preStm.setInt(2, SUBMITED);
+            preStm.setInt(3, REVIEWING);
+            rs = preStm.executeQuery();
+            ArticleDTO article;
+            while (rs.next()) {
+                article = new ArticleDTO();
+                article.setID(rs.getInt("ID"));
+                article.setTitle(rs.getString("Title"));
+                article.setTxtCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
+                result.add(article);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
 
     public ArrayList<ArticleDTO> findByTag(int tagID) {

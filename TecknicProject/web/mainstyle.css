@@ -211,6 +211,7 @@ footer>div{
 }
 .formContain>div {
     margin-top: 25px;
+    position: relative;
 }
 .inputText input{
     width: 100%;
@@ -327,4 +328,58 @@ ul a:hover{
 }
 .userMenu ul li{
     margin-top: 5px;
+}
+
+/*popover*/
+.mypopover {
+    background-color: #ffffff;
+    min-height: 30px;
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    z-index: 5;
+    max-width: 276px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.mypopover.top {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+}
+.mypopover>.arrow,
+.mypopover>.arrow::after{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+.mypopover>.arrow{
+    border-width: 11px;
+}
+.mypopover>.arrow::after{
+    border-width: 10px;
+}
+.mypopover.top .arrow{
+    bottom: -11px;
+    left: 20%;
+    border-top-color: #999;
+    border-top-color: rgba(0,0,0,.25);
+    border-bottom-width: 0;
+}
+.mypopover.top .arrow::after{
+    bottom: 2px;
+    margin-left: -10px;
+    content: "";
+    border-top-color: #ffffff;
+    border-bottom-width: 0;
+}
+.mypopover.mypopoverAlert {
+    color: #ffffff;
+    background-color: #dd5555;
+}
+.mypopover.mypopoverAlert .arrow::after{
+    border-top-color: #dd5555;
 }

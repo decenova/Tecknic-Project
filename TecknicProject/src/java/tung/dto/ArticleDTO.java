@@ -17,6 +17,7 @@ public class ArticleDTO {
     private String content;
     private String coverImage;
     private Timestamp createTime;
+    private String txtCreateTime;
     private int creatorID;
     private Timestamp modifyTime;
     private int statusID;
@@ -119,6 +120,15 @@ public class ArticleDTO {
     public void setNumOfView(int numOfView) {
         this.numOfView = numOfView;
     }
+
+    public String getTxtCreateTime() {
+        return txtCreateTime;
+    }
+
+    public void setTxtCreateTime(String txtCreateTime) {
+        this.txtCreateTime = txtCreateTime;
+    }
+    
     
     
 }

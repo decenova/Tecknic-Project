@@ -60,7 +60,7 @@
                         <hr/>
                     </s:if>
                     <s:if test="%{#session.ROLE == 'Administrator' || #session.ROLE == 'Moderator'}">
-                        <a href="loadAll"><li>Quản lý</li></a>
+                        <a href="manager.jsp"><li>Quản lý</li></a>
                         <hr/>
                     </s:if>
                     <%-- cái dưới dùng để lọc nội dung vài post theo loại --%>

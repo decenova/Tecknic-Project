@@ -19,7 +19,7 @@ go
 create table [User] (
 	Id int primary key identity,
 	Username varchar(40) not null unique,
-	[Password] varchar(40) not null unique,
+	[Password] varchar(20) not null,
 	Name nvarchar(100) not null,
 	Avatar varchar(100),
 	Gender char(1) not null check (Gender in ('M','F','O')),

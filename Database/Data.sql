@@ -6,7 +6,7 @@ insert into [Role](Name) values ('Moderator');
 insert into [Role](Name) values ('Administrator');
 insert into [Role](Name) values ('Banned Member');
 
-insert into [Status](Name) values ('draft');
+insert into [Status](Name) values ('submited');
 insert into [Status](Name) values ('reviewing');
 insert into [Status](Name) values ('posted');
 insert into [Status](Name) values ('reject');

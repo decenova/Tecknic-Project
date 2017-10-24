@@ -77,18 +77,18 @@ public class UserDAO {
         return user;
     }
 
-    public ArrayList<UserDTO> getAllUser(int userID) { //trừ thằng admin và moderator
+    public ArrayList<UserDTO> getAllUser() { //trừ thằng admin và moderator
         ArrayList<UserDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
-            String sql = "select u.Username,u.Name,u.Email,r.Name as [RoleName]"
-                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.ID != ?";
+            String sql = "select u.ID, u.Username,u.Name,u.Email,r.Name as [RoleName]"
+                    + "from [User] u inner join Role r on u.RoleId = r.Id";
             preStm = conn.prepareStatement(sql);
-            preStm.setInt(1, userID);
             rs = preStm.executeQuery();
             UserDTO user;
             while (rs.next()) {
                 user = new UserDTO();
+                user.setId(rs.getInt("ID"));
                 user.setUsername(rs.getString("Username"));
                 user.setName(rs.getString("Name"));
                 user.setEmail(rs.getString("Email"));
@@ -132,32 +132,30 @@ public class UserDAO {
         return result;
     }
 
-    public UserDTO findByLikeUserID(int UserID) {
-        UserDTO user = null;
+    public ArrayList<UserDTO> findByLikeName(String searchName) {
+        ArrayList<UserDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
-            String sql = "select u.Username,u.Name,u.Gender,u.DateOfBirth,"
-                    + "u.Email,u.PhoneNum,u.Address,r.Name as RoleName"
-                    + "from User u inner join Role r on u.RoleId = r.Id where Id = ?";
+            String sql = "select u.ID, u.Username, u.Name, u.Email, r.Name as RoleName "
+                    + "from [User] u inner join Role r on u.RoleId = r.Id where u.Name like ?";
             preStm = conn.prepareStatement(sql);
+            preStm.setString(1, "%" + searchName + "%");
             rs = preStm.executeQuery();
-
-            if (rs.next()) {
-                String username = rs.getString("Username");
-                String name = rs.getString("u.Name");
-                char gender = rs.getString("Gender").charAt(0);
-                Timestamp dob = rs.getTimestamp("DateOfBirth");
-                String email = rs.getString("Email");
-                String phone = rs.getString("PhoneNum");
-                String address = rs.getString("Address");
-                String role = rs.getString("RoleName");
-
+            UserDTO user;
+            while (rs.next()) {
+                user = new UserDTO();
+                user.setId(rs.getInt("ID"));
+                user.setUsername(rs.getString("Username"));
+                user.setName(rs.getString("Name"));
+                user.setEmail(rs.getString("Email"));
+                user.setRole(rs.getString("RoleName"));
+                result.add(user);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             closeConnection();
         }
-        return user;
+        return result;
     }
 }

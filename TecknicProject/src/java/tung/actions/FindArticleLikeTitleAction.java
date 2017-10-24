@@ -5,41 +5,49 @@
  */
 package tung.actions;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import tung.dao.UserDAO;
-import tung.dto.UserDTO;
+import tung.dao.ArticleDAO;
+import tung.dto.ArticleDTO;
 
 /**
  *
  * @author hoanh
  */
 @ParentPackage("json-default")
-public class LoadAllMember extends ActionSupport {
+public class FindArticleLikeTitleAction extends ActionSupport {
     
-    private ArrayList<UserDTO> memberList;
+    private String searchTitle;
+    private ArrayList<ArticleDTO> articleList;
     
-    public LoadAllMember() {
+    public FindArticleLikeTitleAction() {
     }
-    @Action(value = "/loadAll", results = {
+    @Action(value = "/findArticle", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
-        UserDAO dao = new UserDAO();
-        memberList = dao.getAllUser();
+        ArticleDAO dao = new ArticleDAO();
+        articleList = dao.findByLikeTitle(searchTitle);
         return SUCCESS;
     }
 
-    public ArrayList<UserDTO> getMemberList() {
-        return memberList;
+    public String getSearchTitle() {
+        return searchTitle;
     }
 
+    public void setSearchTitle(String searchTitle) {
+        this.searchTitle = searchTitle;
+    }
+
+    public ArrayList<ArticleDTO> getArticleList() {
+        return articleList;
+    }
+
+    
+    
+    
     
 }
