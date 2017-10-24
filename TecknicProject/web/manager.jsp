@@ -19,8 +19,9 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="tung/function.js" type="application/javascript"></script>
     </head>
-    <body>
+    <body onsubmit="return false">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
@@ -38,86 +39,51 @@
                     </div>
                     <div class="profileMainContaint widthNarrow">
                         <div class="tabContent widthNarrow" id="searchProfile">
-                            <form>
-                                <div class="formContain">
-                                    <div class="inputText">
-                                        <label>Tìm kiếm tài khoản</label>
-                                        <input type="text" name="txtUsername">
-                                        <div class="buttonGroup">
-                                            <button class="button buttonPrimary"> <i class="fa fa-search"></i> </button>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Username</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <%-- hiện thông tin ở đây --%>
-                                        <s:iterator value="MemberList" var="dto" status="counter" >
-                                            <tr>
-                                                <td><s:property value="%{#counter.count}"/></td>
-                                                <td><a href="wall.html"><s:property value="%{#dto.username}"/></a></td>
-                                                <td><a href="wall.html"><s:property value="%{#dto.name}"/></a></td>
-                                                <td><s:property value="%{#dto.email}"/></td>
-                                                <td><s:property value="%{#dto.role}"/></td>
-                                            </tr>
-                                        </s:iterator>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tabContent widthNarrow" id="postHistory">
-                        <form>
+                            <!--                            <form>-->
                             <div class="formContain">
-                                <!--<h1>Bài viết</h1>-->
                                 <div class="inputText">
-                                    <label>Tìm kiếm bài viết</label>
-                                    <input type="text" name="txtUsername">
+                                    <label>Tìm kiếm tài khoản</label>
+                                    <input id="sName" type="text" name="searchName">
                                     <div class="buttonGroup">
-                                        <button class="button buttonPrimary"><i class="fa fa-search"></i></button>
+                                        <button class="button buttonPrimary" onclick="findUserByLike()"> <i class="fa fa-search"></i> </button>
                                     </div>
-                                </div>
-                                <div class="">
-                                    <label>Thể loại</label>
-                                    <span><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</span>
-                                    <span><input type="checkbox" name="cbxTag" value="2"> Laptop</span>
-                                    <span><input type="checkbox" name="cbxTag" value="3"> Khác</span>
                                 </div>
                                 <hr/>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Title</th>
-                                            <th>Create time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
-                                            </td>
-                                            <td>12:30 12/3/2017</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
-                                            <td>11:30 12/3/2017</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div  id="allUserContain">
+                                </div>
                             </div>
-                        </form>
+                            <!--                        </form>-->
+                        </div>
+                        <div class="tabContent widthNarrow" id="postHistory">
+                            <form>
+                                <div class="formContain">
+                                    <!--<h1>Bài viết</h1>-->
+                                    <div class="inputText">
+                                        <label>Tìm kiếm bài viết</label>
+                                        <input type="text" name="searchTitle" id="sTitle">
+                                        <div class="buttonGroup">
+                                            <button class="button buttonPrimary" onclick="findArticleByTitle()"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <label>Thể loại</label>
+                                        <span><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</span>
+                                        <span><input type="checkbox" name="cbxTag" value="2"> Laptop</span>
+                                        <span><input type="checkbox" name="cbxTag" value="3"> Khác</span>
+                                    </div>
+                                    <hr/>
+                                    <div id="ArticleContain">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-        </div>
+                <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+            </div>                          
+            <script>
+                getAllUser();
+            </script>                              
         <s:include value="footer.jsp"></s:include>        
     </body>
 </html>

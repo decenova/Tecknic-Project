@@ -19,9 +19,11 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="tung/function.js" type="application/javascript"></script>
     </head>
-    <body>
+    <body onsubmit="return false">
         <s:include value="header.jsp"></s:include>
+            <!-- sẽ cung cấp id của người dùng, và id cảu bài viết -->
             <div class="main selfclear fixPadingTop">
                 <div class="postContaint">
                     <div class="postTran">
@@ -110,11 +112,11 @@
                                 <div class="commentInfo">
                                     <div class="avatar">
                                         <%-- cho avatar của user đang đọc bài viết --%>
-                                        <img src="img/avartar01.jpg">
+                                        <img src="<s:property value="%{#session.AVATAR}"/>">
                                     </div>
                                     <div class="info">
                                         <%-- cho tên user đang đọc bài viết --%>
-                                        <a><span class="poster">Trẩu Ăn Tre</span></a>
+                                        <a><span class="poster"><s:property value="%{#session.NAME}"/></span></a>
                                         <br/>
                                         <span class="datepost"></span>
                                     </div>
@@ -122,8 +124,8 @@
                                 <form>
                                     <div class="commentContent">
                                         <%-- nhúng texteditor --%>
-                                        <textarea name="txtComment" rows="4"></textarea>
-                                        <button class="button buttonPrimary"><i class="fa fa-send"></i></button>
+                                        <textarea id="contentComment" name="txtComment" rows="4"></textarea>
+                                        <button class="button buttonPrimary" onclick="addCommentToArticle()"><i class="fa fa-send"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -135,35 +137,16 @@
                         </div>
                     </s:else>
                     <hr>
+                    <!-- Tung xử lý ajax -->
+                    <div id="CommentContain">
 
-                    <%-- chỗ xem comment của người khác --%>
-                    <div class="commentContain fixPadding widthNarrow">
-                        <div class="comment">
-                            <div class="commentInfo">
-                                <div class="avatar">
-                                    <%-- avatar của thằng comment cái này --%>
-                                    <img src="img/avartar01.jpg">
-                                </div>
-                                <div class="info">
-                                    <%-- tên của thằng comment cái này --%>
-                                    <a><span class="poster">Trẩu Ăn Tre</span></a>
-                                    <br/>
-                                    <%-- thời gian của comment --%>
-                                    <span class="datepost">12:30 12/3/2017</span>
-                                </div>
-                            </div>
-                            <div class="commentContent">
-                                <%-- Nội dung comment --%>
-                                <p>Helo moi nguoi</p>
-                            </div>
-                            <%-- số thứ tự nếu cần hoặc số commentId --%>
-                            <div class="commentIndex">#1</div>
-                            <hr/>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            getCommentOfArticle();
+        </script>
         <s:include value="footer.jsp"></s:include>
     </body>
 </html>
