@@ -26,32 +26,35 @@
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
                 <div class="profileContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <div class="profileInfo">
+                    <%--nếu là admin mới hiện lên ban or upgrade--%>
+                    <s:if test="%{#session.ROLE == 'Administrator'}">
                         <div class="controlButton">
                             <div class="buttonCircle buttonSuccess"><i class="fa fa-plus"></i></div>
                             <div class="buttonCircle buttonDanger"><i class="fa fa-ban"></i></div>
                         </div>
-                        <div class="avatar">
-                            <img src="img/avartar01.jpg">
-                        </div>
-                        <div class="info">
-                            <p class="member">Trẩu Ăn Tre</p>
-                            <p class="role">ADMIN</p>
-                            <p class="numOfPost"><b>2</b> bài viết</p>
-                            <p class="datejoin">Ngày gia nhập: <span class="date">12/02/2017</span> </p>
-                        </div>
-                        <div class="tabControl selfclear">
-                            <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
-                            <div class="tab" onclick="showTab('#postHistory', this)">Bài viết</div>
-                        </div>
+                    </s:if>
+                    <div class="avatar">
+                        <img src="img/avartar01.jpg">
                     </div>
-                    <div class="profileMainContaint widthNarrow">
-                        <div class="tabContent widthNarrow" id="profile">
-                            <div class="formContain">
-                                <h1>Thông tin cá nhân</h1>
+                    <div class="info">
+                        <p class="member"><s:property value="otherName"/></p>
+                        <p class="role"><s:property value="otherRole"/></p>
+                        <p class="numOfPost"><b><s:property value="otherNumOfArticle"/></b> bài viết</p>
+                        <p class="datejoin">Ngày gia nhập: <span class="date"><s:property value="otherDOJ"/></span> </p>
+                    </div>
+                    <div class="tabControl selfclear">
+                        <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
+                        <div class="tab" onclick="showTab('#postHistory', this)">Bài viết</div>
+                    </div>
+                </div>
+                <div class="profileMainContaint widthNarrow">
+                    <div class="tabContent widthNarrow" id="profile">
+                        <div class="formContain">
+                            <h1>Thông tin cá nhân</h1>
                             <%-- chỗ thông tin của chủ profile này --%>
                             <div class="wallInfo">
-                                <p>Giới tính: Nam</p>
-                                <p>Email: trauantre@gmail.com</p>
+                                <p>Giới tính: <s:property value="otherGender"/></p>
+                                <p>Email: <s:property value="otherEmail"/></p>
                             </div>
                         </div>
                     </div>

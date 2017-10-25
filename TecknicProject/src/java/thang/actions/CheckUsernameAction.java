@@ -26,7 +26,6 @@ public class CheckUsernameAction extends ActionSupport {
     })
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
-        System.out.println(username);
         check = dao.isUsernameExsisted(username);
         return "sussess";
     }

@@ -9,6 +9,7 @@ import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.StringTokenizer;
 import trung.dto.UserDTO;
 
 /**
@@ -48,7 +49,7 @@ public class UserDAO {
         
         try {
             conn = MyConnection.getConnection();
-            String sql = "select [User].Name, [User].Avatar, [Role].Name as [Role], [User].Gender, [User].Email \n"
+            String sql = "select [User].Name, [User].Avatar, [Role].Name as [Role], [User].Gender, [User].Email, [User].DateOfJoin \n"
                     + "from [User] inner join [Role] on [User].RoleId = [Role].Id \n"
                     + "where [User].Id = ?";
             pre = conn.prepareStatement(sql);
@@ -62,6 +63,11 @@ public class UserDAO {
                 result.setRole(rs.getString("Role"));
                 result.setGender(rs.getString("Gender").charAt(0));
                 result.setEmail(rs.getString("Email"));
+                
+                String dof = rs.getString("DateOfJoin");
+                StringTokenizer stz = new StringTokenizer(dof, " ");
+                
+                result.setDOJ(stz.nextToken());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,6 +108,7 @@ public class UserDAO {
         return result;
     }
     
+    //update role của 1 user
     public boolean updateRole(int userId, int roleId) {
         boolean result = false;
         
