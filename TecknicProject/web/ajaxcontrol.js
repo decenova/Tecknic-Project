@@ -8,17 +8,18 @@ var popoverStr = '<div class="mypopover top mypopoverAlert">' +
         '<div class="popover-content"></div>' +
         '</div>';
 function checkUsername() {
+    var check = false;
     var tag = $('#username');
     var value = tag.val();
 //            lấy thẻ cha để có thể thêm vào cái popover 
     var parent = tag.parent();
-    if (value === null || value.length <= 0 || value.length > 40) {
+    if (value === null || value.length <= 6 || value.length > 40) {
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
         
         tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Username không được để trống và không quá 40 kí tự');
-        return false;
+        parent.find('div.popover-content').html('Username không được để trống<br/>Username phải có từ 6 - 40 kí tự');
+        check = false;
     } else {
         $.ajax({
             url: "checkusername",
@@ -33,16 +34,17 @@ function checkUsername() {
                     
                     tag.css({"border-left-color": "#ff8888"});
                     parent.find('div.popover-content').html('Username đã tồn tại');
-                    return false;
+                    check = false;
                 } else {
 //                xóa popover nếu nhập đúng
                     tag.css({"border-left-color": "#226699"});
                     parent.children('div.mypopover').remove();
-                    return true;
+                    check = true;
                 }
             }
         });
     }
+    return check;
 }
 
 function checkName() {
@@ -108,7 +110,7 @@ function checkEmail() {
     var tag = $('#email');
     var value = tag.val();
     var parent = tag.parent();
-    if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+&/.test(value)) || value.length > 100) {
+    if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+$/.test(value)) || value.length > 100) {
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
         
@@ -125,7 +127,7 @@ function checkPhone() {
     var tag = $('#phone');
     var value = tag.val();
     var parent = tag.parent();
-    if (!(/([0-9]{9,11})?/.test(value))) {
+    if (!(/^([0-9]{9,11})?$/.test(value))) {
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
         
@@ -156,8 +158,12 @@ function checkCheckBox() {
 }
 
 //Submit
-function submit(tagId) {
+function formsubmit(tagId) {
     if (checkName() && checkUsername() && checkPassword() && checkConfirmPassword()
-            && checkEmail() && checkPhone() && checkCheckBox())
-        $(tagId)[0].submit();
+            && checkEmail() && checkPhone() && checkCheckBox()){
+        
+        document.getElementById(tagId).submit();
+        console.log('ha');
+    }
+    console.log(checkName() && checkUsername() && checkPassword() && checkConfirmPassword() && checkEmail() && checkPhone() && checkCheckBox());
 }

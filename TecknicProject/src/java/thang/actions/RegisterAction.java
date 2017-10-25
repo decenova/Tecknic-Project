@@ -7,8 +7,11 @@ package thang.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Timestamp;
+import java.util.Date;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
+import thang.dao.UserDAO;
+import thang.dto.UserDTO;
 
 /**
  *
@@ -34,7 +37,13 @@ public class RegisterAction extends ActionSupport {
         @Result(name = "false", location = "/error.jsp")
     })
     public String execute() throws Exception {
-        return "success";
+        UserDAO dao = new UserDAO();
+        doj = new Timestamp(new Date().getTime());
+        boolean check = dao.createUser(new UserDTO(username, password, name, gender, dob, doj, email, phoneNum, address));
+        if (check)
+            return "success";
+        else
+            return "false";
     }
 
     public String getUsername() {
