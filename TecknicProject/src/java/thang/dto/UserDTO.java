@@ -29,6 +29,21 @@ public class UserDTO {
     public UserDTO() {
         avatar = "img/defaultavatar.jpg";
     }
+
+    public UserDTO(String username, String password, String name, char gender, Timestamp dob, Timestamp doj, String email, String phoneNum, String address) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.avatar = "img/defaultavatar.jpg";
+        this.gender = gender;
+        this.dob = dob;
+        this.doj = doj;
+        this.email = email;
+        this.phoneNum = phoneNum;
+        this.address = address;
+        this.role = "Member";
+        this.roleId = 1;
+    }
     
     public int getId() {
         return id;

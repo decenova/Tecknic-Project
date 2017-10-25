@@ -24,7 +24,7 @@
     <body>
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form action="" method="post" id="form">
+                <form action="/register" method="post" id="registerform">
                     <div class="formContain formBox">
                         <h1>Đăng kí</h1>
                         <div class="inputText">
@@ -72,7 +72,7 @@
                             <p><input type="checkbox" id="checkbox">Tôi đã đọc và đồng ý với <a href="rule.jsp" target="_blank">điều khoản và quy tắc</a></p>
                         </div>
                         <div class="buttonGroup">
-                            <div class="button buttonPrimary" onclick="submit('#form')">Đăng kí</div>
+                            <div class="button buttonPrimary" onclick="formsubmit('registerform')">Đăng kí</div>
                         </div>
                     </div>
                 </form>
