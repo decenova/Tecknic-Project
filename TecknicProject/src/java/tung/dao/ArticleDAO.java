@@ -18,6 +18,7 @@ import tung.utils.Utils;
  * @author hoanh
  */
 public class ArticleDAO {
+
     private final int SUBMITED = 1;
     private final int REVIEWING = 2;
     private final int VIEWDEFAULT = 0;
@@ -79,10 +80,11 @@ public class ArticleDAO {
                 preStm = conn.prepareStatement(sql);
                 preStm.setInt(1, articleID);
                 preStm.setInt(2, tagIDList.get(i));
-                temp += preStm.executeUpdate();   
+                temp += preStm.executeUpdate();
             }
-            if (temp == tagIDList.size())
+            if (temp == tagIDList.size()) {
                 result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -113,8 +115,8 @@ public class ArticleDAO {
         ArrayList<ArticleDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
-            String sql = "select ID, Title, CreateTime from Article" +
-                    " where Title like ? and (StatusId = ? or StatusId = ?)";
+            String sql = "select ID, Title, CreateTime from Article"
+                    + " where Title like ? and (StatusId = ? or StatusId = ?)";
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, "%" + title + "%");
             preStm.setInt(2, SUBMITED);
@@ -136,8 +138,50 @@ public class ArticleDAO {
         return result;
     }
 
-    public ArrayList<ArticleDTO> findByTag(int tagID) {
-        return null;
+    //duyệt bài khi trạng thái còn chưa được post lên
+    public ArrayList<ArticleDTO> findByTitleOrTag(String title, String[] tagsID) {
+        ArrayList<ArticleDTO> result = new ArrayList<>();
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select distinct a.ID, a.Title, a.CreateTime "
+                    + "from Article a inner join ArticleTag at on a.Id = at.ArticleID"
+                    + " where Title like ? and StatusId in (?,?) and at.TagId in (?,?,?)";
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, "%" + title + "%");
+            preStm.setInt(2, SUBMITED);
+            preStm.setInt(3, REVIEWING);
+            switch (tagsID.length) {
+                case 1:
+                    preStm.setString(4, tagsID[0]);
+                    preStm.setString(5, null);
+                    preStm.setString(6, null);
+                    break;
+                case 2:
+                    preStm.setString(4, tagsID[0]);
+                    preStm.setString(5, tagsID[1]);
+                    preStm.setString(6, null);
+                    break;
+                case 3:
+                    preStm.setString(4, tagsID[0]);
+                    preStm.setString(5, tagsID[1]);
+                    preStm.setString(6, tagsID[2]);
+                    break;
+            }
+            rs = preStm.executeQuery();
+            ArticleDTO article;
+            while (rs.next()) {
+                article = new ArticleDTO();
+                article.setID(rs.getInt("ID"));
+                article.setTitle(rs.getString("Title"));
+                article.setTxtCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
+                result.add(article);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
 
 }

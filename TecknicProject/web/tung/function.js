@@ -100,6 +100,7 @@ function addCommentToArticle() {
         url: "/Tecknic/addComment",
         data: "txtComment=" + $('#contentComment').val() + "&articleID=" + 1,
         success: function () {
+//            $('#contentComment').val().empty();
             getCommentOfArticle();
         }
     });
@@ -110,6 +111,36 @@ function findArticleByTitle() {
         type: "POST",
         url: "/Tecknic/findArticle",
         data: "searchTitle=" + $('#sTitle').val(),
+        success: function (data) {
+            var div = $("#ArticleContain");
+            div.empty();
+            var articleList = data.articleList;
+            var s = "";
+            if (articleList.length > 0) {
+                s += '<table class="table table-hover">';
+                s += '<thead><tr><th>No.</th><th>Title</th><th>Create time</th></tr></thead><tbody>';
+                for (var i = 0; i < articleList.length; i++) {
+                    s += '<tr><td>' + (i + 1) + '</td><td><a href="article.jsp?articleID=' + articleList[i].ID + '">';
+                    s += articleList[i].title + '</a></td>';
+                    s += '<td>' + articleList[i].txtCreateTime + '</td></tr>';
+                }
+                s += '</tbody></table>';
+            } else {
+                s = '<p>No record is not found!</p>';
+            }
+            div.append(s);
+        }
+    });
+}
+//Tag or Title
+function findArticleByTagOrTitle() {
+    var names = $('input:checked').map(function () {
+        return $(this).val();
+    }).get();
+    $.ajax({
+        type: "POST",
+        url: "/Tecknic/findArticleV2",
+        data: "searchTitle=" + $('#sTitle').val() + "&cbxTag=" + names,
         success: function (data) {
             var div = $("#ArticleContain");
             div.empty();

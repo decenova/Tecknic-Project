@@ -45,7 +45,7 @@ public class CommentDAO {
             conn = MyConnection.getConnection();
             String sql = "select c.Id, u.Name, u.Avatar, c.CreateTime, c.Content "
                     + "from Comment c inner join [User] u on c.UserId = u.Id "
-                    + "where c.ArticleId=?";
+                    + "where c.ArticleId=? order by c.CreateTime DESC";
             preStm = conn.prepareStatement(sql);
             preStm.setInt(1, articleID);
             rs = preStm.executeQuery();

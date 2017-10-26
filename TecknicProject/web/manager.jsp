@@ -62,7 +62,7 @@
                                         <label>Tìm kiếm bài viết</label>
                                         <input type="text" name="searchTitle" id="sTitle">
                                         <div class="buttonGroup">
-                                            <button class="button buttonPrimary" onclick="findArticleByTitle()"><i class="fa fa-search"></i></button>
+                                            <button class="button buttonPrimary" onclick="findArticleByTagOrTitle()"><i class="fa fa-search"></i></button>
                                         </div>
                                     </div>
                                     <div class="">
