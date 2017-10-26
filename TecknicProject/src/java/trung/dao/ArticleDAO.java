@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import trung.dto.ArticleDTO;
+import trung.dto.TagDTO;
 import tung.utils.Utils;
 
 /**
@@ -55,8 +56,45 @@ public class ArticleDAO {
 
         try {
             conn = MyConnection.getConnection();
-            String sql = "select Id, Title, CreateTime, StatusId from Article "
-                    + "where CreatorId = ?";
+            String sql = "select a.Id, Title, CreateTime, Name from Article a inner join [Status] s on a.StatusId = s.Id "
+                    + "where a.CreatorId = ?";
+            pre = conn.prepareStatement(sql);
+            pre.setInt(1, userID);
+            rs = pre.executeQuery();
+
+            while (rs.next()) {
+                Utils util = new Utils();
+                ArticleDTO dto = new ArticleDTO();
+                dto.setId(rs.getInt("Id"));
+                dto.setTitle(rs.getString("Title"));
+                dto.setStatus(rs.getString("Name"));
+                
+                System.out.println("Status: " + dto.getStatus());
+                
+                dto.setCreateTime(util.convertToDateV3(rs.getTimestamp("CreateTime")));
+
+                result.add(dto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return result;
+    }
+    
+    //Các member xem bài post của ng khac
+    //Dựa vào ID của member lấy ra ArrayList<ArticleDTO>
+    //Lấy ra gồm ID, Title, CreateTime, Status
+    //Tra về array list các dto
+    public ArrayList<ArticleDTO> findOtherArticleByUserID(int userID) {
+        ArrayList<ArticleDTO> result = new ArrayList<>();
+
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select Id, Title, CreateTime from Article "
+                    + "where CreatorId = ? and StatusId = 3";
             pre = conn.prepareStatement(sql);
             pre.setInt(1, userID);
             rs = pre.executeQuery();
@@ -68,10 +106,6 @@ public class ArticleDAO {
                 dto.setTitle(rs.getString("Title"));
                 
                 dto.setCreateTime(util.convertToDateV3(rs.getTimestamp("CreateTime")));
-                
-                
-                
-                dto.setStatusId(rs.getInt("StatusId"));
 
                 result.add(dto);
             }
@@ -107,7 +141,7 @@ public class ArticleDAO {
                 result.setCoverImage(rs.getString("CoverImage"));
 
                 //Lấy TagList
-                result.setTagList(getArticleTag(articleID));
+//                result.setTagList(getArticleTag(articleID));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -225,6 +259,28 @@ public class ArticleDAO {
             rs = pre.executeQuery();
             while (rs.next()) {
                 result.put(rs.getInt("Id"), 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        
+        return result;
+    }
+    
+    public Map<Integer, TagDTO> getAllTagForShow(int articleId) {
+        Map<Integer, TagDTO> result = new HashMap<>();
+        
+        try {
+            Map<Integer, Integer> articleTagList = getArticleTag(articleId);
+            conn = MyConnection.getConnection();
+            String sql = "Select Id, Name from Tag";
+            pre = conn.prepareStatement(sql);
+            rs = pre.executeQuery();
+            
+            while (rs.next()) {
+                result.put(rs.getInt("Id"), new TagDTO(articleTagList.get(rs.getInt("Id")), rs.getString("Name")));
             }
         } catch (Exception e) {
             e.printStackTrace();

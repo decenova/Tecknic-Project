@@ -7,42 +7,48 @@ package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
+import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import trung.dao.ArticleDAO;
-import trung.dto.ArticleDTO;
+import trung.dto.TagDTO;
 
 /**
  *
  * @author Trung
  */
 @ParentPackage("json-default")
-public class getUserArticleList extends ActionSupport{
+public class getTagListForEdit extends ActionSupport{
     
-    private int userId;
-    private ArrayList<ArticleDTO> result;
+    private int articleId;
+    private Map<Integer, TagDTO> result;
     
-    public getUserArticleList() {
+    public getTagListForEdit() {
     }
     
-    @Action(value = "/getUserArticleList", results = {
+    @Action(value = "/getTagListForEdit", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
+        
         ArticleDAO aDao = new ArticleDAO();
         
-        result = aDao.findOtherArticleByUserID(userId);
+        result = aDao.getAllTagForShow(articleId);
         
         return "success";
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public ArrayList<ArticleDTO> getResult() {
+    public Map<Integer, TagDTO> getResult() {
         return result;
     }
+
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    }
+
+    
+    
+    
     
 }

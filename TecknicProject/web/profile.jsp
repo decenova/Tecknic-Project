@@ -29,7 +29,6 @@
                         div.empty();
                         var articleList = data.result;
                         if (articleList.length > 0) {
-                            console.log("If");
                             var s = "";
                             for (var i = 0; i < articleList.length; i++) {
                                 s += "<tr><td><a href=''>";
@@ -39,10 +38,11 @@
                                 s += "</td></tr>";
                             }
                         } else {
-                            
+                            var tb = (div.parent()).parent();
+                            tb.empty();
+                            tb.append("<h3>Don't have Article</h3>");
                         }
                         div.append(s);
-                        console.log("Lalaland");
                     }
                 });
             }
