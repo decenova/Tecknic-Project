@@ -12,6 +12,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import thang.dao.UserDAO;
 import thang.dto.UserDTO;
+import tung.utils.Utils;
 
 /**
  *
@@ -23,7 +24,7 @@ public class RegisterAction extends ActionSupport {
     private String name;
     private String avatar;
     private char gender;
-    private Timestamp dob;
+    private String dob;
     private Timestamp doj;
     private String email;
     private String phoneNum;
@@ -39,7 +40,8 @@ public class RegisterAction extends ActionSupport {
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         doj = new Timestamp(new Date().getTime());
-        boolean check = dao.createUser(new UserDTO(username, password, name, gender, dob, doj, email, phoneNum, address));
+        boolean check = dao.createUser(new UserDTO(username, password, name, gender, Utils.parseToDate(dob), doj, email, phoneNum, address));
+        System.out.println(check);
         if (check)
             return "success";
         else
@@ -86,11 +88,11 @@ public class RegisterAction extends ActionSupport {
         this.gender = gender;
     }
 
-    public Timestamp getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Timestamp dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
