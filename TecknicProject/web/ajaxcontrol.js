@@ -24,6 +24,7 @@ function checkUsername() {
         $.ajax({
             url: "checkusername",
             method: "post",
+            async: false,
             data: {username: value},
             success: function (data) {
                 if (!data.check) {
@@ -68,7 +69,7 @@ function checkName() {
         return true;
     }
 }
-function checkPassword() {
+function checkPass() {
     var tag = $('#password');
     var value = tag.val();
     var parent = tag.parent();
@@ -99,6 +100,23 @@ function checkConfirmPassword() {
         
         tag.css({"border-left-color": "#ff8888"});
         parent.find('div.popover-content').html('Không trùng với password trên');
+        return false;
+    } else {
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkDob() {
+    var tag = $('#date');
+    var value = tag.val();
+    var parent = tag.parent();
+    if (value === null || value == "") {
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Ngày sinh không được để trống');
         return false;
     } else {
         tag.css({"border-left-color": "#226699"});
@@ -159,11 +177,9 @@ function checkCheckBox() {
 
 //Submit
 function formsubmit(tagId) {
-    if (checkName() && checkUsername() && checkPassword() && checkConfirmPassword()
-            && checkEmail() && checkPhone() && checkCheckBox()){
+    if (checkName() && checkUsername() && checkPass() && checkConfirmPassword()
+            && checkEmail() && checkPhone() && checkCheckBox() && checkDob()){
         
         document.getElementById(tagId).submit();
-        console.log('ha');
     }
-    console.log(checkName() && checkUsername() && checkPassword() && checkConfirmPassword() && checkEmail() && checkPhone() && checkCheckBox());
 }
