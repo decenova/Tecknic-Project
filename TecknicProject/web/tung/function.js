@@ -69,7 +69,7 @@ function findUserByLike() {
 function getCommentOfArticle() {
     $.ajax({
         type: "POST",
-        url: "/Tecknic/loadComment",
+        url: "/aloTecknic/loadComment",
         success: function (data) {
             var div = $("#CommentContain");
             div.empty();

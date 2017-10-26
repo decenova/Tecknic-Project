@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import trung.dto.ArticleDTO;
+import tung.utils.Utils;
 
 /**
  *
@@ -61,10 +62,15 @@ public class ArticleDAO {
             rs = pre.executeQuery();
 
             while (rs.next()) {
+                Utils util = new Utils();
                 ArticleDTO dto = new ArticleDTO();
                 dto.setId(rs.getInt("Id"));
                 dto.setTitle(rs.getString("Title"));
-                dto.setCreateTime(rs.getTimestamp("CreateTime"));
+                
+                dto.setCreateTime(util.convertToDateV3(rs.getTimestamp("CreateTime")));
+                
+                
+                
                 dto.setStatusId(rs.getInt("StatusId"));
 
                 result.add(dto);

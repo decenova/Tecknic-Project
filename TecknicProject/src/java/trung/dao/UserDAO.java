@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.StringTokenizer;
 import trung.dto.UserDTO;
+import tung.utils.Utils;
 
 /**
  *
@@ -57,17 +58,15 @@ public class UserDAO {
             rs = pre.executeQuery();
             
             if (rs.next()) {
+                Utils util = new Utils();
                 result = new UserDTO();
+                
                 result.setId(userId);
                 result.setName(rs.getString("Name"));
                 result.setRole(rs.getString("Role"));
                 result.setGender(rs.getString("Gender").charAt(0));
                 result.setEmail(rs.getString("Email"));
-                
-                String dof = rs.getString("DateOfJoin");
-                StringTokenizer stz = new StringTokenizer(dof, " ");
-                
-                result.setDOJ(stz.nextToken());
+                result.setDOJ(util.convertToDateV2(rs.getTimestamp("DateOfJoin")));
             }
         } catch (Exception e) {
             e.printStackTrace();

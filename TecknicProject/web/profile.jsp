@@ -19,6 +19,34 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script>
+            function showArticleTab(id) {
+                $.ajax({
+                    type: 'GET',
+                    url: "/Tecknic/getUserArticleList?userId=" + id,
+                    success: function (data) {
+                        var div = $("#userArticleList");
+                        div.empty();
+                        var articleList = data.result;
+                        if (articleList.length > 0) {
+                            console.log("If");
+                            var s = "";
+                            for (var i = 0; i < articleList.length; i++) {
+                                s += "<tr><td><a href=''>";
+                                s += articleList[i].title;
+                                s += "</a></td><td>";
+                                s += articleList[i].createTime;
+                                s += "</td></tr>";
+                            }
+                        } else {
+                            
+                        }
+                        div.append(s);
+                        console.log("Lalaland");
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
@@ -44,7 +72,7 @@
                     </div>
                     <div class="tabControl selfclear">
                         <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
-                        <div class="tab" onclick="showTab('#postHistory', this)">Bài viết</div>
+                        <div class="tab" onclick="showTab('#postHistory', this); showArticleTab(<s:property value="userId"/>)">Bài viết</div>
                     </div>
                 </div>
                 <div class="profileMainContaint widthNarrow">
@@ -58,6 +86,8 @@
                             </div>
                         </div>
                     </div>
+                            
+                    <%-- trung: Tab show article --%>
                     <div class="tabContent widthNarrow fixPadding" id="postHistory">
                         <table class="table table-hover">
                             <thead>
@@ -66,7 +96,7 @@
                                     <th>Create time</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="userArticleList">
                                 <%-- chỗ liệt kê bài viết, chỉ những bài đã được post mới hiện --%>
                                 <tr>
                                     <%-- nhớ cho link đến action tạo bài viết --%>
