@@ -16,7 +16,7 @@ function getAllUser() {
                 for (var i = 0; i < memberList.length; i++) {
                     s += '<tr>';
                     s += '<td>' + (i + 1) + '</td>';
-                    s += '<td><a href=profile.jsp?userID="' + memberList[i].id + '">' + memberList[i].username + '</a></td>';
+                    s += '<td><a href=/Tecknic/viewOtherProfile?userId=' + memberList[i].id + '>' + memberList[i].username + '</a></td>';
                     s += '<td>' + memberList[i].name + '</td>';
                     s += '<td>' + memberList[i].email + '</td>';
                     s += '<td>' + memberList[i].role + '</td>';
@@ -69,7 +69,7 @@ function findUserByLike() {
 function getCommentOfArticle() {
     $.ajax({
         type: "POST",
-        url: "/Tecknic/loadComment",
+        url: "/aloTecknic/loadComment",
         success: function (data) {
             var div = $("#CommentContain");
             div.empty();

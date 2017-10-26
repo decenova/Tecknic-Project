@@ -3,54 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package thang.dto;
+package thang.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
 import java.sql.Timestamp;
+import java.util.Date;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import thang.dao.UserDAO;
+import thang.dto.UserDTO;
+import tung.utils.Utils;
 
 /**
  *
  * @author Decen
  */
-public class UserDTO {
-    private int id;
+public class RegisterAction extends ActionSupport {
     private String username;
     private String password;
     private String name;
     private String avatar;
     private char gender;
-    private Timestamp dob;
+    private String dob;
     private Timestamp doj;
     private String email;
     private String phoneNum;
     private String address;
-    private String role;
-    private int roleId;
-
-    public UserDTO() {
-        avatar = "img/defaultavatar.jpg";
-    }
-
-    public UserDTO(String username, String password, String name, char gender, Timestamp dob, Timestamp doj, String email, String phoneNum, String address) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.avatar = "img/defaultavatar.jpg";
-        this.gender = gender;
-        this.dob = dob;
-        this.doj = doj;
-        this.email = email;
-        this.phoneNum = phoneNum;
-        this.address = address;
-        this.role = "Member";
-        this.roleId = 1;
+    public RegisterAction() {
     }
     
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Action(value = "/register", results = {
+        @Result(name = "input", location = "/error.jsp"),
+        @Result(name = "success", location = "/login.jsp"),
+        @Result(name = "false", location = "/error.jsp")
+    })
+    public String execute() throws Exception {
+        UserDAO dao = new UserDAO();
+        doj = new Timestamp(new Date().getTime());
+        boolean check = dao.createUser(new UserDTO(username, password, name, gender, Utils.parseToDate(dob), doj, email, phoneNum, address));
+        System.out.println(check);
+        if (check)
+            return "success";
+        else
+            return "false";
     }
 
     public String getUsername() {
@@ -93,11 +88,11 @@ public class UserDTO {
         this.gender = gender;
     }
 
-    public Timestamp getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Timestamp dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -132,26 +127,5 @@ public class UserDTO {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", avatar=" + avatar + ", gender=" + gender + ", datetime=" + dob + ", email=" + email + ", phoneNum=" + phoneNum + ", address=" + address + ", role=" + role + '}';
-    }
-
+    
 }

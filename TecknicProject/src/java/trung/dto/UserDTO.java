@@ -23,6 +23,7 @@ public class UserDTO {
     private String phoneNum;
     private String address;
     private String role;
+    private String DOJ;
 
     public UserDTO() {
         avatar = "img/defaultavatar.jpg";
@@ -116,9 +117,18 @@ public class UserDTO {
         this.role = role;
     }
 
+    public String getDOJ() {
+        return DOJ;
+    }
+
+    public void setDOJ(String DOJ) {
+        this.DOJ = DOJ;
+    }
+
     @Override
     public String toString() {
-        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", avatar=" + avatar + ", gender=" + gender + ", datetime=" + datetime + ", email=" + email + ", phoneNum=" + phoneNum + ", address=" + address + ", role=" + role + '}';
+        return "UserDTO{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", avatar=" + avatar + ", gender=" + gender + ", datetime=" + datetime + ", email=" + email + ", phoneNum=" + phoneNum + ", address=" + address + ", role=" + role + ", DOJ=" + DOJ + '}';
     }
+    
 
 }

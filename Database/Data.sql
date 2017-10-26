@@ -23,5 +23,6 @@ insert into [User](Username, [Password], Name, Avatar, DateOfJoin, Gender, Email
 insert into [User](Username, [Password], Name, Avatar, DateOfJoin, Gender, Email, RoleId) values ('trung3d','trung3d',N'Trung Ba Đê', null, '2017-01-01' , 'O', 'trung3d@gmail.com', 3)
 insert into [User](Username, [Password], Name, Avatar, DateOfJoin, Gender, Email, RoleId) values ('hoanhtungxy','hoanhtungxy',N'Võ Thanh Tung', null, '2017-01-01' ,'M', 'tungxy@gmail.com', 2)
 
-
+insert into [User](Username,[Password],Name,Gender,DateOfBirth,DateOfJoin,Email,PhoneNum,Address,RoleId) 
+values ('user02','user02',N'Người dùng','M',null,'2017-01-01','user02@gmail.com',null,'',1)
 --insert into BanLog(BannedUserId,ExRole,ModId,BanTime,Reason) values()

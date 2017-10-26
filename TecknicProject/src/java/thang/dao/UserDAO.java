@@ -75,14 +75,15 @@ public class UserDAO {
             prestmt.setString(1, user.getUsername());
             prestmt.setString(2, user.getPassword());
             prestmt.setString(3, user.getName());
-            prestmt.setString(4, String.valueOf(user.getGender()));
+            prestmt.setString(4, "" + user.getGender());
             prestmt.setTimestamp(5, user.getDob());
             prestmt.setTimestamp(6, user.getDoj());
             prestmt.setString(7, user.getEmail());
             prestmt.setString(8, user.getPhoneNum());
             prestmt.setString(9, user.getAddress());
             prestmt.setInt(10, user.getRoleId());
-            if (prestmt.executeUpdate() > 0) {
+            int row = prestmt.executeUpdate();
+            if (row > 0) {
                 result = true;
             }
         } catch (Exception e) {
