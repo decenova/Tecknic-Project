@@ -46,6 +46,14 @@
                     }
                 });
             }
+            
+            function banMember() {
+                
+            }
+            
+            function upgradeMember() {
+                
+            }
         </script>
     </head>
     <body>
@@ -57,8 +65,8 @@
                     <%--nếu là admin mới hiện lên ban or upgrade--%>
                     <s:if test="%{#session.ROLE == 'Administrator'}">
                         <div class="controlButton">
-                            <div class="buttonCircle buttonSuccess"><i class="fa fa-plus"></i></div>
-                            <div class="buttonCircle buttonDanger"><i class="fa fa-ban"></i></div>
+                            <div class="buttonCircle buttonSuccess" onclick="banMember()"><i class="fa fa-plus"></i></div>
+                            <div class="buttonCircle buttonDanger" onclick="upgradeMember()"><i class="fa fa-ban"></i></div>
                         </div>
                     </s:if>
                     <div class="avatar">
@@ -86,7 +94,7 @@
                             </div>
                         </div>
                     </div>
-                            
+
                     <%-- trung: Tab show article --%>
                     <div class="tabContent widthNarrow fixPadding" id="postHistory">
                         <table class="table table-hover">
