@@ -9,7 +9,6 @@ import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.StringTokenizer;
 import trung.dto.UserDTO;
 import tung.utils.Utils;
 
@@ -67,7 +66,7 @@ public class UserDAO {
                 result.setRole(rs.getString("Role"));
                 result.setGender(rs.getString("Gender"));
                 result.setEmail(rs.getString("Email"));
-                result.setDOJ(util.convertToDateV2(rs.getTimestamp("DateOfJoin")));
+                result.setDOJ(Utils.convertToDateV2(rs.getTimestamp("DateOfJoin")));
             }
         } catch (Exception e) {
             e.printStackTrace();
