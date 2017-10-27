@@ -27,6 +27,10 @@
                 <form action="login" method="POST">
                     <div class="formContain formBox">
                         <h1>Đăng nhập</h1>
+                        <s:if test="%{isFalse}">
+                            <p style="color: #ff3333">Wrong username or password</p>
+                        </s:if>
+                        
                         <div class="inputText">
                             <label>Tài khoản</label>
                             <input type="text" name="txtUsername">

@@ -70,7 +70,7 @@ public class UserDAO {
         try {
             con = MyConnection.getConnection();
             String sql = "insert into [User](Username,[Password],Name,Gender,DateOfBirth,"
-                    + "DateOfJoin,Email,PhoneNum,Address,RoleId) values (?,?,?,?,?,?,?,?,?,?)";
+                    + "DateOfJoin,Email,PhoneNum,Address,RoleId,Avatar) values (?,?,?,?,?,?,?,?,?,?,?)";
             prestmt = con.prepareStatement(sql);
             prestmt.setString(1, user.getUsername());
             prestmt.setString(2, user.getPassword());
@@ -82,6 +82,7 @@ public class UserDAO {
             prestmt.setString(8, user.getPhoneNum());
             prestmt.setString(9, user.getAddress());
             prestmt.setInt(10, user.getRoleId());
+            prestmt.setString(11, user.getAvatar());
             int row = prestmt.executeUpdate();
             if (row > 0) {
                 result = true;

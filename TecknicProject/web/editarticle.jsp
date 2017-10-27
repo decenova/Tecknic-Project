@@ -19,8 +19,22 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <%-- Text editor --%>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+        <!-- Include Editor style. -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <!-- Include external JS libs. -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+        <!-- Include Editor JS files. -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
                 <form action="addArticle" method="POST">
@@ -37,7 +51,7 @@
                         <hr/>
                         <div class="inputText">
                             <label>Nội dung*</label>
-                            <textarea name="txtContent" rows="4"></textarea>
+                            <textarea name="txtContent" id="editor"></textarea>
                         </div>
                         <hr/>
                         <div class="">
@@ -49,12 +63,23 @@
                         <hr/>
                         <div class="buttonGroup">
                             <div class="button buttonPrimary">
-                            <input style="background: inherit; border: 0" type="submit" value="Đăng bài">
+                                <input style="background: inherit; border: 0" type="submit" value="Đăng bài">
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
         <s:include value="header.jsp"></s:include>
+        <script>
+            $(function () {
+                $('#editor').froalaEditor({
+                    // Set the image upload URL.
+                    imageUploadURL: 'upload_img',
+                    imageUploadParams: {
+                        id: 'my_editor'
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

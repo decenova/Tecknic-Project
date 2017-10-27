@@ -40,7 +40,8 @@ public class RegisterAction extends ActionSupport {
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         doj = new Timestamp(new Date().getTime());
-        boolean check = dao.createUser(new UserDTO(username, password, name, gender, Utils.parseToDate(dob), doj, email, phoneNum, address));
+        Timestamp dobtime = (dob.equals(""))?null:Utils.parseToDate(dob);
+        boolean check = dao.createUser(new UserDTO(username, password, name, gender, dobtime, doj, email, phoneNum, address));
         System.out.println(check);
         if (check)
             return "success";

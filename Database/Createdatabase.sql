@@ -25,7 +25,7 @@ create table [User] (
 	Gender char(1) not null check (Gender in ('M','F','O')),
 	DateOfBirth datetime,
 	DateOfJoin datetime,
-	Email varchar(100) not null unique,
+	Email varchar(100) not null,
 	PhoneNum varchar(20),
 	[Address] nvarchar(200),
 	RoleId int not null,

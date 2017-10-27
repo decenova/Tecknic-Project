@@ -4,6 +4,7 @@
 
 <struts>
     <!-- Configuration for the default package. -->
+    <constant name="struts.action.excludePattern" value="/files/*,/editarticle.jspfiles/*"/>
     <package name="default" extends="struts-default">
         
     </package>

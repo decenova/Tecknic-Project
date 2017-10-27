@@ -53,7 +53,7 @@
                         </div>
                         <div class="inputText">
                             <label>Ngày sinh</label>
-                            <input type="date" name="dob" id="date" value="1990-12-21" onblur="checkDob()">
+                            <input type="date" name="dob" id="date" value="1990-12-21">
                         </div>
                         <div class="inputText">
                             <label>Email</label>

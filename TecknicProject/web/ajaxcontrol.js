@@ -107,23 +107,23 @@ function checkConfirmPassword() {
         return true;
     }
 }
-function checkDob() {
-    var tag = $('#date');
-    var value = tag.val();
-    var parent = tag.parent();
-    if (value === null || value == "") {
-        parent.children('div.mypopover').remove();
-        parent.append(popoverStr);
-        
-        tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Ngày sinh không được để trống');
-        return false;
-    } else {
-        tag.css({"border-left-color": "#226699"});
-        parent.children('div.mypopover').remove();
-        return true;
-    }
-}
+//function checkDob() {
+//    var tag = $('#date');
+//    var value = tag.val();
+//    var parent = tag.parent();
+//    if (value === null || value == "") {
+//        parent.children('div.mypopover').remove();
+//        parent.append(popoverStr);
+//        
+//        tag.css({"border-left-color": "#ff8888"});
+//        parent.find('div.popover-content').html('Ngày sinh không được để trống');
+//        return false;
+//    } else {
+//        tag.css({"border-left-color": "#226699"});
+//        parent.children('div.mypopover').remove();
+//        return true;
+//    }
+//}
 function checkEmail() {
     var tag = $('#email');
     var value = tag.val();
@@ -178,7 +178,7 @@ function checkCheckBox() {
 //Submit
 function formsubmit(tagId) {
     if (checkName() && checkUsername() && checkPass() && checkConfirmPassword()
-            && checkEmail() && checkPhone() && checkCheckBox() && checkDob()){
+            && checkEmail() && checkPhone() && checkCheckBox()){
         
         document.getElementById(tagId).submit();
     }
