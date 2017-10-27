@@ -124,10 +124,11 @@ public class ArticleDAO {
     //Trả về ArticleDTO
     public ArticleDTO viewArticleForUpdate(int articleID) {
         ArticleDTO result = null;
-
+        Utils util = new Utils();
+        
         try {
             conn = MyConnection.getConnection();
-            String sql = "select Title, [Content], CoverImage from Article where Id = ?";
+            String sql = "select Title, [Content], CoverImage, CreateTime from Article where Id = ?";
             pre = conn.prepareStatement(sql);
             pre.setInt(1, articleID);
             rs = pre.executeQuery();
@@ -139,6 +140,7 @@ public class ArticleDAO {
                 result.setTitle(rs.getString("Title"));
                 result.setContent(rs.getString("Content"));
                 result.setCoverImage(rs.getString("CoverImage"));
+                result.setCreateTime(util.convertToDateV2(rs.getTimestamp("CreateTime")));
 
                 //Lấy TagList
 //                result.setTagList(getArticleTag(articleID));
