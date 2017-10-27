@@ -37,6 +37,15 @@ public class ArticleDTO {
         this.numOfView = numOfView;
     }
 
+    public ArticleDTO(int ID, String title, String content, String coverImage, Timestamp modifyTime, int numOfView) {
+        this.ID = ID;
+        this.title = title;
+        this.content = content;
+        this.coverImage = coverImage;
+        this.modifyTime = modifyTime;
+        this.numOfView = numOfView;
+    }
+    
     public ArticleDTO(int ID, String title, Timestamp createTime,int statusId, String status) {
         this.ID = ID;
         this.title = title;

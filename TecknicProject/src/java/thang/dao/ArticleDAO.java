@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import thang.dto.ArticleDTO;
+import thang.dto.UserDTO;
 
 /**
  *
@@ -40,6 +43,38 @@ public class ArticleDAO {
         }
     }
 
+    public ArrayList<ArrayList> loadIndexArticle(int size, int pos) {
+        ArrayList<ArrayList> list = new ArrayList<>();
+        ArrayList sublist;
+        ArticleDTO articleDto;
+        UserDTO userDto;
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,255), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar \n"
+                    + " from  Article a inner join [User] u on a.CreatorId = u.Id \n"
+                    + " where a.StatusId = (Select Id from [Status] where name = 'posted')\n"
+                    + " order by ModifyTime desc\n"
+                    + " OFFSET ? ROWS\n"
+                    + " FETCH NEXT ? ROWS ONLY;");
+            prestmt.setInt(1, pos);
+            prestmt.setInt(2, size);
+            rs = prestmt.executeQuery();
+            while (rs.next()) {
+                articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));
+                userDto = new UserDTO(rs.getInt(7), rs.getString(8), rs.getString(9));
+                sublist = new ArrayList();
+                sublist.add(articleDto);
+                sublist.add(userDto);
+                list.add(sublist);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return list;
+    }
+
     public ArrayList<ArticleDTO> findAllBySubmitedOrCheckingArticle() {
         ArrayList<ArticleDTO> list = new ArrayList<>();
         ArticleDTO dto;
@@ -60,7 +95,7 @@ public class ArticleDAO {
         }
         return list;
     }
-    
+
     public boolean changeStatus(int articleId, int statusId) {
         boolean result = false;
         try {
@@ -70,13 +105,14 @@ public class ArticleDAO {
             prestmt.setInt(1, statusId);
             prestmt.setInt(2, articleId);
             int row = prestmt.executeUpdate();
-            if (row > 0)
+            if (row > 0) {
                 result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             closeConnection();
-        }       
+        }
         return result;
     }
 }

@@ -75,7 +75,7 @@
                 <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
                 <div class="col-xs-8 col-sm-10 col-md-10 col-lg-8"></div>
                 <ul class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
-                    <a><li>Tường nhà bạn</li></a>
+                    <a href="/Tecknic/viewOtherProfile?userId=<s:property value="%{#session.ID}"/>"><li>Tường nhà bạn</li></a>
                     <!--load Profile-->
                     <a href="loadProfile"><li>Quản lý cá nhân</li></a>
                     <a><li>Đổi mật khẩu</li></a>

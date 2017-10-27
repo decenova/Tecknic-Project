@@ -100,7 +100,7 @@ function addCommentToArticle() {
         url: "/Tecknic/addComment",
         data: "txtComment=" + $('#contentComment').val() + "&articleID=" + 1,
         success: function () {
-//            $('#contentComment').val().empty();
+            $('#contentComment').val("");
             getCommentOfArticle();
         }
     });
