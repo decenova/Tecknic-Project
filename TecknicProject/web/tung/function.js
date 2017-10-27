@@ -69,7 +69,7 @@ function findUserByLike() {
 function getCommentOfArticle() {
     $.ajax({
         type: "POST",
-        url: "/aloTecknic/loadComment",
+        url: "/Tecknic/loadComment",
         success: function (data) {
             var div = $("#CommentContain");
             div.empty();
@@ -156,7 +156,7 @@ function findArticleByTagOrTitle() {
                 }
                 s += '</tbody></table>';
             } else {
-                s = '<p>No record is not found!</p>';
+                s = '<p>Không tìm thấy bài viết nào</p>';
             }
             div.append(s);
         }
