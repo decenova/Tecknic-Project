@@ -38,9 +38,18 @@
                                 <span class="datepost">${requestScope.Article.createTime}</span>
                             </div>
                             <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
-                                <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
-                                <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
+                                <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
+                                    <c:if test="${requestScope.Article.status eq 'reviewing' && sessionScope.ROLE != 'Colaborator'}">
+                                        <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
+                                        <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
+                                    </c:if>
+                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                        <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
+                                    </c:if>
+                                    <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
+                                        <div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div>
+                                    </c:if>
+                                </c:if>
                             </div>
                         </div>
                         <%--Chưa thêm hình--%>

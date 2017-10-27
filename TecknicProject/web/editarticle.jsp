@@ -35,37 +35,9 @@
 
         <!-- Include Editor JS files. -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
-        <script>
-            function showAllTag() {
-                $.ajax({
-                    type: 'GET',
-                    url: "/Tecknic/getTagListForEdit?articleId=<s:property value="articleId"/>",
-                    success: function (data) {
-                        var div = $("#tagList");
-                        div.empty();
-                        var s = "<label>Thể loại*</label>";
-
-                        for (var tag in data.result) {
-                            if (data.result.hasOwnProperty(tag)) {
-                                s += "<p>";
-                                s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
-                                s += " ";
-
-                                if (data.result[tag].check === 1) {
-                                    s += "checked";
-                                }
-
-                                s += "> " + data.result[tag].name;
-                                s += "</p>";
-                            }
-                        }
-                        div.append(s);
-                    }
-                });
-            }
-        </script>
+        <script src="trung/function.js" type="application/javascript"></script>
     </head>
-    <body onload="showAllTag()">
+    <body onload="showAllTag(<s:property value="articleId"/>)">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
                 <form action="addArticle" method="POST">

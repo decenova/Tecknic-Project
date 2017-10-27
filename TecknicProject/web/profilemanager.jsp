@@ -19,63 +19,7 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
-        <script>
-            function showArticleTab(id) {
-                $.ajax({
-                    type: 'GET',
-                    url: "/Tecknic/getOwnArticleList?userId=" + id,
-                    success: function (data) {
-                        var div = $("#userArticleList");
-                        div.empty();
-                        var articleList = data.result;
-                        if (articleList.length > 0) {
-                            var s = "";
-                            for (var i = 0; i < articleList.length; i++) {
-                                if (articleList[i].status === "posted") {
-                                    s += "<tr class='success'>";
-                                    s += "<td><a href=''>";
-                                    s += articleList[i].title;
-                                    s += "</a></td><td>";
-                                } else if (articleList[i].status === "reject" || articleList[i].status === "remove") {
-                                    s += "<tr class='danger'>";
-                                    s += "<td><a href=''>";
-                                    s += articleList[i].title;
-                                    s += "</a></td><td>";
-                                } else if (articleList[i].status === "reviewing") {
-                                    s += "<tr class='well'>";
-                                    s += "<td>";
-                                    s += articleList[i].title;
-                                    s += "</td><td>";
-                                } else if (articleList[i].status === "submited") {
-                                    s += "<tr class='warning'>";
-                                    s += "<td>";
-                                    s += articleList[i].title;
-                                    s += "</td><td>";
-                                } else {
-                                    s += "<tr>";
-                                    s += "<td><a href=''>";
-                                    s += articleList[i].title;
-                                    s += "</a></td><td>";
-                                }
-
-
-
-                                s += articleList[i].createTime;
-                                s += "</td><td>";
-                                s += articleList[i].status;
-                                s += "</td></tr>";
-                            }
-                        } else {
-                            var tb = (div.parent()).parent();
-                            tb.empty();
-                            tb.append("<h3>Don't have Article</h3>");
-                        }
-                        div.append(s);
-                    }
-                });
-            }
-
-        </script>
+        <script src="trung/function.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
@@ -98,7 +42,7 @@
                     <div class="tabControl selfclear">
                         <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
                         <div class="tab" onclick="showTab('#postHistory', this);
-                                showArticleTab(<s:property value="#session.ID"/>)">Bài viết</div>
+                                showOwnArticleTab(<s:property value="#session.ID"/>)">Bài viết</div>
                     </div>
                 </div>
                 <div class="profileMainContaint widthNarrow">
