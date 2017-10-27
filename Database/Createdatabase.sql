@@ -46,7 +46,7 @@ create table BanLog(
 create table Article(
 	Id int primary key identity,
 	Title nvarchar(500) not null,
-	Content nvarchar(2500) not null,
+	Content nvarchar(max) not null,
 	CoverImage varchar(200) not null,
 	CreateTime datetime not null,
 	CreatorId int not null,

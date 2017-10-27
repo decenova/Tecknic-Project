@@ -3,7 +3,7 @@ use Tecknic
 select * from [Role]
 select * from [User]
 select * from [Status]
-
+select * from Article
 select Name from [Role] where Id = (select RoleId from [User] where Username = '' and [Password] = '');
 
 select [User].Name, [User].[Password], [User].Avatar, [Role].Name

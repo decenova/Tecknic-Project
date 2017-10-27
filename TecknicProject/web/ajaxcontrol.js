@@ -13,7 +13,7 @@ function checkUsername() {
     var value = tag.val();
 //            lấy thẻ cha để có thể thêm vào cái popover 
     var parent = tag.parent();
-    if (value === null || value.length <= 6 || value.length > 40) {
+    if (value === null || value.length < 6 || value.length > 40) {
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
         
