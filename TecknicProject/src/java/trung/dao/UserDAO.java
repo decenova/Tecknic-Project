@@ -63,8 +63,9 @@ public class UserDAO {
                 
                 result.setId(userId);
                 result.setName(rs.getString("Name"));
+                result.setAvatar(rs.getString("Avatar"));
                 result.setRole(rs.getString("Role"));
-                result.setGender(rs.getString("Gender").charAt(0));
+                result.setGender(rs.getString("Gender"));
                 result.setEmail(rs.getString("Email"));
                 result.setDOJ(util.convertToDateV2(rs.getTimestamp("DateOfJoin")));
             }

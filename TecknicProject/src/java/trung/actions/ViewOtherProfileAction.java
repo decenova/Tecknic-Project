@@ -20,12 +20,9 @@ public class ViewOtherProfileAction extends ActionSupport{
     
     private int userId;
     
-    private String otherName;
-    private String otherRole;
+    private UserDTO user;
     private int    otherNumOfArticle;
-    private String otherDOJ;
-    private String otherGender;
-    private String otherEmail;
+
     
     public ViewOtherProfileAction() {
     }
@@ -35,29 +32,21 @@ public class ViewOtherProfileAction extends ActionSupport{
     public String execute() throws Exception {
         
         UserDAO uDao = new UserDAO();
-        UserDTO uDto = uDao.findOtherProfileByUserID(userId);
+        user = uDao.findOtherProfileByUserID(userId);
         ArticleDAO aDao = new ArticleDAO();
         
-        //Lấy thông tin cá nhân
-        otherName = uDto.getName();        
-        otherDOJ  = uDto.getDOJ();
-        otherEmail= uDto.getEmail();
-        
-        char gender = uDto.getGender();
-        if (gender == 'M') {
-            otherGender = "Nam";
-        } else if (gender == 'F') {
-            otherGender = "Nữ";
-        } else if (gender == 'O') {
-            otherGender = "Chưa xác định";
+        String gender = user.getGender();
+        if (gender.equalsIgnoreCase("M")) {
+            user.setGender("Nam");
+        } else if (gender.equalsIgnoreCase("F")) {
+            user.setGender("Nữ");
+        } else if (gender.equalsIgnoreCase("O")) {
+            user.setGender("Chưa xác định");
         } else {
-            otherGender = "Lỗi";
+            user.setGender("???");
         }
         
         otherNumOfArticle = uDao.getNumberOfArticleByUserID(userId);
-        otherRole = uDto.getRole();
-        
-        //lấy danh sách các article
         
         
        return "success"; 
@@ -71,29 +60,15 @@ public class ViewOtherProfileAction extends ActionSupport{
         this.userId = userId;
     }
 
-    public String getOtherName() {
-        return otherName;
-    }
-
-    public String getOtherRole() {
-        return otherRole;
-    }
-
     public int getOtherNumOfArticle() {
         return otherNumOfArticle;
     }
 
-    public String getOtherDOJ() {
-        return otherDOJ;
+    public UserDTO getUser() {
+        return user;
     }
-
-    public String getOtherGender() {
-        return otherGender;
-    }
-
-    public String getOtherEmail() {
-        return otherEmail;
-    }
+    
+    
 
     
     

@@ -70,13 +70,13 @@
                         </div>
                     </s:if>
                     <div class="avatar">
-                        <img src="img/avartar01.jpg">
+                        <img src="<s:property value="user.avatar"/>">
                     </div>
                     <div class="info">
-                        <p class="member"><s:property value="otherName"/></p>
-                        <p class="role"><s:property value="otherRole"/></p>
+                        <p class="member"><s:property value="user.name"/></p>
+                        <p class="role"><s:property value="user.role"/></p>
                         <p class="numOfPost"><b><s:property value="otherNumOfArticle"/></b> bài viết</p>
-                        <p class="datejoin">Ngày gia nhập: <span class="date"><s:property value="otherDOJ"/></span> </p>
+                        <p class="datejoin">Ngày gia nhập: <span class="date"><s:property value="user.DOJ"/></span> </p>
                     </div>
                     <div class="tabControl selfclear">
                         <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
@@ -89,8 +89,8 @@
                             <h1>Thông tin cá nhân</h1>
                             <%-- chỗ thông tin của chủ profile này --%>
                             <div class="wallInfo">
-                                <p>Giới tính: <s:property value="otherGender"/></p>
-                                <p>Email: <s:property value="otherEmail"/></p>
+                                <p>Giới tính: <s:property value="user.gender"/></p>
+                                <p>Email: <s:property value="user.email"/></p>
                             </div>
                         </div>
                     </div>

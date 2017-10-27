@@ -17,7 +17,7 @@ public class UserDTO {
     private String password;
     private String name;
     private String avatar;
-    private char gender;
+    private String gender;
     private Timestamp datetime;
     private String email;
     private String phoneNum;
@@ -69,11 +69,11 @@ public class UserDTO {
         this.avatar = avatar;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
