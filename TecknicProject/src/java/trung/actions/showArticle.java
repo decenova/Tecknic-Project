@@ -6,9 +6,9 @@
 package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import trung.dao.ArticleDAO;
 import trung.dto.ArticleDTO;
@@ -17,32 +17,30 @@ import trung.dto.ArticleDTO;
  *
  * @author Trung
  */
-@ParentPackage("json-default")
-public class getUserArticleList extends ActionSupport{
+public class showArticle extends ActionSupport{
     
-    private int userId;
-    private ArrayList<ArticleDTO> result;
+    private int articleId;
     
-    public getUserArticleList() {
+    public showArticle() {
     }
     
-    @Action(value = "/getUserArticleList", results = {
-        @Result(name = "success", type = "json")
+    @Action(value = "/showArticle", results = {
+        @Result(name = "success", location = "/article.jsp")
     })
     public String execute() throws Exception {
-        ArticleDAO aDao = new ArticleDAO();
         
-        result = aDao.findOtherArticleByUserID(userId);
+        ArticleDAO aDao = new ArticleDAO();
+        ArticleDTO article = aDao.viewArticleForUpdate(articleId);
+        
+        HttpServletRequest request = ServletActionContext.getRequest();
+        request.setAttribute("Article", article);
         
         return "success";
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public ArrayList<ArticleDTO> getResult() {
-        return result;
-    }
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    } 
+    
     
 }

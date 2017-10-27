@@ -17,12 +17,12 @@ public class ArticleDTO {
     private int id;
     private String title;
     private String content;
-    private String CoverImage;
-    private String CreateTime;
-    private int CreatorId;
-    private String ModifyTime;
-    private int ModifierId;
-    private int statusId;
+    private String coverImage;
+    private String createTime;
+    private int creatorId;
+    private String modifyTime;
+    private int modifierId;
+    private String status;
     private String reason;
     private int numOfView;
     private Map<Integer, Integer> tagList;
@@ -55,51 +55,51 @@ public class ArticleDTO {
     }
 
     public String getCoverImage() {
-        return CoverImage;
+        return coverImage;
     }
 
     public void setCoverImage(String CoverImage) {
-        this.CoverImage = CoverImage;
+        this.coverImage = CoverImage;
     }
 
     public String getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(String CreateTime) {
-        this.CreateTime = CreateTime;
+        this.createTime = CreateTime;
     }
 
     public int getCreatorId() {
-        return CreatorId;
+        return creatorId;
     }
 
     public void setCreatorId(int CreatorId) {
-        this.CreatorId = CreatorId;
+        this.creatorId = CreatorId;
     }
 
     public String getModifyTime() {
-        return ModifyTime;
+        return modifyTime;
     }
 
     public void setModifyTime(String ModifyTime) {
-        this.ModifyTime = ModifyTime;
+        this.modifyTime = ModifyTime;
     }
 
     public int getModifierId() {
-        return ModifierId;
+        return modifierId;
     }
 
     public void setModifierId(int ModifierId) {
-        this.ModifierId = ModifierId;
+        this.modifierId = ModifierId;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public String getStatus() {
+        return status;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public void setStatus(String statusId) {
+        this.status = statusId;
     }
 
     public String getReason() {
@@ -128,7 +128,7 @@ public class ArticleDTO {
 
     @Override
     public String toString() {
-        return "ArticleDTO{" + "id=" + id + ", title=" + title + ", content=" + content + ", CoverImage=" + CoverImage + ", CreateTime=" + CreateTime + ", CreatorId=" + CreatorId + ", ModifyTime=" + ModifyTime + ", ModifierId=" + ModifierId + ", statusId=" + statusId + ", reason=" + reason + ", numOfView=" + numOfView + ", tagList=" + tagList + '}';
+        return "ArticleDTO{" + "id=" + id + ", title=" + title + ", content=" + content + ", CoverImage=" + coverImage + ", CreateTime=" + createTime + ", CreatorId=" + creatorId + ", ModifyTime=" + modifyTime + ", ModifierId=" + modifierId + ", statusId=" + status + ", reason=" + reason + ", numOfView=" + numOfView + ", tagList=" + tagList + '}';
     }
     
     
