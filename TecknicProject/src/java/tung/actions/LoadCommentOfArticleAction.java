@@ -19,8 +19,8 @@ import tung.dto.CommentDTO;
  */
 @ParentPackage("json-default")
 public class LoadCommentOfArticleAction extends ActionSupport {
-    
-    ArrayList<CommentDTO> commentList;
+    private int articleId;
+    private ArrayList<CommentDTO> commentList;
     
     public LoadCommentOfArticleAction() {
     }
@@ -29,8 +29,7 @@ public class LoadCommentOfArticleAction extends ActionSupport {
     })
     public String execute() throws Exception {
         CommentDAO dao = new CommentDAO();
-        //tạm thời fix cứ article
-        commentList = dao.loadCommentsByArticleID(1);
+        commentList = dao.loadCommentsByArticleID(articleId);
         return SUCCESS;
     }
 
@@ -38,5 +37,9 @@ public class LoadCommentOfArticleAction extends ActionSupport {
         return commentList;
     }
 
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
+    }
+    
     
 }

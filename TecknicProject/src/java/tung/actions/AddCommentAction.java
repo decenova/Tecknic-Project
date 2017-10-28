@@ -30,8 +30,6 @@ public class AddCommentAction extends ActionSupport {
     })
     public String execute() throws Exception {
         CommentDAO dao = new CommentDAO();
-        //fix cứng
-//        articleID = 1;
         int userID = (int) (ActionContext.getContext().getSession().get("ID"));
         dao.addComment(userID, articleID, txtComment);
         return SUCCESS;
