@@ -55,7 +55,7 @@
                         <%--Chưa thêm hình--%>
                         <div class="postImage">
                         <%-- cho ảnh bài viết --%>
-                        <img src="img/cover02.jpg">
+                        <img src="${requestScope.Article.coverImage}">
                     </div>
                     <div class="postTitle fixPadding widthNarrow">
                         <%-- cho tiêu đề của bài vào đây --%>
