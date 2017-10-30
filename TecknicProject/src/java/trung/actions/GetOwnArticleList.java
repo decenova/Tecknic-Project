@@ -5,8 +5,10 @@
  */
 package trung.actions;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
+import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
@@ -18,31 +20,36 @@ import trung.dto.ArticleDTO;
  * @author Trung
  */
 @ParentPackage("json-default")
-public class getUserArticleList extends ActionSupport{
+public class GetOwnArticleList extends ActionSupport{
     
-    private int userId;
     private ArrayList<ArticleDTO> result;
     
-    public getUserArticleList() {
+    public GetOwnArticleList() {
     }
     
-    @Action(value = "/getUserArticleList", results = {
+    @Action(value = "/getOwnArticleList", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
         ArticleDAO aDao = new ArticleDAO();
+        int userId;
         
-        result = aDao.findOtherArticleByUserID(userId);
+        Map session = ActionContext.getContext().getSession();
+        userId = (int)session.get("ID");
+        
+        System.out.println("ID: " + userId);
+        
+        result = aDao.findArticleByUserID(userId);
+        
         
         return "success";
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public ArrayList<ArticleDTO> getResult() {
         return result;
     }
+    
+    
+    
     
 }

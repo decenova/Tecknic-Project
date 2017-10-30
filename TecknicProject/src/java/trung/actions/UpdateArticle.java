@@ -14,9 +14,9 @@ import org.apache.struts2.convention.annotation.Result;
  * @author Trung
  */
 
-public class updateArticle extends ActionSupport{
+public class UpdateArticle extends ActionSupport{
     
-    public updateArticle() {
+    public UpdateArticle() {
     }
     
     @Action(value = "/updateArticle", results = {

@@ -15,12 +15,12 @@ import trung.dto.ArticleDTO;
  *
  * @author Trung
  */
-public class getArticleForUpdate extends ActionSupport{
+public class GetArticleForUpdate extends ActionSupport{
     
     private int articleId;
     private ArticleDTO article;
     
-    public getArticleForUpdate() {
+    public GetArticleForUpdate() {
     }
     
     @Action(value = "/getArticleForUpdate", results = {

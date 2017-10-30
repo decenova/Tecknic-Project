@@ -6,47 +6,50 @@
 package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
-import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import trung.dao.ArticleDAO;
-import trung.dto.TagDTO;
+import trung.dao.UserDAO;
 
 /**
  *
  * @author Trung
  */
 @ParentPackage("json-default")
-public class getTagListForEdit extends ActionSupport{
+public class UpgradeMember extends ActionSupport{
     
-    private int articleId;
-    private Map<Integer, TagDTO> result;
+    //chưa có check role là admin
+    private int userId;
+    private int roleId;
+    private boolean result;
     
-    public getTagListForEdit() {
+    public UpgradeMember() {
     }
     
-    @Action(value = "/getTagListForEdit", results = {
+    @Action(value = "/upgradeMember", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
         
-        ArticleDAO aDao = new ArticleDAO();
-        
-        result = aDao.getAllTagForShow(articleId);
+        UserDAO uDao = new UserDAO();
+        result = uDao.updateRole(userId, roleId);
         
         return "success";
     }
 
-    public Map<Integer, TagDTO> getResult() {
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public boolean isResult() {
         return result;
     }
-
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
-    }
-
+    
+    
     
     
     

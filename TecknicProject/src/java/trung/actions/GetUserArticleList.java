@@ -6,33 +6,33 @@
 package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.ArrayList;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import trung.dao.UserDAO;
+import trung.dao.ArticleDAO;
+import trung.dto.ArticleDTO;
 
 /**
  *
  * @author Trung
  */
 @ParentPackage("json-default")
-public class upgradeMember extends ActionSupport{
+public class GetUserArticleList extends ActionSupport{
     
-    //chưa có check role là admin
     private int userId;
-    private int roleId;
-    private boolean result;
+    private ArrayList<ArticleDTO> result;
     
-    public upgradeMember() {
+    public GetUserArticleList() {
     }
     
-    @Action(value = "/upgradeMember", results = {
+    @Action(value = "/getUserArticleList", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
+        ArticleDAO aDao = new ArticleDAO();
         
-        UserDAO uDao = new UserDAO();
-        result = uDao.updateRole(userId, roleId);
+        result = aDao.findOtherArticleByUserID(userId);
         
         return "success";
     }
@@ -41,17 +41,8 @@ public class upgradeMember extends ActionSupport{
         this.userId = userId;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public boolean isResult() {
+    public ArrayList<ArticleDTO> getResult() {
         return result;
     }
-    
-    
-    
-    
-    
     
 }
