@@ -18,11 +18,11 @@ import trung.dto.TagDTO;
  * @author Trung
  */
 @ParentPackage("json-default")
-public class ShowAllTag extends ActionSupport{
+public class GetTagListForNew extends ActionSupport{
     private Map<Integer, String> result;
-    public ShowAllTag() {
+    public GetTagListForNew() {
     }
-    @Action(value = "/showAllTag", results = {
+    @Action(value = "/getTagListForNew", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {

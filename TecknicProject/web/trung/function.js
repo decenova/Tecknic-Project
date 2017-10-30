@@ -1,8 +1,8 @@
 function showAllTag(articleId) {
-    if (articleId === null || articleId === undefined) {
+//    if (articleId === null || articleId === undefined) {
         $.ajax({
             method: 'GET',
-            url: "/Tecknic/showAllTag",
+            url: "/Tecknic/getTagListForNew",
             success: function (data) {
                 var div = $("#tagList");
                 div.empty();
@@ -18,36 +18,27 @@ function showAllTag(articleId) {
                     }
                 }
                 div.append(s);
+                if (articleId !== null && articleId !== undefined) 
+                    checkTag(articleId);
             }
         });
-    } else {
+    }
+function checkTag(articleId) {
         $.ajax({
             method: 'GET',
             url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
             success: function (data) {
-                var div = $("#tagList");
-                div.empty();
-                var s = "<label>Thể loại*</label>";
-
                 for (var tag in data.result) {
                     if (data.result.hasOwnProperty(tag)) {
-                        s += "<p>";
-                        s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
-                        s += " ";
-
                         if (data.result[tag].check === 1) {
-                            s += "checked";
+                            document.getElementById(tag).checked = true;
                         }
-
-                        s += "> " + data.result[tag].name;
-                        s += "</p>";
                     }
                 }
-                div.append(s);
             }
         });
     }
-}
+
 
 
 function showArticleTab(id) {
