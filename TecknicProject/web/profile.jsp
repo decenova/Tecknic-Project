@@ -72,7 +72,7 @@
                     </div>
 
                     <%-- trung: Tab show article --%>
-                    <div class="tabContent widthNarrow fixPadding" id="postHistory">
+                    <div class="tabContent widthNarrow fixPadding overTable" id="postHistory">
                         <table class="table table-hover">
                             <thead>
                                 <tr>

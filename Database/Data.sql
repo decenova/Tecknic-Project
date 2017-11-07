@@ -28,7 +28,8 @@ values ('user02','user02',N'Người dùng','M',null,'2017-01-01','user02@gmail.
 --insert into BanLog(BannedUserId,ExRole,ModId,BanTime,Reason) values()
 --delete from Article 
 
-
+insert into Article(Title,Content,CoverImage,CreateTime,CreatorId,ModifyTime,ModifierId,StatusId)
+values (N'Đâylàbàiviếtđầutiêncủachúngtôi',N'Hãy nói theo cách của bạn và tính loc theo cách của chúng tôi', 'img/cover01.jpg', '2017-10-26 09:53:57.927', 1, '2017-10-26 20:53:57.927', 1, 3)
 insert into Article(Title,Content,CoverImage,CreateTime,CreatorId,ModifyTime,ModifierId,StatusId)
 values (N'Đây là bài viết đầu tiên của chúng tôi',N'Hãy nói theo cách của bạn và tính loc theo cách của chúng tôi', 'img/cover01.jpg', '2017-10-26 09:53:57.927', 1, '2017-10-26 20:53:57.927', 1, 3)
 insert into Article(Title,Content,CoverImage,CreateTime,CreatorId,ModifyTime,ModifierId,StatusId)

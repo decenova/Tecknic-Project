@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <div  id="allUserContain">
+                                <div class="overTable" id="allUserContain">
                                 </div>
                             </div>
                             <!--                        </form>-->
@@ -72,7 +72,7 @@
                                         <span><input type="checkbox" name="cbxTag" value="3"> Khác</span>
                                     </div>
                                     <hr/>
-                                    <div id="ArticleContain">
+                                    <div class="overTable" id="ArticleContain">
                                     </div>
                                 </div>
                             </form>
