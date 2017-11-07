@@ -38,7 +38,6 @@ public class ShowArticle extends ActionSupport{
         if (session.get("Article" + articleId) == null) {
             session.put("Article" + articleId, articleId);
             aDao.updateNumOfView(articleId);
-            System.out.println("ArticleId: " + articleId + " Update num of view");
         }
         
         

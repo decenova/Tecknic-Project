@@ -48,7 +48,7 @@
                                         <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
                                     </c:if>
                                     <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
-                                        <div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div>
+                                        <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
                                     </c:if>
                                 </c:if>
                             </div>
