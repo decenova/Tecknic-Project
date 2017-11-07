@@ -19,7 +19,7 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
-        <script src="ajaxcontrol.js" type="application/javascript"></script>
+        <script src="thang/ajaxcontrol.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>

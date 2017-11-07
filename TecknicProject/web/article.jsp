@@ -22,9 +22,10 @@
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
     </head>
-    <body onsubmit="return false">
+    <body onsubmit="return false" >
         <s:include value="header.jsp"></s:include>
             <!-- sẽ cung cấp id của người dùng, và id cảu bài viết -->
+            <input type="hidden" id="articleId" value='${requestScope.Article.id}'/>
             <div class="main selfclear fixPadingTop">
                 <div class="postContaint">
                     <div class="postTran">
@@ -55,7 +56,7 @@
                         <%--Chưa thêm hình--%>
                         <div class="postImage">
                         <%-- cho ảnh bài viết --%>
-                        <img src="img/cover02.jpg">
+                        <img src="${requestScope.Article.coverImage}">
                     </div>
                     <div class="postTitle fixPadding widthNarrow">
                         <%-- cho tiêu đề của bài vào đây --%>

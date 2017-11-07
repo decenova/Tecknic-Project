@@ -6,52 +6,33 @@
 package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import trung.dao.UserDAO;
+import trung.dao.ArticleDAO;
+import trung.dto.TagDTO;
 
 /**
  *
  * @author Trung
  */
 @ParentPackage("json-default")
-public class upgradeMember extends ActionSupport{
-    
-    //chưa có check role là admin
-    private int userId;
-    private int roleId;
-    private boolean result;
-    
-    public upgradeMember() {
+public class GetTagListForNew extends ActionSupport{
+    private Map<Integer, String> result;
+    public GetTagListForNew() {
     }
-    
-    @Action(value = "/upgradeMember", results = {
+    @Action(value = "/getTagListForNew", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
-        
-        UserDAO uDao = new UserDAO();
-        result = uDao.updateRole(userId, roleId);
-        
+         ArticleDAO aDao = new ArticleDAO();
+        result = aDao.getAllTagForNew();
         return "success";
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public boolean isResult() {
+    public Map<Integer, String> getResult() {
         return result;
     }
-    
-    
-    
-    
-    
     
 }

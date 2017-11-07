@@ -7,6 +7,8 @@ package tung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
+import java.util.Map;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 
 import org.apache.struts2.convention.annotation.Result;
@@ -37,11 +39,9 @@ public class AddArticleAction extends ActionSupport {
         article.setTitle(txtTitle);
         article.setCoverImage(txtImage);
         article.setContent(txtContent);
-        //code cứng
-        article.setCreatorID(3);
+        Map session = ServletActionContext.getContext().getSession();
+        article.setCreatorID((int)session.get("ID"));
         dao.addArticle(article);
-        System.out.println(dao.getCurrentArticleID());
-        System.out.println(cbxTag.toString());
         dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
         return SUCCESS;
     }

@@ -292,4 +292,23 @@ public class ArticleDAO {
 
         return result;
     }
+    public Map<Integer, String> getAllTagForNew() {
+        Map<Integer, String> result = new HashMap<>();
+
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select Id,Name from Tag";
+            pre = conn.prepareStatement(sql);
+            rs = pre.executeQuery();
+            while (rs.next()) {
+                result.put(rs.getInt("Id"), rs.getString("Name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return result;
+    }
 }

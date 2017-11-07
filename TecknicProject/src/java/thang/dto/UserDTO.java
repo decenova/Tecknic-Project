@@ -30,6 +30,12 @@ public class UserDTO {
         avatar = "img/defaultavatar.jpg";
     }
 
+    public UserDTO(int id, String name, String avatar) {
+        this.id = id;
+        this.name = name;
+        this.avatar = (avatar == null || avatar.length() <= 0)?"img/defaultavatar.jpg":avatar;
+    }
+    
     public UserDTO(String username, String password, String name, char gender, Timestamp dob, Timestamp doj, String email, String phoneNum, String address) {
         this.username = username;
         this.password = password;
