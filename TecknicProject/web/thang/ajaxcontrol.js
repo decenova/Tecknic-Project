@@ -10,7 +10,7 @@ var popoverStr = '<div class="mypopover top mypopoverAlert">' +
 function checkUsername() {
     var check = false;
     var tag = $('#username');
-    var value = tag.val();
+    var value = tag.val().toString().trim();
 //            lấy thẻ cha để có thể thêm vào cái popover 
     var parent = tag.parent();
     if (value === null || value.length < 6 || value.length > 40) {
@@ -49,7 +49,7 @@ function checkUsername() {
 }
 
 function checkName() {
-    var tag = $('#name');
+    var tag = $('#name').toString().trim();
     var value = tag.val();
 //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = tag.parent();
@@ -70,7 +70,7 @@ function checkName() {
     }
 }
 function checkPass() {
-    var tag = $('#password');
+    var tag = $('#password').toString().trim();
     var value = tag.val();
     var parent = tag.parent();
     if (value === null || value.length < 6 || value.length > 20
@@ -80,9 +80,9 @@ function checkPass() {
         
         tag.css({"border-left-color": "#ff8888"});
         parent.find('div.popover-content').html('Password phải có: <br/>' +
-                ' + từ 6 đến 20 kí tự<br/>' +
-                ' + chứa ít nhất một số [0-9]<br/>' +
-                ' + có thể chứa các kí tự đặc biệt: . , @ # $ % ^ & * ( )');
+                ' + Từ 6 đến 20 kí tự<br/>' +
+                ' + Chứa ít nhất một số [0-9]<br/>' +
+                ' + Có thể chứa các kí tự đặc biệt: . , @ # $ % ^ & * ( )');
         return false;
     } else {
         tag.css({"border-left-color": "#226699"});
@@ -92,7 +92,7 @@ function checkPass() {
 }
 function checkConfirmPassword() {
     var tag = $('#confirmPassword');
-    var value = tag.val();
+    var value = tag.val().toString().trim();
     var parent = tag.parent();
     if (!($('#password').val() === value)) {
         parent.children('div.mypopover').remove();
@@ -126,7 +126,7 @@ function checkConfirmPassword() {
 //}
 function checkEmail() {
     var tag = $('#email');
-    var value = tag.val();
+    var value = tag.val().toString().trim();
     var parent = tag.parent();
     if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+$/.test(value)) || value.length > 100) {
         parent.children('div.mypopover').remove();
@@ -142,7 +142,7 @@ function checkEmail() {
     }
 }
 function checkPhone() {
-    var tag = $('#phone');
+    var tag = $('#phone').toString().trim();
     var value = tag.val();
     var parent = tag.parent();
     if (!(/^([0-9]{9,11})?$/.test(value))) {
@@ -159,7 +159,7 @@ function checkPhone() {
     }
 }
 function checkCheckBox() {
-    var tag = $('#checkbox');
+    var tag = $('#checkbox').toString().trim();
     var value = tag[0].checked;
     var parent = tag.parent();
     if (!value) {
@@ -181,5 +181,15 @@ function formsubmit(tagId) {
             && checkEmail() && checkPhone() && checkCheckBox()){
         
         document.getElementById(tagId).submit();
+    } else {
+        $(document).scrollTop(0);
+    }
+}
+//update user
+function updateUser(tagId) {
+    if (checkName() && checkEmail() && checkPhone()){
+        document.getElementById(tagId).submit();
+    } else {
+        $(document).scrollTop(0);
     }
 }

@@ -20,6 +20,7 @@
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
+        <script src="tung/validation.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
@@ -47,7 +48,7 @@
                 </div>
                 <div class="profileMainContaint widthNarrow">
                     <div class="tabContent widthNarrow" id="profile">
-                        <form action="updateProfile" method="POST">
+                        <form action="updateProfile" method="POST" id="formUpdate">
                             <%-- làm form --%>
                             <div class="formContain">
                                 <h1>Thông tin cá nhân</h1>
@@ -62,7 +63,7 @@
                                 </div>
                                 <div class="inputText">
                                     <label>Tên</label>
-                                    <input type="text" name="txtName" placeholder="Họ và tên" value="<s:property value="%{#request.Profile.name}"/>" required>
+                                    <input type="text" id="name" name="txtName" onblur="checkName()" placeholder="Họ và tên" value="<s:property value="%{#request.Profile.name}"/>">
                                 </div>
                                 <hr/>
                                 <div class="">
@@ -77,11 +78,11 @@
                                 </div>
                                 <div class="inputText">
                                     <label>Email</label>
-                                    <input type="email" name="txtEmail" value="<s:property value="%{#request.Profile.email}"/>" placeholder="example@gmail.com" required>
+                                    <input type="email" id="email" onblur="checkEmail()"  name="txtEmail" value="<s:property value="%{#request.Profile.email}"/>" placeholder="example@gmail.com">
                                 </div>
                                 <div class="inputText">
                                     <label>Số điện thoại</label>
-                                    <input type="text" name="txtPhoneNum" value="<s:property value="%{#request.Profile.phoneNum}"/>" name="txtPhoneNumber">
+                                    <input type="text" id="phone" name="txtPhoneNum" onblur="checkPhone()" value="<s:property value="%{#request.Profile.phoneNum}"/>">
                                 </div>
                                 <div class="inputText">
                                     <label>Địa chỉ</label>
@@ -89,7 +90,7 @@
                                 </div>
                                 <hr/>
                                 <div class="buttonGroup">
-                                    <input class="button buttonPrimary" style="width: 100%" type="submit" value="Lưu thay đổi">
+                                    <div class="button buttonPrimary" onclick="updateUser('formUpdate')">Lưu thay đổi</div>
                                 </div>
                             </div>
                         </form>

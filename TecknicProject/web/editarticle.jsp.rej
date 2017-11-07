@@ -1,9 +1,0 @@
-diff a/TecknicProject/web/editarticle.jsp b/TecknicProject/web/editarticle.jsp	(rejected hunks)
-@@ -70,6 +70,7 @@
-         </script>
-     </head>
-     <body onload="showAllTag()">
-+>>>>>>> 6444bafa18b42e684caaf318deef668362ce5516
-         <s:include value="header.jsp"></s:include>
-             <div class="main selfclear fixPadingTop">
-                 <form action="addArticle" method="POST">

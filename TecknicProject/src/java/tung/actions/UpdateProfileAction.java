@@ -47,7 +47,7 @@ public class UpdateProfileAction extends ActionSupport {
         String url = "fail";
         UserDAO dao = new UserDAO();
         char gender = cbxGender.charAt(0);
-        Timestamp dob = Utils.parseToDate(txtDob);
+        Timestamp dob = (txtDob.isEmpty()) ? null : Utils.parseToDate(txtDob);
         UserDTO user = new UserDTO();
         Map session = ActionContext.getContext().getSession();
         if (!flAvatar.isEmpty())

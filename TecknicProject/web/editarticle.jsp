@@ -68,7 +68,7 @@
                     <hr/>
                     <div class="buttonGroup">
                         <div class="button buttonPrimary">
-                            <input style="background: inherit; border: 0" type="submit" value="Đăng bài">
+                            <input style="background: inherit; border: 0; width:100%" type="submit" value="Đăng bài">
                         </div>
                     </div>
                 </div>
