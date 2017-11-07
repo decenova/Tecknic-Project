@@ -235,6 +235,10 @@ textarea {
     background-color: #ffffff;
 }
 
+.overTable{
+    overflow-x: auto;
+}
+
 
 .wallInfo{
     font-size: 1.5em;
