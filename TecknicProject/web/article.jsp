@@ -69,7 +69,7 @@
                     <hr/>
                     <div class="postControl fixPadding widthNarrow">
                         <%-- số lượt view và số lượt bình luận --%>
-                        <span><i class="fa fa-eye"></i> 12000</span>
+                        <span><i class="fa fa-eye"></i> ${requestScope.Article.numOfView}</span>
                         <span><i class="fa fa-comment-o"></i> 12</span>
                     </div>
                     <hr>
