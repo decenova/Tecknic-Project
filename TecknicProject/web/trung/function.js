@@ -92,14 +92,14 @@ function showOwnArticleTab(id) {
                         s += "</a></td><td>";
                     } else if (articleList[i].status === "reviewing") {
                         s += "<tr class='well'>";
-                        s += "<td>";
+                        s += "<td><a href=''>";
                         s += articleList[i].title;
-                        s += "</td><td>";
+                        s += "</a></td><td>";
                     } else if (articleList[i].status === "submited") {
                         s += "<tr class='warning'>";
-                        s += "<td>";
+                        s += "<td><a href=''>";
                         s += articleList[i].title;
-                        s += "</td><td>";
+                        s += "</a> </td><td>";
                     } else {
                         s += "<tr>";
                         s += "<td><a href=''>";

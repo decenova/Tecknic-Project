@@ -58,7 +58,6 @@
 }
 .slide a {
     background-color: rgba(51,51,51,0.5);
-    max-width: 35%;
     max-height: 25%;
     font-size: 2em;
     font-weight: bold;
@@ -67,7 +66,12 @@
     color: #ffffff;
     position: absolute;
     left: 20%;
+    right: 30%;
     bottom: 10%;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
 }
 .slide a:hover {
     text-decoration: none;
@@ -176,11 +180,17 @@ svg {
 /*post Title*/
 .postTitle {
     margin-top: 20px;
+    
 }
 .postTitle a {
     font-size: 2em;
     font-weight: 600;
     color: #2266aa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
 }
 
 
@@ -243,10 +253,16 @@ svg {
     font-size: 2em;
     font-weight: 600;
     color: #2266aa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
 }
 .postBody p {
     font-size: 1.5em;
     color: #333333;
+    overflow: hidden;
 }
 .postBody img {
     width: 100%;

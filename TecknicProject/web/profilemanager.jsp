@@ -95,7 +95,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="tabContent widthNarrow fixPadding" id="postHistory">
+                    <div class="tabContent widthNarrow fixPadding overTable" id="postHistory">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -106,7 +106,7 @@
                             </thead>
                             <tbody id="userArticleList">
                                 <%-- bảng những bài viết, bài viết bao gồm tất cả các trạng thái luôn --%>
-                                <tr class="success">
+<!--                                <tr class="success">
                                     <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
                                     <td>12:30 12/3/2017</td>
                                     <td>Posted</td>
@@ -115,7 +115,7 @@
                                     <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
                                     <td>11:30 12/3/2017</td>
                                     <td>Reject</td>
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                     </div>
