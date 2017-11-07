@@ -5,7 +5,9 @@
  */
 package trung.actions;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -32,6 +34,15 @@ public class ShowArticle extends ActionSupport{
         ArticleDAO aDao = new ArticleDAO();
         ArticleDTO article = aDao.viewArticleForUpdate(articleId);
         
+        Map session = ActionContext.getContext().getSession();
+        if (session.get("Article" + articleId) == null) {
+            session.put("Article" + articleId, articleId);
+            aDao.updateNumOfView(articleId);
+            System.out.println("ArticleId: " + articleId + " Update num of view");
+        }
+        
+        
+             
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("Article", article);
         
