@@ -203,6 +203,9 @@ svg {
     color: #333333;
     text-decoration: none;
 }
+.postBody a>p{
+    font-size: 1em;
+}
 
 /*post control*/
 .postControl {
