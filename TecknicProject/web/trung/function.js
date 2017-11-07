@@ -99,7 +99,7 @@ function showOwnArticleTab(id) {
                         s += "<tr class='warning'>";
                         s += "<td><a href=''>";
                         s += articleList[i].title;
-                        s += "</a></td><td>";
+                        s += "</a> </td><td>";
                     } else {
                         s += "<tr>";
                         s += "<td><a href=''>";
