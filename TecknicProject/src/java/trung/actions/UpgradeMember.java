@@ -5,49 +5,51 @@
  */
 package trung.actions;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.ArrayList;
-import java.util.Map;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import trung.dao.ArticleDAO;
-import trung.dto.ArticleDTO;
+import trung.dao.UserDAO;
 
 /**
  *
  * @author Trung
  */
 @ParentPackage("json-default")
-public class getOwnArticleList extends ActionSupport{
+public class UpgradeMember extends ActionSupport{
     
-    private ArrayList<ArticleDTO> result;
+    //chưa có check role là admin
+    private int userId;
+    private int roleId;
+    private boolean result;
     
-    public getOwnArticleList() {
+    public UpgradeMember() {
     }
     
-    @Action(value = "/getOwnArticleList", results = {
+    @Action(value = "/upgradeMember", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
-        ArticleDAO aDao = new ArticleDAO();
-        int userId;
         
-        Map session = ActionContext.getContext().getSession();
-        userId = (int)session.get("ID");
-        
-        System.out.println("ID: " + userId);
-        
-        result = aDao.findArticleByUserID(userId);
-        
+        UserDAO uDao = new UserDAO();
+        result = uDao.updateRole(userId, roleId);
         
         return "success";
     }
 
-    public ArrayList<ArticleDTO> getResult() {
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public boolean isResult() {
         return result;
     }
+    
+    
     
     
     

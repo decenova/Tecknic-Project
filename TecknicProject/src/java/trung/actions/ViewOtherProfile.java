@@ -16,7 +16,7 @@ import trung.dto.UserDTO;
  *
  * @author Trung
  */
-public class ViewOtherProfileAction extends ActionSupport{
+public class ViewOtherProfile extends ActionSupport{
     
     private int userId;
     
@@ -24,7 +24,7 @@ public class ViewOtherProfileAction extends ActionSupport{
     private int    otherNumOfArticle;
 
     
-    public ViewOtherProfileAction() {
+    public ViewOtherProfile() {
     }
     @Action(value = "/viewOtherProfile", results = {
         @Result(name = "success", location = "/profile.jsp")

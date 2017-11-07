@@ -70,6 +70,7 @@ function getCommentOfArticle() {
     $.ajax({
         type: "POST",
         url: "/Tecknic/loadComment",
+        data: {articleId: $('#articleId').val()},
         success: function (data) {
             var div = $("#CommentContain");
             div.empty();
@@ -95,10 +96,11 @@ function getCommentOfArticle() {
 }
 //Thêm comment
 function addCommentToArticle() {
+    console.log($('#articleId').val());
     $.ajax({
         type: "POST",
         url: "/Tecknic/addComment",
-        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + 1,
+        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
         success: function () {
             $('#contentComment').val("");
             getCommentOfArticle();

@@ -3,43 +3,46 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tung.actions;
+package trung.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import tung.dao.CommentDAO;
-import tung.dto.CommentDTO;
+import trung.dao.ArticleDAO;
+import trung.dto.ArticleDTO;
 
 /**
  *
- * @author hoanh
+ * @author Trung
  */
 @ParentPackage("json-default")
-public class LoadCommentOfArticleAction extends ActionSupport {
-    private int articleId;
-    private ArrayList<CommentDTO> commentList;
+public class GetUserArticleList extends ActionSupport{
     
-    public LoadCommentOfArticleAction() {
+    private int userId;
+    private ArrayList<ArticleDTO> result;
+    
+    public GetUserArticleList() {
     }
-    @Action(value = "/loadComment", results = {
+    
+    @Action(value = "/getUserArticleList", results = {
         @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
-        CommentDAO dao = new CommentDAO();
-        commentList = dao.loadCommentsByArticleID(articleId);
-        return SUCCESS;
+        ArticleDAO aDao = new ArticleDAO();
+        
+        result = aDao.findOtherArticleByUserID(userId);
+        
+        return "success";
     }
 
-    public ArrayList<CommentDTO> getCommentList() {
-        return commentList;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
+    public ArrayList<ArticleDTO> getResult() {
+        return result;
     }
-    
     
 }

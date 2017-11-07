@@ -17,11 +17,11 @@ import trung.dto.ArticleDTO;
  *
  * @author Trung
  */
-public class showArticle extends ActionSupport{
+public class ShowArticle extends ActionSupport{
     
     private int articleId;
     
-    public showArticle() {
+    public ShowArticle() {
     }
     
     @Action(value = "/showArticle", results = {

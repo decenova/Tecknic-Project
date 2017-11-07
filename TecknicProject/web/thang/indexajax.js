@@ -33,7 +33,6 @@ function loadindex(sizePage, positon) {
                 size = 0;
                 return;
             }
-            console.log(array);
             var json;
             for (var i = 0; i < array.length; i++) {
                 json = array[i];

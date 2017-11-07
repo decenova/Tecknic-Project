@@ -1,34 +1,49 @@
 function showAllTag(articleId) {
-    $.ajax({
-        type: 'GET',
-        url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
-        success: function (data) {
-            var div = $("#tagList");
-            div.empty();
-            var s = "<label>Thể loại*</label>";
+//    if (articleId === null || articleId === undefined) {
+        $.ajax({
+            method: 'GET',
+            url: "/Tecknic/getTagListForNew",
+            success: function (data) {
+                var div = $("#tagList");
+                div.empty();
+                var s = "<label>Thể loại*</label>";
 
-            for (var tag in data.result) {
-                if (data.result.hasOwnProperty(tag)) {
-                    s += "<p>";
-                    s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
-                    s += " ";
-
-                    if (data.result[tag].check === 1) {
-                        s += "checked";
+                for (var tag in data.result) {
+                    if (data.result.hasOwnProperty(tag)) {
+                        s += "<p>";
+                        s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
+                        s += " ";
+                        s += "> " + data.result[tag];
+                        s += "</p>";
                     }
-
-                    s += "> " + data.result[tag].name;
-                    s += "</p>";
+                }
+                div.append(s);
+                if (articleId !== null && articleId !== undefined) 
+                    checkTag(articleId);
+            }
+        });
+    }
+function checkTag(articleId) {
+        $.ajax({
+            method: 'GET',
+            url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
+            success: function (data) {
+                for (var tag in data.result) {
+                    if (data.result.hasOwnProperty(tag)) {
+                        if (data.result[tag].check === 1) {
+                            document.getElementById(tag).checked = true;
+                        }
+                    }
                 }
             }
-            div.append(s);
-        }
-    });
-}
+        });
+    }
+
+
 
 function showArticleTab(id) {
     $.ajax({
-        type: 'GET',
+        method: 'GET',
         url: "/Tecknic/getUserArticleList?userId=" + id,
         success: function (data) {
             var div = $("#userArticleList");
@@ -54,8 +69,9 @@ function showArticleTab(id) {
 }
 
 function showOwnArticleTab(id) {
+
     $.ajax({
-        type: 'GET',
+        method: 'GET',
         url: "/Tecknic/getOwnArticleList?userId=" + id,
         success: function (data) {
             var div = $("#userArticleList");
