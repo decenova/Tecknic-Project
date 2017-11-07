@@ -36,13 +36,15 @@ public class AddArticleAction extends ActionSupport {
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
         ArticleDTO article = new ArticleDTO();
-        article.setTitle(txtTitle);
-        article.setCoverImage(txtImage);
-        article.setContent(txtContent);
-        Map session = ServletActionContext.getContext().getSession();
-        article.setCreatorID((int)session.get("ID"));
-        dao.addArticle(article);
-        dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
+        if (!txtTitle.isEmpty()) {
+            article.setTitle(txtTitle);
+            article.setCoverImage(txtImage);
+            article.setContent(txtContent);
+            Map session = ServletActionContext.getContext().getSession();
+            article.setCreatorID((int) session.get("ID"));
+            dao.addArticle(article);
+            dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
+        }
         return SUCCESS;
     }
 
@@ -78,8 +80,4 @@ public class AddArticleAction extends ActionSupport {
         this.cbxTag = cbxTag;
     }
 
-
-
-
-    
 }

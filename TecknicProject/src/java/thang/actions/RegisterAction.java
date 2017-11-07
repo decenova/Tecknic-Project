@@ -42,7 +42,6 @@ public class RegisterAction extends ActionSupport {
         doj = new Timestamp(new Date().getTime());
         Timestamp dobtime = (dob.equals(""))?null:Utils.parseToDate(dob);
         boolean check = dao.createUser(new UserDTO(username, password, name, gender, dobtime, doj, email, phoneNum, address));
-        System.out.println(check);
         if (check)
             return "success";
         else
