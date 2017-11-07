@@ -383,3 +383,12 @@ ul a:hover{
 .mypopover.mypopoverAlert .arrow::after{
     border-top-color: #dd5555;
 }
+
+td a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
