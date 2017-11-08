@@ -19,6 +19,8 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="tung/function.js" type="application/javascript"></script>
+        <script src="trung/function.js" type="application/javascript"></script>
         <%-- Text editor --%>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
@@ -35,8 +37,6 @@
 
         <!-- Include Editor JS files. -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
-        <script src="trung/function.js" type="application/javascript"></script>
-    </head>
     <body onload="showAllTag(<s:property value="articleId"/>)">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
@@ -45,11 +45,13 @@
                         <h1>Đăng bài</h1>
                         <div class="inputText">
                             <label>Tiêu đề*</label>
-                            <input type="text" name="txtTitle" value="<s:property value="article.title"/>">
+                            <input type="text" name="txtTitle" maxlength="200" value="<s:property value="article.title"/>">
                     </div>
                     <div class="inputText">
                         <label>Ảnh bìa</label>
-                        <input type="text" name="txtImage" placeholder="" value="<s:property value="article.coverImage"/>">
+                        <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
+                        <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
+                        <img id="imgShow" src="" />
                     </div>
                     <hr/>
                     <div class="inputText">
@@ -59,10 +61,10 @@
                     <hr/>
 
                     <div class="" id="tagList">
-<!--                        <label>Thể loại*</label>
-                        <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
-                        <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
-                        <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        <!--                        <label>Thể loại*</label>
+                                                <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
+                                                <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
+                                                <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
                     </div>
 
                     <hr/>
@@ -83,6 +85,22 @@
                     }
                 });
             });
+            function getURLCoverImage() {
+                var fd = new FormData();
+                fd.append('file', $('#urlCoverImage')[0].files[0]);
+                $.ajax({
+                    url: "upload_img",
+                    method: "POST",
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#urlHidden').val(data.link);
+                        $('#imgShow').attr('src', data.link);
+                    }
+                });
+            }
+
         </script>
     </body>
 </html>

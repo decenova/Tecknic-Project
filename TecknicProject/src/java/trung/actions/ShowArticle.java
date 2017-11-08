@@ -39,11 +39,10 @@ public class ShowArticle extends ActionSupport{
             session.put("Article" + articleId, articleId);
             aDao.updateNumOfView(articleId);
         }
-        
-        
-             
-        HttpServletRequest request = ServletActionContext.getRequest();
+          HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("Article", article);
+        // phần Tung làm
+        
         
         return "success";
     }
