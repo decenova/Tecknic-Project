@@ -52,7 +52,7 @@ function showArticleTab(id) {
             if (articleList.length > 0) {
                 var s = "";
                 for (var i = 0; i < articleList.length; i++) {
-                    s += "<tr><td><a href=''>";
+                    s += "<tr><td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                     s += articleList[i].title;
                     s += "</a></td><td>";
                     s += articleList[i].createTime;

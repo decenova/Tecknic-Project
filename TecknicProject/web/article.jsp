@@ -31,10 +31,10 @@
                     <div class="postTran">
                         <div class="postInfoTran fixPadding selfclear">
                             <div class="avatar avatarAbsolute">
-                                <img src="img/avartar01.jpg">
+                                <img src="${requestScope.Creator.avatar}">
                             </div>
                             <div class="info infoFixPaddingLeft col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                <a><span class="poster">Trẩu Ăn Tre</span></a>
+                                <a><span class="poster">${requestScope.Creator.name}</span></a>
                                 <br/>
                                 <span class="datepost">${requestScope.Article.createTime}</span>
                             </div>
