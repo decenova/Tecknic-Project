@@ -106,4 +106,21 @@ public class CommentDAO {
         }
         return result;
     }
+    
+    public int getAmountOfComment(int articleID) {
+        int count = 0;
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select count(Id) as Amount from Comment where ArticleId = ?";
+            preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, articleID);
+            rs = preStm.executeQuery();
+            if (rs.next()) {
+                count = rs.getInt("Amount");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
 }

@@ -82,7 +82,7 @@
                             </thead>
                             <tbody id="userArticleList">
                                 <%-- chỗ liệt kê bài viết, chỉ những bài đã được post mới hiện --%>
-                                <tr>
+<!--                                <tr>
                                     <%-- nhớ cho link đến action tạo bài viết --%>
                                     <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
                                     <td>12:30 12/3/2017</td>
@@ -90,7 +90,7 @@
                                 <tr>
                                     <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
                                     <td>11:30 12/3/2017</td>
-                                </tr>
+                                </tr>-->
                             </tbody>
                         </table>
                     </div>

@@ -163,5 +163,7 @@ function findArticleByTagOrTitle() {
             div.append(s);
         }
     });
+    //-------------------------------------------URL Image Cover------------------------------------------
+
 }
 
