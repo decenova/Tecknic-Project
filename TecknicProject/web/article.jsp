@@ -26,32 +26,16 @@
         <s:include value="header.jsp"></s:include>
             <!-- sẽ cung cấp id của người dùng, và id cảu bài viết -->
             <input type="hidden" id="articleId" value='${requestScope.Article.id}'/>
-            <div class="main selfclear fixPadingTop">
-                <div class="postContaint">
-                    <div class="postTran">
-                        <div class="postInfoTran fixPadding selfclear">
-                            <div class="avatar avatarAbsolute">
-                                <img src="${requestScope.Creator.avatar}">
-                            </div>
-                            <div class="info infoFixPaddingLeft col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                                <a><span class="poster">${requestScope.Creator.name}</span></a>
-                                <br/>
-                                <span class="datepost">${requestScope.Article.createTime}</span>
-                            </div>
-                            <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                                <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
-                                    <c:if test="${requestScope.Article.status eq 'reviewing' && sessionScope.ROLE != 'Colaborator'}">
-                                        <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
-                                        <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
+
         <div class="main selfclear fixPadingTop">
             <div class="postContaint">
                 <div class="postTran">
                     <div class="postInfoTran fixPadding selfclear">
                         <div class="avatar avatarAbsolute">
-                            <img src="img/avartar01.jpg">
+                            <img src="${requestScope.Creator.avatar}">
                         </div>
                         <div class="info infoFixPaddingLeft col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                            <a><span class="poster">Trẩu Ăn Tre</span></a>
+                            <a><span class="poster">${requestScope.Creator.name}</span></a>
                             <br/>
                             <span class="datepost">${requestScope.Article.createTime}</span>
                         </div>
@@ -60,14 +44,14 @@
                                 <c:if test="${requestScope.Article.status eq 'reviewing' && sessionScope.ROLE != 'Colaborator'}">
                                     <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
                                     <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
-                                    </c:if>
-                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                </c:if>
+                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
-                                    </c:if>
-                                    <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
+                                </c:if>
+                                <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                        </c:if>
-                                    </c:if>
+                                </c:if>
+                            </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>
