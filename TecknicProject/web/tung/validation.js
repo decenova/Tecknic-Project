@@ -70,7 +70,5 @@ function checkPhone() {
 function updateUser(tagId) {
     if (checkName() && checkEmail() && checkPhone()){
 //        document.getElementById(tagId).submit();
-    } else {
-        $(document).scrollTop(0);
     }
 }
