@@ -82,33 +82,33 @@ function showOwnArticleTab(id) {
                 for (var i = 0; i < articleList.length; i++) {
                     if (articleList[i].status === "posted") {
                         s += "<tr class='success'>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                         s += articleList[i].title;
-                        s += "</a></td><td>";
+                        s += "</a></td>";
                     } else if (articleList[i].status === "reject" || articleList[i].status === "remove") {
                         s += "<tr class='danger'>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                         s += articleList[i].title;
-                        s += "</a></td><td>";
+                        s += "</a></td>";
                     } else if (articleList[i].status === "reviewing") {
                         s += "<tr class='well'>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='#'>";
                         s += articleList[i].title;
-                        s += "</a></td><td>";
+                        s += "</a></td>";
                     } else if (articleList[i].status === "submited") {
                         s += "<tr class='warning'>";
                         s += "<td><a href=''>";
                         s += articleList[i].title;
-                        s += "</a> </td><td>";
+                        s += "</a></td>";
                     } else {
                         s += "<tr>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                         s += articleList[i].title;
-                        s += "</a></td><td>";
+                        s += "</a></td>";
                     }
 
 
-
+                    s += "<td>";
                     s += articleList[i].createTime;
                     s += "</td><td>";
                     s += articleList[i].status;

@@ -55,7 +55,7 @@ function loadindex(sizePage, positon) {
                 s += '    <a href="/Tecknic/showArticle?articleId=' + json[0].ID + '">' + json[0].title + '</a>';
                 s += '</div>';
                 s += '<div class="postBody fixPadding widthNarrow">';
-                s += '    <a href="/Tecknic/showArticle?articleId=' + json[0].ID + '">' + json[0].content + '</a>';
+                s += '    <a href="/Tecknic/showArticle?articleId=' + json[0].ID + '">' + $(json[0].content).text() + '</a>';
                 s += '</div>';
                 s += '<hr/>';
                 s += '<div class="postControl fixPadding widthNarrow">';
