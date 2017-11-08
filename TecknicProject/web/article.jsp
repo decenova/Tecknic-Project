@@ -21,6 +21,7 @@
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
+        <script src="tung/function.js" type="application/javascript"></script>
     </head>
     <body onsubmit="return false" >
         <s:include value="header.jsp"></s:include>

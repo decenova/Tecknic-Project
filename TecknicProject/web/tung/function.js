@@ -67,6 +67,7 @@ function findUserByLike() {
 //-------------------------------------------COMMENT------------------------------------------
 //tải comment theo bài viết
 function getCommentOfArticle() {
+    console.log($('#articleId').val());
     $.ajax({
         type: "POST",
         url: "/Tecknic/loadComment",
