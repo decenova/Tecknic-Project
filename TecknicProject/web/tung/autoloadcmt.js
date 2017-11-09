@@ -1,8 +1,8 @@
-var size = 10;
+var size = 5;
 var pos = 0;
 var isLoad = false;
 $(document).ready(function () {
-    size = 10;
+    size = 5;
     pos = 0;
 //    $('#CommentContain').empty();
     getCommentOfArticleV2(size, pos);
@@ -27,9 +27,7 @@ function goNextCmt() {
             }
         });
 }
-function isLoad() {
-    isLoad = true;
-}
+
 function getCommentOfArticleV2(sizePage, position) {
     $.ajax({
         url: "/Tecknic/loadAutoCmt",
@@ -52,7 +50,8 @@ function getCommentOfArticleV2(sizePage, position) {
                     s += '</div>';
                     s += '<div class="commentIndex">#' + commentList[i].ID + '</div><hr/></div></div>';
                 }
-                if (pos === 0) {
+                console.log(commentList.length);
+                if (pos === 0 && commentList.length >= 5) {
                 s += '<a onclick="goNextCmt()">Xem thêm bình luận</a>';
             }
             }
