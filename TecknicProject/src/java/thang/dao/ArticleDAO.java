@@ -50,7 +50,7 @@ public class ArticleDAO {
         UserDTO userDto;
         try {
             con = MyConnection.getConnection();
-            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,255), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar \n"
+            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,1000), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar \n"
                     + " from  Article a inner join [User] u on a.CreatorId = u.Id \n"
                     + " where a.StatusId = (Select Id from [Status] where name = 'posted')\n"
                     + " order by ModifyTime desc\n"
