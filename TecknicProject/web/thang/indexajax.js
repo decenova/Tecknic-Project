@@ -60,13 +60,25 @@ function loadindex(sizePage, positon) {
                 s += '<hr/>';
                 s += '<div class="postControl fixPadding widthNarrow">';
                 s += '    <span><i class="fa fa-eye"></i> ' + json[0].numOfView + '</span>';
-                s += '    <span><i class="fa fa-comment-o"></i> 12</span>';
+                s += '    <span><i class="fa fa-comment-o"></i> <span id="numOfComment' + json[0].ID + '">0</span></span>';
                 s += '</div>';
                 s += '</div>';
                 parent.append(s);
+                loadNumOfComment(json[0].ID);
             }
             isLoad = false;
         }
+    });
+}
+function loadNumOfComment(articleId){
+    var tag = $('#numOfComment' + articleId);
+    $.ajax({
+       url: "getAmountOfComment",
+       method: "post",
+       data: {articleId:articleId},
+       success: function (data){
+           tag.text(data.numOfComment);
+       }
     });
 }
 
