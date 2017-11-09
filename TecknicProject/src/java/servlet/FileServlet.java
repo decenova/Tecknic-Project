@@ -34,7 +34,6 @@ private static final long serialVersionUID = 1L;
         Files.copy(file.toPath(), response.getOutputStream());
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("fuck");
         }
         
     }

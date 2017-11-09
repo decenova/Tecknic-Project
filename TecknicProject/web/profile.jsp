@@ -21,14 +21,14 @@
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
         <script>
-            
-            
+
+
             function banMember() {
-                
+
             }
-            
+
             function upgradeMember() {
-                
+
             }
         </script>
     </head>
@@ -39,10 +39,10 @@
                 <div class="profileContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <div class="profileInfo">
                     <%--nếu là admin mới hiện lên ban or upgrade--%>
-                    <s:if test="%{#session.ROLE == 'Administrator'}">
+                    <s:if test="%{#session.ROLE == 'Administrator' and user.role != 'Administrator'}">
                         <div class="controlButton">
-                            <div class="buttonCircle buttonSuccess" onclick="banMember()"><i class="fa fa-plus"></i></div>
-                            <div class="buttonCircle buttonDanger" onclick="upgradeMember()"><i class="fa fa-ban"></i></div>
+                            <div class="buttonCircle buttonSuccess" onclick="showPopup('popupUpgrade')"><i class="fa fa-plus"></i></div>
+                            <div class="buttonCircle buttonDanger" onclick="showPopup('popupBan')"><i class="fa fa-ban"></i></div>
                         </div>
                     </s:if>
                     <div class="avatar">
@@ -56,7 +56,8 @@
                     </div>
                     <div class="tabControl selfclear">
                         <div class="tab tabSelect" onclick="showTab('#profile', this)">Thông tin cá nhân</div>
-                        <div class="tab" onclick="showTab('#postHistory', this); showArticleTab(<s:property value="userId"/>)">Bài viết</div>
+                        <div class="tab" onclick="showTab('#postHistory', this);
+                                showArticleTab(<s:property value="userId"/>)">Bài viết</div>
                     </div>
                 </div>
                 <div class="profileMainContaint widthNarrow">
@@ -82,15 +83,15 @@
                             </thead>
                             <tbody id="userArticleList">
                                 <%-- chỗ liệt kê bài viết, chỉ những bài đã được post mới hiện --%>
-<!--                                <tr>
-                                    <%-- nhớ cho link đến action tạo bài viết --%>
-                                    <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
-                                    <td>12:30 12/3/2017</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
-                                    <td>11:30 12/3/2017</td>
-                                </tr>-->
+                                <!--                                <tr>
+                                <%-- nhớ cho link đến action tạo bài viết --%>
+                                <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
+                                <td>12:30 12/3/2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
+                                <td>11:30 12/3/2017</td>
+                            </tr>-->
                             </tbody>
                         </table>
                     </div>
@@ -98,6 +99,54 @@
             </div>
             <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
         </div>
+
+
+        <s:if test="%{#session.ROLE == 'Administrator' and user.role != 'Administrator'}">
+            <div class="popup" id="popupUpgrade">
+                <div class="closebackground" onclick="closePopup('popupUpgrade')"></div>
+                <div class="popupcontain">
+                    <i class="fa fa-times" onclick="closePopup('popupUpgrade')"></i>
+                    <form action="" method="POST">
+                        <div class="formContain" style="margin: 0">
+                            <div class="inputText">
+                                <label>Vai trò*</label>
+                                <select name="txtRole" value='<s:property value="user.roleId"/>'>
+                                    <option value="1">Member</option>
+                                    <option value="2">Colaborator</option>
+                                    <option value="3">Moderator</option>
+                                </select>
+                            </div>
+                            <hr/>
+                            <div class="buttonGroup">
+                                <input class="button buttonPrimary" style="width: 100%" type="submit" value="Ok">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="popup" id="popupBan">
+                <div class="closebackground" onclick="closePopup('popupBan')"></div>
+                <div class="popupcontain">
+                    <i class="fa fa-times" onclick="closePopup('popupBan')"></i>
+                    <p></p>
+                    <form action="" method="POST">
+                        <div class="formContain" style="margin: 0">
+                            <div class="inputText">
+                                <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>
+                            </div>
+                            <div class="inputText">
+                                <label>Lý do</label>
+                                <input type="text" name="txtReason"/>
+                            </div>
+                            <hr/>
+                            <div class="buttonGroup">
+                                <input class="button buttonPrimary" style="width: 100%" type="submit" value="Ok">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </s:if>
         <s:include value="footer.jsp"></s:include>
     </body>
 </html>

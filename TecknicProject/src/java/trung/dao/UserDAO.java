@@ -49,7 +49,7 @@ public class UserDAO {
         
         try {
             conn = MyConnection.getConnection();
-            String sql = "select [User].Name, [User].Avatar, [Role].Name as [Role], [User].Gender, [User].Email, [User].DateOfJoin \n"
+            String sql = "select [User].Username, [User].Name, [User].Avatar, [Role].Name as [Role], [Role].Id as [RoleId], [User].Gender, [User].Email, [User].DateOfJoin \n"
                     + "from [User] inner join [Role] on [User].RoleId = [Role].Id \n"
                     + "where [User].Id = ?";
             pre = conn.prepareStatement(sql);
@@ -61,9 +61,11 @@ public class UserDAO {
                 result = new UserDTO();
                 
                 result.setId(userId);
+                result.setUsername(rs.getString("Username"));
                 result.setName(rs.getString("Name"));
                 result.setAvatar(rs.getString("Avatar"));
                 result.setRole(rs.getString("Role"));
+                result.setRoleId(rs.getInt("RoleId"));
                 result.setGender(rs.getString("Gender"));
                 result.setEmail(rs.getString("Email"));
                 result.setDOJ(Utils.convertToDateV2(rs.getTimestamp("DateOfJoin")));

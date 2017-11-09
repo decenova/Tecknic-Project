@@ -23,6 +23,7 @@ public class UserDTO {
     private String phoneNum;
     private String address;
     private String role;
+    private int roleId;
     private String DOJ;
 
     public UserDTO() {
@@ -123,6 +124,14 @@ public class UserDTO {
 
     public void setDOJ(String DOJ) {
         this.DOJ = DOJ;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     @Override

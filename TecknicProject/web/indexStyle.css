@@ -198,7 +198,7 @@ svg {
 .postBody {
     margin-top: 20px;
 }
-.postBody a {
+.postBody>a {
     font-size: 1.5em;
     color: #333333;
     text-decoration: none;
