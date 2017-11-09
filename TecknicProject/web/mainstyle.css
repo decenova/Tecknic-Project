@@ -331,6 +331,9 @@ ul a:hover{
     line-height: 40px;
     cursor: pointer;
 }
+
+
+
 .userAvatar{
     width: 40px;
     height: 40px;
@@ -338,11 +341,12 @@ ul a:hover{
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    background-color: #ffffff;
 }
 .userAvatar img {
     width: 100%;
     height: auto;
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translate(0%,-50%);
 

@@ -105,6 +105,7 @@ function addCommentToArticle() {
         data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
         success: function () {
             $('#contentComment').val("");
+            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
             getCommentOfArticle();
         }
     });
