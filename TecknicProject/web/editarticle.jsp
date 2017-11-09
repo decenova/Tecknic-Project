@@ -61,12 +61,11 @@
                     <hr/>
 
                     <div class="" id="tagList">
-                        <!--                        <label>Thể loại*</label>
-                                                <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
-                                                <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
-                                                <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        <!--<label>Thể loại*</label>
+                            <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
+                            <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
+                            <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
                     </div>
-
                     <hr/>
                     <div class="buttonGroup">
                         <input class="button buttonPrimary" style="width: 100%" type="submit" value="Đăng bài">
