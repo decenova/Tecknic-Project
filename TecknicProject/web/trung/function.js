@@ -52,7 +52,7 @@ function showArticleTab(id) {
             if (articleList.length > 0) {
                 var s = "";
                 for (var i = 0; i < articleList.length; i++) {
-                    s += "<tr><td><a href=''>";
+                    s += "<tr><td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                     s += articleList[i].title;
                     s += "</a></td><td>";
                     s += articleList[i].createTime;
@@ -97,7 +97,7 @@ function showOwnArticleTab(id) {
                         s += "</a></td>";
                     } else if (articleList[i].status === "submited") {
                         s += "<tr class='warning'>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='#'>";
                         s += articleList[i].title;
                         s += "</a></td>";
                     } else {

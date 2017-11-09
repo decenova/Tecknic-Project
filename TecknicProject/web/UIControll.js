@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     document.addEventListener("scroll", headerControl);
-})
+});
 
 function showTab(id,tag) {
     $(".tabContent").hide();

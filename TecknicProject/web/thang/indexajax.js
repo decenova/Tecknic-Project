@@ -67,7 +67,7 @@ function loadindex(sizePage, positon) {
             }
             isLoad = false;
         }
-    })
+    });
 }
 
 

@@ -13,7 +13,9 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import trung.dao.ArticleDAO;
+import trung.dao.UserDAO;
 import trung.dto.ArticleDTO;
+import trung.dto.UserDTO;
 
 /**
  *
@@ -32,18 +34,21 @@ public class ShowArticle extends ActionSupport{
     public String execute() throws Exception {
         
         ArticleDAO aDao = new ArticleDAO();
-        ArticleDTO article = aDao.viewArticleForUpdate(articleId);
+        UserDAO uDao = new UserDAO();
         
         Map session = ActionContext.getContext().getSession();
+        
         if (session.get("Article" + articleId) == null) {
             session.put("Article" + articleId, articleId);
             aDao.updateNumOfView(articleId);
         }
         
-        
+        ArticleDTO article = aDao.viewArticleForUpdate(articleId);
+        UserDTO creator = uDao.findOtherProfileByUserID(article.getCreatorId());
              
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("Article", article);
+        request.setAttribute("Creator", creator);
         
         return "success";
     }
