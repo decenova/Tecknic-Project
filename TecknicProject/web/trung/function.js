@@ -97,7 +97,7 @@ function showOwnArticleTab(id) {
                         s += "</a></td>";
                     } else if (articleList[i].status === "submited") {
                         s += "<tr class='warning'>";
-                        s += "<td><a href=''>";
+                        s += "<td><a href='#'>";
                         s += articleList[i].title;
                         s += "</a></td>";
                     } else {
