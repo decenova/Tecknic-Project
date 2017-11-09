@@ -38,6 +38,7 @@ public class CommentDAO {
             e.printStackTrace();
         }
     }
+
     //load các comment theo bài viết
     public ArrayList<CommentDTO> loadCommentsByArticleID(int articleID) {
         ArrayList<CommentDTO> result = new ArrayList<>();
@@ -51,7 +52,7 @@ public class CommentDAO {
             rs = preStm.executeQuery();
             CommentDTO comment;
             while (rs.next()) {
-                comment = new  CommentDTO();
+                comment = new CommentDTO();
                 comment.setID(rs.getInt("Id"));
                 comment.setNameUser(rs.getString("Name"));
                 comment.setAvatarUser(rs.getString("Avatar"));
@@ -60,7 +61,7 @@ public class CommentDAO {
                 comment.setContent(rs.getString("Content"));
                 result.add(comment);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -68,6 +69,41 @@ public class CommentDAO {
         }
         return result;
     }
+
+    public ArrayList<CommentDTO> LoadAutoCmtByArticleID(int articleID, int pos, int size) {
+        ArrayList<CommentDTO> result = new ArrayList<>();
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select c.Id, u.Name, u.Avatar, c.CreateTime, c.Content\n"
+                    + "from Comment c inner join [User] u on c.UserId = u.Id\n"
+                    + "where c.ArticleId=? order by c.CreateTime DESC\n"
+                    + "OFFSET ? ROWS\n"
+                    + "FETCH NEXT ? ROWS ONLY";
+            preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, articleID);
+            preStm.setInt(2, pos);
+            preStm.setInt(3, size);
+            rs = preStm.executeQuery();
+            CommentDTO comment;
+            while (rs.next()) {
+                comment = new CommentDTO();
+                comment.setID(rs.getInt("Id"));
+                comment.setNameUser(rs.getString("Name"));
+                comment.setAvatarUser(rs.getString("Avatar"));
+//                comment.setCreateTime(rs.getTimestamp("CreateTime"));
+                comment.setTxtCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
+                comment.setContent(rs.getString("Content"));
+                result.add(comment);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
+
     //status sẽ cập nhật sau
     public boolean addComment(int userID, int articleID, String content) {
         boolean result = false;
@@ -80,8 +116,9 @@ public class CommentDAO {
             preStm.setString(3, content);
             preStm.setTimestamp(4, Utils.getTimeSystem());
             preStm.setBoolean(5, true);
-            if(preStm.executeUpdate() > 0)
+            if (preStm.executeUpdate() > 0) {
                 result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -97,8 +134,9 @@ public class CommentDAO {
             String sql = "delete from Comment where Id = ?";
             preStm = conn.prepareStatement(sql);
             preStm.setInt(1, commentID);
-            if (preStm.executeUpdate() > 0)
+            if (preStm.executeUpdate() > 0) {
                 result = true;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -106,7 +144,7 @@ public class CommentDAO {
         }
         return result;
     }
-    
+
     public int getAmountOfComment(int articleID) {
         int count = 0;
         try {

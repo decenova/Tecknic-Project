@@ -22,6 +22,7 @@
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
+        <script src="tung/autoloadcmt.js" type="application/javascript"></script>
     </head>
     <body onsubmit="return false" >
         <s:include value="header.jsp"></s:include>
@@ -45,14 +46,14 @@
                                 <c:if test="${requestScope.Article.status eq 'reviewing' && sessionScope.ROLE != 'Colaborator'}">
                                     <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
                                     <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
-                                </c:if>
-                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                    </c:if>
+                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
-                                </c:if>
-                                <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
+                                    </c:if>
+                                    <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                </c:if>
-                            </c:if>
+                                        </c:if>
+                                    </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>
@@ -111,15 +112,16 @@
                     <div id="CommentContain">
 
                     </div>
-                    <div class="buttonGroup">
-                        <div class="col-xs-6 button buttonPrimary" onclick="">Xem thêm bình luận</div>
-                    </div>
+                    <!--                    <div class="buttonGroup">
+                                            <div class="col-xs-6 button buttonPrimary" onclick="">Xem thêm bình luận</div>
+                                        </div>-->
+
                 </div>
             </div>
-        </div>
-        <script>
-            getCommentOfArticle();
-        </script>
-        <s:include value="footer.jsp"></s:include>
+            <script>
+    //            getCommentOfArticle();
+                getCommentOfArticleV2();
+            </script>
+            <s:include value="footer.jsp"></s:include>
     </body>
 </html>

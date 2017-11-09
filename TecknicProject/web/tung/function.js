@@ -2,7 +2,7 @@
 //lấy hết thành viên
 function getAllUser() {
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/loadAll",
         success: function (data) {
             var div = $("#allUserContain");
@@ -35,7 +35,7 @@ function getAllUser() {
 
 function findUserByLike() {
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/searchLikeName",
         data: "searchName=" + $('#sName').val(),
         success: function (data) {
@@ -69,7 +69,7 @@ function findUserByLike() {
 function getCommentOfArticle() {
     console.log($('#articleId').val());
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/loadComment",
         data: {articleId: $('#articleId').val()},
         success: function (data) {
@@ -99,7 +99,7 @@ function getCommentOfArticle() {
 function addCommentToArticle() {
     console.log($('#articleId').val());
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/addComment",
         data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
         success: function () {
@@ -111,7 +111,7 @@ function addCommentToArticle() {
 //-------------------------------------------ARTICLE------------------------------------------
 function findArticleByTitle() {
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/findArticle",
         data: "searchTitle=" + $('#sTitle').val(),
         success: function (data) {
@@ -141,7 +141,7 @@ function findArticleByTagOrTitle() {
         return $(this).val();
     }).get();
     $.ajax({
-        type: "POST",
+        method: "POST",
         url: "/Tecknic/findArticleV2",
         data: "searchTitle=" + $('#sTitle').val() + "&cbxTag=" + names,
         success: function (data) {
