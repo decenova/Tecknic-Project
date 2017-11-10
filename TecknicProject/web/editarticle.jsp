@@ -20,6 +20,7 @@
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
+        <script src="tung/validation.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
         <%-- Text editor --%>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -40,23 +41,23 @@
     <body onload="showAllTag(<s:property value="articleId"/>)">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form action="addArticle" method="POST">
+                <form action="addArticle" method="POST" id="addPost">
                     <div class="formContain formBox">
                         <h1>Đăng bài</h1>
                         <div class="inputText">
                             <label>Tiêu đề*</label>
-                            <input type="text" name="txtTitle" maxlength="200" value="<s:property value="article.title"/>">
+                            <input type="text" id="title" onblur="checkTitle()" name="txtTitle" maxlength="200" value="<s:property value="article.title"/>">
                     </div>
                     <div class="inputText">
                         <label>Ảnh bìa</label>
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
-                        <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
-                        <img id="imgShow" src="" />
+                        <input id="urlCoverImage" onblur="checkCoverImage()" type="file" onchange="getURLCoverImage()"/>
+                        <img id="imgShow" src="<s:property value="article.coverImage"/>" />
                     </div>
                     <hr/>
                     <div class="inputText">
                         <label>Nội dung*</label>
-                        <textarea name="txtContent" id="editor"><s:property value="article.content"/></textarea>
+                        <textarea onblur="checkContent()" name="txtContent" id="editor"><s:property value="article.content"/></textarea>
                     </div>
                     <hr/>
 
@@ -68,7 +69,7 @@
                     </div>
                     <hr/>
                     <div class="buttonGroup">
-                        <input class="button buttonPrimary" style="width: 100%" type="submit" value="Đăng bài">
+                        <input class="button buttonPrimary" style="width: 100%" onclick="addPost('addPost')" value="Đăng bài">
                     </div>
                 </div>
             </form>

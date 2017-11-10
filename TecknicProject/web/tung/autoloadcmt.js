@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 });
 function goNextCmt() {
-    console.log('haha');
+    $('#linkCmt').hide();
     pos += size;
     getCommentOfArticleV2(size, pos);
     $(window).scroll(function () {
@@ -52,7 +52,7 @@ function getCommentOfArticleV2(sizePage, position) {
                 }
                 console.log(commentList.length);
                 if (pos === 0 && commentList.length >= 5) {
-                s += '<a onclick="goNextCmt()">Xem thêm bình luận</a>';
+                s += '<a id="linkCmt" onclick="goNextCmt()">Xem thêm bình luận</a>';
             }
             }
             div.append(s);

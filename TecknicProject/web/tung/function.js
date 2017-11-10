@@ -129,7 +129,7 @@ function findArticleByTitle() {
                 }
                 s += '</tbody></table>';
             } else {
-                s = '<p>No record is not found!</p>';
+                s = '<p>Không tìm thấy bài viết nào</p>';
             }
             div.append(s);
         }

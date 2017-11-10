@@ -110,7 +110,6 @@
                     <hr>
                     <!-- Tung xử lý ajax -->
                     <div id="CommentContain">
-
                     </div>
                     <!--                    <div class="buttonGroup">
                                             <div class="col-xs-6 button buttonPrimary" onclick="">Xem thêm bình luận</div>
@@ -119,7 +118,7 @@
                 </div>
             </div>
             <script>
-    //            getCommentOfArticle();
+                //            getCommentOfArticle();
                 getCommentOfArticleV2();
             </script>
             <s:include value="footer.jsp"></s:include>
