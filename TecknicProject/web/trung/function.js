@@ -1,43 +1,66 @@
 function showAllTag(articleId) {
 //    if (articleId === null || articleId === undefined) {
-        $.ajax({
-            method: 'GET',
-            url: "/Tecknic/getTagListForNew",
-            success: function (data) {
-                var div = $("#tagList");
-                div.empty();
-                var s = "<label>Thể loại*</label>";
+    $.ajax({
+        method: 'GET',
+        url: "/Tecknic/getTagListForNew",
+        success: function (data) {
+            var div = $("#tagList");
+            div.empty();
+            var s = "<label>Thể loại*</label>";
 
-                for (var tag in data.result) {
-                    if (data.result.hasOwnProperty(tag)) {
-                        s += "<p>";
-                        s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
-                        s += " ";
-                        s += "> " + data.result[tag];
-                        s += "</p>";
-                    }
+            for (var tag in data.result) {
+                if (data.result.hasOwnProperty(tag)) {
+                    s += "<p>";
+                    s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
+                    s += " ";
+                    s += "> " + data.result[tag];
+                    s += "</p>";
                 }
-                div.append(s);
-                if (articleId !== null && articleId !== undefined) 
-                    checkTag(articleId);
             }
-        });
-    }
+            div.append(s);
+            if (articleId !== null && articleId !== undefined)
+                checkTag(articleId);
+        }
+    });
+}
+function showAllTag() {
+//    if (articleId === null || articleId === undefined) {
+    $.ajax({
+        method: 'GET',
+        url: "/Tecknic/getTagListForNew",
+        success: function (data) {
+            var div = $("#tagList");
+            div.empty();
+            var s = "<label>Thể loại*</label>";
+
+            for (var tag in data.result) {
+                if (data.result.hasOwnProperty(tag)) {
+                    s += "<p>";
+                    s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
+                    s += " ";
+                    s += "> " + data.result[tag];
+                    s += "</p>";
+                }
+            }
+            div.append(s);
+        }
+    });
+}
 function checkTag(articleId) {
-        $.ajax({
-            method: 'GET',
-            url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
-            success: function (data) {
-                for (var tag in data.result) {
-                    if (data.result.hasOwnProperty(tag)) {
-                        if (data.result[tag].check === 1) {
-                            document.getElementById(tag).checked = true;
-                        }
+    $.ajax({
+        method: 'GET',
+        url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
+        success: function (data) {
+            for (var tag in data.result) {
+                if (data.result.hasOwnProperty(tag)) {
+                    if (data.result[tag].check === 1) {
+                        document.getElementById(tag).checked = true;
                     }
                 }
             }
-        });
-    }
+        }
+    });
+}
 
 
 

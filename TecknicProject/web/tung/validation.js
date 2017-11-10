@@ -154,9 +154,9 @@ function checkContent() {
         return true;
     }
 }
-function checkTag() {
+function checkNewTag() {
     var tag = $('#cbxTag');
-    var value = tag.val().toString().trim();
+    var value = tag.val();
     //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = tag.parent();
     if (value === null) {
@@ -175,8 +175,9 @@ function checkTag() {
         return true;
     }
 }
+//sửa checkTag thành checkNewTag
 function addPost(tagId) {
-    if (checkTitle() && checkCoverImage() && checkContent() && checkTag()){
+    if (checkTitle() && checkCoverImage() && checkContent() && checkNewTag()){
         document.getElementById(tagId).submit();
     } else {
         $(document).scrollTop(0);

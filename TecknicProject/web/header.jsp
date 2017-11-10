@@ -11,6 +11,7 @@
     <head>
         <title>Header</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="thang/headerLoad.js" type="application/javascript"></script>
     </head>
     <body>
         <header>
@@ -78,9 +79,8 @@
                         <hr/>
                     </s:if>
                     <%-- cái dưới dùng để lọc nội dung vài post theo loại --%>
-                    <a><li>Điện thoại</li></a>
-                    <a><li>Laptop</li></a>
-                    <a><li>Khác</li></a>
+                    <div id="categories">
+                    </div>
                 </ul>
             </div>
         </nav>
