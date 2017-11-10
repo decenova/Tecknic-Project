@@ -40,7 +40,17 @@
                             <a><span class="poster">${requestScope.Creator.name}</span></a>
                             <br/>
                             <span class="datepost">${requestScope.Article.createTime}</span>
-                        </div>                       
+                        </div>
+                        <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                            <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
+                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                    <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
+                                </c:if>
+                                <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
+                                    <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
+                                </c:if>
+                            </c:if>
+                        </div>
                     </div>
                     <%--Chưa thêm hình--%>
                     <div class="postImage">
