@@ -21,6 +21,7 @@ public class IndexLoadArticleAction extends ActionSupport {
 
     private int size;
     private int pos;
+    private int tagId;
     private ArrayList json;
 
     public IndexLoadArticleAction() {
@@ -32,7 +33,10 @@ public class IndexLoadArticleAction extends ActionSupport {
     })
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
-        json = dao.loadIndexArticle(size, pos);
+        if (tagId == 0)
+            json = dao.loadIndexArticle(size, pos);
+        else
+            json = dao.loadIndexArticle(size, pos,tagId);
         return SUCCESS;
     }
 
@@ -46,6 +50,10 @@ public class IndexLoadArticleAction extends ActionSupport {
 
     public void setPos(int pos) {
         this.pos = pos;
+    }
+
+    public void setTagId(int tagId) {
+        this.tagId = tagId;
     }
 
 }

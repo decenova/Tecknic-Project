@@ -52,7 +52,7 @@ function getCommentOfArticleV2(sizePage, position) {
                 }
                 console.log(commentList.length);
                 if (pos === 0 && commentList.length >= 5) {
-                s += '<a id="linkCmt" onclick="goNextCmt()">Xem thêm bình luận</a>';
+                s += '<a id="linkCmt" onclick="goNextCmt()"><p style="text-align: center;">Xem thêm bình luận</p></a>';
             }
             }
             div.append(s);

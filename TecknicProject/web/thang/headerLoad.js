@@ -19,7 +19,7 @@ function showAllHeaderTag() {
             var s = "";
             for (var tag in data.result) {
                 s += "<a";
-                s += " href='#" + tag + "'";
+                s += " href='loadIndex?tagId=" + tag + "'";
                 s += " ><li>";
                 s += data.result[tag];
                 s += "</li></a>";

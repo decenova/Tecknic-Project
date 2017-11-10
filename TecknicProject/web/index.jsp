@@ -22,6 +22,7 @@
         <script src="thang/indexajax.js" type="application/javascript"></script>
     </head>
     <body>
+        <input type="hidden" id="tagIdFilter" value="<s:property value="%{tagId}"></s:property>"/>
         <s:include value="header.jsp">
         </s:include>
         <div class="slideShow">
@@ -43,6 +44,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="main selfclear">
             <div class="postContaint" id="postContaint">
                 

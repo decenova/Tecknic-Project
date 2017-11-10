@@ -17,7 +17,7 @@
         <header>
             <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>
             <div class="logocontain col-xs-2 col-sm-2 col-md-1 col-lg-1">
-                <a href="index.jsp">
+                <a href="/Tecknic/">
                     <img src="img/newlogo.svg"/>
                 </a>
             </div>

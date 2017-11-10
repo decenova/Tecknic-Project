@@ -61,7 +61,7 @@
                     <s:if test="%{#session.ROLE == 'Administrator' and user.role != 'Administrator'}">
                         <div class="controlButton">
                             <div class="buttonCircle buttonSuccess" onclick="showPopup('popupUpgrade')"><i class="fa fa-plus"></i></div>
-                            <div class="buttonCircle buttonDanger" onclick="showPopup('popupBan')"><i class="fa fa-ban"></i></div>
+                            <div class="buttonCircle buttonDanger" onclick="showPopup('popupBan');autoFocus('txtReason')"><i class="fa fa-ban"></i></div>
                         </div>
                     </s:if>
                     <div class="avatar">
@@ -155,7 +155,7 @@
                             </div>
                             <div class="inputText">
                                 <label>Lý do</label>
-                                <input type="text" id="txtReason"/>
+                                <input type="text" id="txtReason" name="txtReason"/>
                             </div>
                             <hr/>
                             <div class="buttonGroup">
