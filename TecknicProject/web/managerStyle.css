@@ -62,6 +62,9 @@
 #postHistory {
     display: block;
 }
+#report{
+    display: none;
+}
 .tabContent {
 
 }

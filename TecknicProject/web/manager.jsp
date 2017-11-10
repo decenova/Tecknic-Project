@@ -35,6 +35,7 @@
                         <div class="tabControl selfclear">
                             <div class="tab tabSelect" onclick="showTab('#postHistory', this)">Bài viết</div>
                             <div class="tab" onclick="showTab('#searchProfile', this)">Thông tin thành viên</div>
+                            <div class="tab" onclick="showTab('#report', this)">Thống kê</div>
                         </div>
                     </div>
                     <div class="profileMainContaint widthNarrow">
@@ -76,6 +77,28 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <div class="tabContent widthNarrow" id="report">
+                            <!--                            <form>-->
+                            <div class="formContain">
+                                <h2>Tài khoản mới có nhiều lượt xem nhất</h2>
+                                <div class="inputText">
+                                    <label>Từ ngày</label>
+                                    <input id="startDay" type="date" name="startDay">
+                                </div>
+                                <div class="inputText">
+                                    <label>Từ ngày</label>
+                                    <input id="endDay" type="date" name="endDay">
+                                </div>
+                                <br/>
+                                <div class="buttonGroup">
+                                    <div class="button buttonPrimary" onclick="findUserByLike()"> <i class="fa fa-search"></i> </div>
+                                </div>
+                                <br/>
+                                <div class="overTable" id="bestUserContain">
+                                </div>
+                            </div>
+                            <!--                        </form>-->
                         </div>
                     </div>
                 </div>
