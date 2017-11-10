@@ -27,7 +27,7 @@
         <s:include value="header.jsp">
         </s:include>
         <div class="slideShow">
-            <div class="slideContain selfclear">
+            <div class="slideContain selfclear" id="slideContain">
                 <div class="slide" style="background-image: url('img/cover01.jpg')">
                     <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
                 </div>
