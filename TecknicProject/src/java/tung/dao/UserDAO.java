@@ -158,4 +158,43 @@ public class UserDAO {
         }
         return result;
     }
+    //-----------------------------------------------------
+    //lấy password cũ
+    public String getPasswordByUsername(String username) {
+        String password = "";
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select [Password] from [User] where Username = ? ";
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, username);
+            rs = preStm.executeQuery();
+            if (rs.next()) {
+                password = rs.getString("Password");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return password;
+    }
+    //thay đổi password
+      public boolean changePassword(String newPassword, String username) {
+        boolean result = false;
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "update [User] set [Password] = ? where Username = ?";
+            preStm = conn.prepareStatement(sql);
+            preStm.setString(1, newPassword);
+            preStm.setString(2, username);
+            if (preStm.executeUpdate() > 0) {
+                result = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
+    }
 }

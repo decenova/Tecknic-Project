@@ -22,12 +22,12 @@ public class CheckUsernameAction extends ActionSupport {
     public CheckUsernameAction() {
     }
     @Action(value = "/checkusername", results = {
-        @Result(name = "sussess", type = "json")
+        @Result(name = "success", type = "json")
     })
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         check = dao.isUsernameExsisted(username);
-        return "sussess";
+        return "success";
     }
 
     public boolean isCheck() {

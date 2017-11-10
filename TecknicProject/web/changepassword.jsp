@@ -19,27 +19,28 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="tung/validation.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form>
+                <form method="POST" id="changePwdForm" action="changePwd">
                     <div class="formContain formBox">
                         <h1>Đổi mật khẩu</h1>
                         <div class="inputText">
                             <label>Mật khẩu cũ</label>
-                            <input type="password" name="txtPassword">
+                            <input type="password" onblur="checkOldPasword()" id="old" name="oldPassword">
                         </div>
                         <div class="inputText">
                             <label>Mật khẩu mới</label>
-                            <input type="password" name="txtPassword">
+                            <input type="password" onblur="checkPass()" id="new" name="newPassword">
                         </div>
                         <div class="inputText">
                             <label>Xác nhận mật khẩu mới</label>
-                            <input type="password" name="txtPassword">
+                            <input type="password" onblur="checkConfirmPassword()" id="confirm" name="txtConfirmNewPassword">
                         </div>
                         <div class="buttonGroup">
-                            <div class="button buttonPrimary">Đổi mật khẩu</div>
+                            <div class="button buttonPrimary" onclick="submitChangePassword('changePwdForm')">Đổi mật khẩu</div>
                         </div>
                     </div>
                 </form>
