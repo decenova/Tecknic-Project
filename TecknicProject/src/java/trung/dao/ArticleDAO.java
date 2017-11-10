@@ -47,6 +47,40 @@ public class ArticleDAO {
         }
     }
 
+    public ArrayList<ArticleDTO> loadUncheckArticle(int size, int pos) {
+        ArrayList<ArticleDTO> result = null;
+
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select a.Id, Title, CreateTime, Name\n"
+                    + " from Article a inner join [Status] s on a.StatusId = s.Id\n"
+                    + " where a.StatusId = 1\n"
+                    + " order by ModifyTime desc\n"
+                    + " OFFSET ? ROWS\n"
+                    + " FETCH NEXT ? ROWS ONLY;";
+            pre = conn.prepareStatement(sql);
+            pre.setInt(1, pos);
+            pre.setInt(2, size);
+            rs = pre.executeQuery();
+            result = new ArrayList<ArticleDTO>();
+            while (rs.next()) {
+                ArticleDTO dto = new ArticleDTO();
+                dto.setId(rs.getInt("Id"));
+                dto.setTitle(rs.getString("Title"));
+                dto.setCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
+                dto.setStatus(rs.getString("Name"));
+                
+                result.add(dto);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return result;
+    }
+
     //Các member xem bài post của chính mình
     //Dựa vào ID của member lấy ra ArrayList<ArticleDTO>
     //Lấy ra gồm ID, Title, CreateTime, Status
@@ -293,6 +327,7 @@ public class ArticleDAO {
 
         return result;
     }
+
     public Map<Integer, String> getAllTagForNew() {
         Map<Integer, String> result = new HashMap<>();
 

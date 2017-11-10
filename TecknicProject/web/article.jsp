@@ -43,17 +43,17 @@
                         </div>
                         <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
-                                <c:if test="${requestScope.Article.status eq 'reviewing' && sessionScope.ROLE != 'Colaborator'}">
-                                    <div class="buttonCircle buttonSuccess"><i class="fa fa-check"></i></div>
-                                    <div class="buttonCircle buttonWarning"><i class="fa fa-times"></i></div>
-                                    </c:if>
-                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                <c:if test="${requestScope.Article.status eq 'submited' && sessionScope.ROLE != 'Colaborator'}">
+                                    <div class="buttonCircle buttonSuccess" onclick="checkArticle(${requestScope.Article.id}, 3)"><i class="fa fa-check"></i></div>
+                                    <div class="buttonCircle buttonWarning" onclick="checkArticle(${requestScope.Article.id}, 4)"><i class="fa fa-times"></i></div>
+                                </c:if>
+                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
-                                    </c:if>
-                                    <c:if test="${requestScope.Article.status != 'posted' && requestScope.Article.creatorId eq sessionScope.ID}">
+                                </c:if>
+                                <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                        </c:if>
-                                    </c:if>
+                                </c:if>
+                            </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>

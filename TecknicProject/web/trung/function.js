@@ -149,4 +149,14 @@ function showOwnArticleTab(id) {
     });
 }
 
+function checkArticle(articleId, statusId) {
+    $.ajax({
+        url: "checkArticle",
+        data: {articleId: articleId, statusId: statusId},
+        success: function (data) {
+            location.reload();
+        }
+    })
+}
+
 

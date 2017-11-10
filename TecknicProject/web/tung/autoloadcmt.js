@@ -50,7 +50,6 @@ function getCommentOfArticleV2(sizePage, position) {
                     s += '</div>';
                     s += '<div class="commentIndex">#' + commentList[i].ID + '</div><hr/></div></div>';
                 }
-                console.log(commentList.length);
                 if (pos === 0 && commentList.length >= 5) {
                 s += '<a id="linkCmt" onclick="goNextCmt()">Xem thêm bình luận</a>';
             }
