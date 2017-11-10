@@ -7,7 +7,6 @@ function showAllTag(articleId) {
             var div = $("#tagList");
             div.empty();
             var s = "<label>Thể loại*</label>";
-
             for (var tag in data.result) {
                 if (data.result.hasOwnProperty(tag)) {
                     s += "<p>";
@@ -32,11 +31,10 @@ function showAllTag() {
             var div = $("#tagList");
             div.empty();
             var s = "<label>Thể loại*</label>";
-
             for (var tag in data.result) {
                 if (data.result.hasOwnProperty(tag)) {
                     s += "<p>";
-                    s += "<input type='checkbox' name='cbxTag' value=" + tag + " id = " + tag;
+                    s += "<input type='checkbox' onblur='checkNewTag()' name='cbxTag' value=" + tag + " id = " + tag;
                     s += " ";
                     s += "> " + data.result[tag];
                     s += "</p>";
@@ -115,12 +113,12 @@ function showOwnArticleTab(id) {
                         s += "</a></td>";
                     } else if (articleList[i].status === "reviewing") {
                         s += "<tr class='well'>";
-                        s += "<td><a href='#'>";
+                        s += "<td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                         s += articleList[i].title;
                         s += "</a></td>";
                     } else if (articleList[i].status === "submited") {
                         s += "<tr class='warning'>";
-                        s += "<td><a href='#'>";
+                        s += "<td><a href='showArticle?articleId=" + articleList[i].id + "'>";
                         s += articleList[i].title;
                         s += "</a></td>";
                     } else {

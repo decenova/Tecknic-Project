@@ -71,27 +71,6 @@ function updateUser(tagId) {
 }
 //-------------------------ARTICLE------------------------------------
 function checkTitle() {
-    var tag = $('#name');
-    var value = tag.val().toString().trim();
-    //  lấy thẻ cha để có thể thêm vào cái popover
-    var parent = tag.parent();
-    if (value === null || value.length <= 0 || value.length > 200) {
-//      thêm popover
-        parent.children('div.mypopover').remove();
-        parent.append(popoverStr);
-//      thêm câu thông báo vào popover
-        
-        tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Tiêu đề bài viết không được để trống và không dài quá 200 kí tự');
-        return false;
-    } else {
-//      xóa popover nếu nhập đúng
-        tag.css({"border-left-color": "#226699"});
-        parent.children('div.mypopover').remove();
-        return true;
-    }
-}
-function checkTitle() {
     var tag = $('#title');
     var value = tag.val().toString().trim();
     //  lấy thẻ cha để có thể thêm vào cái popover
@@ -117,7 +96,7 @@ function checkCoverImage() {
     var value = tag.val().toString().trim();
     //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = tag.parent();
-    if (value === null || value.length <= 0 || value.length > 200) {
+    if (value === null || value.length <= 0) {
 //      thêm popover
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
@@ -155,11 +134,10 @@ function checkContent() {
     }
 }
 function checkNewTag() {
-    var tag = $('#cbxTag');
-    var value = tag.val();
+    var tag = $('[name="cbxTag"]:checked');
     //  lấy thẻ cha để có thể thêm vào cái popover
-    var parent = tag.parent();
-    if (value === null) {
+    var parent = $('#tagList');
+    if (tag.length == 0) {
 //      thêm popover
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
@@ -180,6 +158,9 @@ function addPost(tagId) {
     if (checkTitle() && checkCoverImage() && checkContent() && checkNewTag()){
         document.getElementById(tagId).submit();
     } else {
-        $(document).scrollTop(0);
+        if (!checkTitle() || !checkCoverImage())
+            $(document).scrollTop(0);
+        else 
+            $(document).scrollTop(1000);
     }
 }

@@ -43,7 +43,7 @@
     <body onload="showAllTag(<s:property value="articleId"/>)">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
-                <form action="addArticle" method="POST" id="addPost">
+                <form action="addArticle" method="POST" id="addPostForm">
                     <div class="formContain formBox">
                         <h1>Đăng bài</h1>
                         <div class="inputText">
@@ -53,7 +53,7 @@
                     <div class="inputText">
                         <label>Ảnh bìa</label>
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
-                        <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
+                        <input id="urlCoverImage" type="file" onblur="checkCoverImage()" onchange="getURLCoverImage()"/>
                         <div class="postImage">
                             <img id="imgShow" src="img/No_image_available.svg" />
                         </div>
@@ -73,7 +73,7 @@
                     </div>
                     <hr/>
                     <div class="buttonGroup">
-                        <input class="button buttonPrimary" style="width: 100%" onclick="addPost('addPost')" value="Đăng bài">
+                        <input class="button buttonPrimary" style="width: 100%" onclick="addPost('addPostForm')" value="Đăng bài">
                     </div>
                 </div>
             </form>

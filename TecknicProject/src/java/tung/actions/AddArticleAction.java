@@ -36,15 +36,14 @@ public class AddArticleAction extends ActionSupport {
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
         ArticleDTO article = new ArticleDTO();
-        if (!txtTitle.isEmpty()) {
-            article.setTitle(txtTitle);
-            article.setCoverImage(txtImage);
-            article.setContent(txtContent);
-            Map session = ServletActionContext.getContext().getSession();
-            article.setCreatorID((int) session.get("ID"));
-            dao.addArticle(article);
-            dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
-        }
+        article.setTitle(txtTitle);
+        article.setCoverImage(txtImage);
+        article.setContent(txtContent);
+        Map session = ServletActionContext.getContext().getSession();
+        article.setCreatorID((int) session.get("ID"));
+        dao.addArticle(article);
+        dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
+
         return SUCCESS;
     }
 
