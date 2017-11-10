@@ -126,7 +126,7 @@ public class ArticleDAO {
                     + " FETCH NEXT ? ROWS ONLY;");
             prestmt.setInt(2, pos);
             prestmt.setInt(3, size);
-            prestmt.setString(1, search);
+            prestmt.setString(1, '%' + search + '%');
             rs = prestmt.executeQuery();
             while (rs.next()) {
                 articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));

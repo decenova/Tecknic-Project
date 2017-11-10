@@ -29,7 +29,6 @@
         <div class="slideShow">
             <div class="slideContain selfclear" id="slideContain">
                 <div class="slide" style="background-image: url('img/cover01.jpg')">
-                    <a>Sorry không có bài mới</a>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@
                 <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i></div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
-                <input id="search" type="text" class="" name="search" placeholder="search...">
+                <input id="search" type="text" class="" name="search" placeholder="search..." maxlength="500">
                 <div class="button buttonPrimary" id="searchButton">
                     <i class="fa fa-search"></i>
                 </div>
