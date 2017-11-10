@@ -64,11 +64,121 @@ function checkPhone() {
         return true;
     }
 }
-
-
-
 function updateUser(tagId) {
     if (checkName() && checkEmail() && checkPhone()){
         document.getElementById(tagId).submit();
+    }
+}
+//-------------------------ARTICLE------------------------------------
+function checkTitle() {
+    var tag = $('#name');
+    var value = tag.val().toString().trim();
+    //  lấy thẻ cha để có thể thêm vào cái popover
+    var parent = tag.parent();
+    if (value === null || value.length <= 0 || value.length > 200) {
+//      thêm popover
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+//      thêm câu thông báo vào popover
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Tiêu đề bài viết không được để trống và không dài quá 200 kí tự');
+        return false;
+    } else {
+//      xóa popover nếu nhập đúng
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkTitle() {
+    var tag = $('#title');
+    var value = tag.val().toString().trim();
+    //  lấy thẻ cha để có thể thêm vào cái popover
+    var parent = tag.parent();
+    if (value === null || value.length <= 0 || value.length > 200) {
+//      thêm popover
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+//      thêm câu thông báo vào popover
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Tiêu đề bài viết không được để trống và không dài quá 200 kí tự');
+        return false;
+    } else {
+//      xóa popover nếu nhập đúng
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkCoverImage() {
+    var tag = $('#urlHidden');
+    var value = tag.val().toString().trim();
+    //  lấy thẻ cha để có thể thêm vào cái popover
+    var parent = tag.parent();
+    if (value === null || value.length <= 0 || value.length > 200) {
+//      thêm popover
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+//      thêm câu thông báo vào popover
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Bài viết không thể thiếu ảnh bìa');
+        return false;
+    } else {
+//      xóa popover nếu nhập đúng
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkContent() {
+    var tag = $('#editor');
+    var value = tag.val().toString().trim();
+    //  lấy thẻ cha để có thể thêm vào cái popover
+    var parent = tag.parent();
+    if (value === null || value.length <= 0 || value.length > 200) {
+//      thêm popover
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+//      thêm câu thông báo vào popover
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Nội dung không thể không có');
+        return false;
+    } else {
+//      xóa popover nếu nhập đúng
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkTag() {
+    var tag = $('#cbxTag');
+    var value = tag.val().toString().trim();
+    //  lấy thẻ cha để có thể thêm vào cái popover
+    var parent = tag.parent();
+    if (value === null) {
+//      thêm popover
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+//      thêm câu thông báo vào popover
+        
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Hãy chọn thể loại của bài viết');
+        return false;
+    } else {
+//      xóa popover nếu nhập đúng
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function addPost(tagId) {
+    if (checkTitle() && checkCoverImage() && checkContent() && checkTag()){
+        document.getElementById(tagId).submit();
+    } else {
+        $(document).scrollTop(0);
     }
 }
