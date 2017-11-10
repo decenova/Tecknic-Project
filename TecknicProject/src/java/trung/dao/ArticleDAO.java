@@ -47,6 +47,42 @@ public class ArticleDAO {
         }
     }
 
+    public boolean checkArticle(int articleId, int statusId, int modId, String reason) {
+        boolean result = false;
+
+        try {
+            thang.dao.ArticleDAO thangArticleDAO = new thang.dao.ArticleDAO();
+            if (thangArticleDAO.changeStatus(articleId, statusId)) {
+                conn = MyConnection.getConnection();
+                if (statusId == 3) {
+                    String sql = "update Article set ModifyTime = ?, ModifierId = ? where Id = ?";
+                    pre = conn.prepareStatement(sql);
+                    pre.setTimestamp(1, Utils.getTimeSystem());
+                    pre.setInt(2, modId);
+                    pre.setInt(3, articleId);
+                } else if (statusId == 4) {
+                    String sql = "update Article set ModifyTime = ?, ModifierId = ?, Reason = ? where Id = ?";
+                    pre = conn.prepareStatement(sql);
+                    pre.setTimestamp(1, Utils.getTimeSystem());
+                    pre.setInt(2, modId);
+                    pre.setString(3, reason);
+                    pre.setInt(4, articleId);
+                }
+                
+                if (pre.executeUpdate() == 1) {
+                    result = true;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+
+        return result;
+    }
+
     public ArrayList<ArticleDTO> loadUncheckArticle(int size, int pos) {
         ArrayList<ArticleDTO> result = null;
 
@@ -69,7 +105,7 @@ public class ArticleDAO {
                 dto.setTitle(rs.getString("Title"));
                 dto.setCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
                 dto.setStatus(rs.getString("Name"));
-                
+
                 result.add(dto);
             }
         } catch (Exception e) {

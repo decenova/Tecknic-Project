@@ -23,6 +23,7 @@ function upgradeMember(userId) {
         }
     });
 }
+
 function showAllTag(articleId) {
 //    if (articleId === null || articleId === undefined) {
     $.ajax({
@@ -172,14 +173,14 @@ function showOwnArticleTab(id) {
     });
 }
 
-function checkArticle(articleId, statusId) {
+function checkArticle(articleId, statusId, modId, reason) {
     $.ajax({
         url: "checkArticle",
-        data: {articleId: articleId, statusId: statusId},
+        data: {articleId: articleId, statusId: statusId, modId: modId, reason: reason},
         success: function (data) {
             location.reload();
         }
-    })
+    });
 }
 
 

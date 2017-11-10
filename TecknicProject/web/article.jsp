@@ -44,8 +44,8 @@
                         <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
                                 <c:if test="${requestScope.Article.status eq 'submited' && sessionScope.ROLE != 'Colaborator'}">
-                                    <div class="buttonCircle buttonSuccess" onclick="checkArticle(${requestScope.Article.id}, 3)"><i class="fa fa-check"></i></div>
-                                    <div class="buttonCircle buttonWarning" onclick="checkArticle(${requestScope.Article.id}, 4)"><i class="fa fa-times"></i></div>
+                                    <div class="buttonCircle buttonSuccess" onclick="checkArticle(${requestScope.Article.id}, 3, ${sessionScope.ID}, null)"><i class="fa fa-check"></i></div>
+                                    <div class="buttonCircle buttonWarning" onclick="checkArticle(${requestScope.Article.id}, 4, ${sessionScope.ID}, 'chuaco')"><i class="fa fa-times"></i></div>
                                 </c:if>
                                 <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>

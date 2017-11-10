@@ -130,25 +130,9 @@
                 <div class="popupcontain">
                     <i class="fa fa-times" onclick="closePopup('popupBan')"></i>
                     <p></p>
-                    <!--<form action="" method="POST">-->
-<!--<<<<<<< HEAD
                     <div class="formContain" style="margin: 0">
                         <div class="inputText">
                             <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>
-=======-->
-                        <div class="formContain" style="margin: 0">
-                            <div class="inputText">
-                                <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>
-                            </div>
-                            <div class="inputText">
-                                <label>Lý do</label>
-                                <input type="text" id="txtReason" name="txtReason"/>
-                            </div>
-                            <hr/>
-                            <div class="buttonGroup">
-                                <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>)" value="Ok">
-                            </div>
-<!-->>>>>>> 6668d33b2617ba1461ec8ad9071248f96c753b29-->
                         </div>
                         <div class="inputText">
                             <label>Lý do</label>
@@ -159,7 +143,6 @@
                             <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>, <s:property value="#session.ID"/>)" value="Ok">
                         </div>
                     </div>
-                    <!--</form>-->
                 </div>
             </div>
         </s:if>
