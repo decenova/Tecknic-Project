@@ -167,6 +167,6 @@ function findArticleByTagOrTitle() {
         }
     });
     //-------------------------------------------URL Image Cover------------------------------------------
-
+//đã chuyển sang thang/upfile
 }
 

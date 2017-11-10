@@ -53,15 +53,10 @@
                     <div class="inputText">
                         <label>Ảnh bìa</label>
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
-<<<<<<< HEAD
-                        <input id="urlCoverImage" onblur="checkCoverImage()" type="file" onchange="getURLCoverImage()"/>
-                        <img id="imgShow" src="<s:property value="article.coverImage"/>" />
-=======
                         <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
                         <div class="postImage">
                             <img id="imgShow" src="img/No_image_available.svg" />
                         </div>
->>>>>>> af8a718b4a0e85bc2864243c8dbb0168b3ea61b0
                     </div>
                     <hr/>
                     <div class="inputText">
