@@ -50,7 +50,7 @@ function getCommentOfArticleV2(sizePage, position) {
                     s += '</div></div><div class="commentContent">';
                     s += '<p>' + commentList[i].content + '</p>';
                     s += '</div>';
-                    s += '<div class="commentIndex">#' + $('#numOfComment').html() + '</div><hr/></div></div>';
+                    s += '<div class="commentIndex">#' + commentList[i].ID + '</div><hr/></div></div>';
                 }
                 console.log(commentList.length);
                 if (pos === 0 && commentList.length >= 5) {

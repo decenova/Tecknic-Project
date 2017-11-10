@@ -57,7 +57,7 @@
                     <a href="/Tecknic/viewOtherProfile?userId=<s:property value="%{#session.ID}"/>"><li>Tường nhà bạn</li></a>
                     <!--load Profile-->
                     <a href="loadProfile"><li>Quản lý cá nhân</li></a>
-                    <a><li>Đổi mật khẩu</li></a>
+                    <a href="changepassword.jsp"><li>Đổi mật khẩu</li></a>
                     <a href="logout"><li>Đăng xuất</li></a>
                 </ul>
                 <div class="hidden-xs hidden-sm hidden-md col-lg-1"></div>

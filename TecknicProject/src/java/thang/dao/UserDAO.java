@@ -157,7 +157,6 @@ public class UserDAO {
             prestmt.setString(1, username);
             rs = prestmt.executeQuery();
             if (rs.next()) {
-                System.out.println(rs.toString());
                 check = false;
             }
         } catch (Exception e) {

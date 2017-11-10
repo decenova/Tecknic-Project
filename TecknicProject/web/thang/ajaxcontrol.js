@@ -49,8 +49,8 @@ function checkUsername() {
 }
 
 function checkName() {
-    var tag = $('#name').toString().trim();
-    var value = tag.val();
+    var tag = $('#name');
+    var value = tag.val().toString().trim();
 //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = tag.parent();
     if (value === null || value.length <= 0 || value.length > 100) {
@@ -70,8 +70,8 @@ function checkName() {
     }
 }
 function checkPass() {
-    var tag = $('#password').toString().trim();
-    var value = tag.val();
+    var tag = $('#password');
+    var value = tag.val().toString().trim();
     var parent = tag.parent();
     if (value === null || value.length < 6 || value.length > 20
             || !(/[0-9]+/.test(value)) || !(/^[a-zA-Z0-9.,@#$%^&*()]*$/.test(value))) {
@@ -142,8 +142,8 @@ function checkEmail() {
     }
 }
 function checkPhone() {
-    var tag = $('#phone').toString().trim();
-    var value = tag.val();
+    var tag = $('#phone').toString();
+    var value = tag.val().toString().trim();
     var parent = tag.parent();
     if (!(/^([0-9]{9,11})?$/.test(value))) {
         parent.children('div.mypopover').remove();
@@ -159,7 +159,7 @@ function checkPhone() {
     }
 }
 function checkCheckBox() {
-    var tag = $('#checkbox').toString().trim();
+    var tag = $('#checkbox').toString();
     var value = tag[0].checked;
     var parent = tag.parent();
     if (!value) {
