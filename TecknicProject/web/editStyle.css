@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-Nov-2017, 01:22:32
+    Author     : Decen
+*/
+
+.postImage{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+}
+@media screen and (min-width: 768px){
+    .postImage{
+        height: 250px;
+    }
+}
+@media screen and (max-width: 768px){
+    .postImage{
+        height: 40vw;
+    }
+}
+@media screen and (max-width: 320px){
+    .postImage{
+        height: 160px;
+    }
+}
+.postImage img {
+    width: 100%;
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+}

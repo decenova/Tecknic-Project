@@ -29,7 +29,7 @@ public class UpdateProfileAction extends ActionSupport {
     private String txtEmail;
     private String txtAddress;
     private String txtPhoneNum;
-    private String flAvatar;
+    private String txtAvatar;
 
     
     public UpdateProfileAction() {
@@ -50,8 +50,7 @@ public class UpdateProfileAction extends ActionSupport {
         Timestamp dob = (txtDob.isEmpty()) ? null : Utils.parseToDate(txtDob);
         UserDTO user = new UserDTO();
         Map session = ActionContext.getContext().getSession();
-        if (!flAvatar.isEmpty())
-            user.setAvatar("img/" + flAvatar);
+        user.setAvatar(txtAvatar);
         user.setUsername((String)session.get("USERNAME"));
         user.setName(txtName);
         user.setGender(gender);
@@ -115,12 +114,12 @@ public class UpdateProfileAction extends ActionSupport {
         this.txtPhoneNum = txtPhoneNum;
     }
 
-    public String getFlAvatar() {
-        return flAvatar;
+    public String getTxtAvatar() {
+        return txtAvatar;
     }
 
-    public void setFlAvatar(String flAvatar) {
-        this.flAvatar = flAvatar;
+    public void setTxtAvatar(String txtAvatar) {
+        this.txtAvatar = txtAvatar;
     }
 
 

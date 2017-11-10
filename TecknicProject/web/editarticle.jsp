@@ -15,12 +15,14 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="mainstyle.css">
         <link rel="stylesheet" href="loginStyle.css">
+        <link rel="stylesheet" href="editStyle.css">
         <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
+        <script src="thang/uploadImage.js" type="application/javascript"></script>
         <%-- Text editor --%>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
@@ -51,7 +53,9 @@
                         <label>Ảnh bìa</label>
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
                         <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
-                        <img id="imgShow" src="" />
+                        <div class="postImage">
+                            <img id="imgShow" src="img/No_image_available.svg" />
+                        </div>
                     </div>
                     <hr/>
                     <div class="inputText">
@@ -61,12 +65,11 @@
                     <hr/>
 
                     <div class="" id="tagList">
-                        <!--                        <label>Thể loại*</label>
-                                                <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
-                                                <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
-                                                <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        <!--<label>Thể loại*</label>
+                            <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
+                            <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
+                            <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
                     </div>
-
                     <hr/>
                     <div class="buttonGroup">
                         <input class="button buttonPrimary" style="width: 100%" type="submit" value="Đăng bài">
@@ -85,21 +88,7 @@
                     }
                 });
             });
-            function getURLCoverImage() {
-                var fd = new FormData();
-                fd.append('file', $('#urlCoverImage')[0].files[0]);
-                $.ajax({
-                    url: "upload_img",
-                    method: "POST",
-                    data: fd,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        $('#urlHidden').val(data.link);
-                        $('#imgShow').attr('src', data.link);
-                    }
-                });
-            }
+            
 
         </script>
     </body>

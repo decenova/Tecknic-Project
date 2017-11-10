@@ -16,6 +16,7 @@ import trung.dao.ArticleDAO;
 import trung.dao.UserDAO;
 import trung.dto.ArticleDTO;
 import trung.dto.UserDTO;
+import tung.dao.CommentDAO;
 
 /**
  *
@@ -35,6 +36,7 @@ public class ShowArticle extends ActionSupport{
         
         ArticleDAO aDao = new ArticleDAO();
         UserDAO uDao = new UserDAO();
+        CommentDAO cDao = new CommentDAO();
         
         Map session = ActionContext.getContext().getSession();
         
@@ -45,11 +47,11 @@ public class ShowArticle extends ActionSupport{
         
         ArticleDTO article = aDao.viewArticleForUpdate(articleId);
         UserDTO creator = uDao.findOtherProfileByUserID(article.getCreatorId());
-             
+        int numOfComment = cDao.getAmountOfComment(articleId);
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("Article", article);
         request.setAttribute("Creator", creator);
-        
+        request.setAttribute("NumOfComment", numOfComment);
         return "success";
     }
 
