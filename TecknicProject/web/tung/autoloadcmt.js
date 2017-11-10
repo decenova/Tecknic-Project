@@ -6,16 +6,7 @@ var isLoad = false;
 $(document).ready(function () {
     size = 5;
     pos = 0;
-//    $('#CommentContain').empty();
     getCommentOfArticleV2(size, pos);
-//        $(window).scroll(function () {
-//            if (size > 0 && !isLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 200) {
-//                isLoad = true;
-//                pos += size;
-//                getCommentOfArticleV2(size, pos);
-//            }
-//        });
-
 });
 function goNextCmt() {
     $('#linkCmt').hide();

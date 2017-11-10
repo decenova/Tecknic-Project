@@ -1,32 +1,47 @@
+var size = 5;
+var pos = 0;
+var isload = false;
+var countUser = 0;
+function loadAutoUser() {
+    $(document).ready(function () {
+        size = 5;
+        pos = 0;
+        $('#allUserContain').empty();
+        getAllUser(size, pos);
+        $(window).scroll(function () {
+            if (size > 0 && !isLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
+                isLoad = true;
+                pos += size;
+                getAllUser(size, pos);
+            }
+        });
+    });
+}
+
 //-------------------------------------------USER------------------------------------------
 //lấy hết thành viên
-function getAllUser() {
+function getAllUser(size, pos) {
     $.ajax({
         method: "POST",
         url: "/Tecknic/loadAll",
+        data: {size: size, pos: pos},
         success: function (data) {
             var div = $("#allUserContain");
-            div.empty();
             var memberList = data.memberList;
             var s = '';
             if (memberList.length > 0) {
-                s += '<table class="table table-hover"><thead>';
-                s += '<tr><th>No.</th><th>Username</th><th>Name</th><th>Email</th><th>Role</th>';
-                s += '</tr></thead><tbody>';
                 for (var i = 0; i < memberList.length; i++) {
                     s += '<tr>';
-                    s += '<td>' + (i + 1) + '</td>';
+                    s += '<td>' + ++countUser + '</td>';
                     s += '<td><a href=/Tecknic/viewOtherProfile?userId=' + memberList[i].id + '>' + memberList[i].username + '</a></td>';
                     s += '<td>' + memberList[i].name + '</td>';
                     s += '<td>' + memberList[i].email + '</td>';
                     s += '<td>' + memberList[i].role + '</td>';
                     s += '</tr>';
                 }
-                s += '</tbody></table>';
-            } else {
-                s = '<p>No record is not found!</p>';
             }
             div.append(s);
+            isLoad = false;
         }
     });
 }
@@ -97,7 +112,7 @@ function getCommentOfArticle() {
 }
 //Thêm comment
 function addCommentToArticle() {
-    if($('#contentComment').val().toString().trim().length <= 0)
+    if ($('#contentComment').val().toString().trim().length <= 0)
         return;
     $.ajax({
         method: "POST",
@@ -152,14 +167,15 @@ function findArticleByTagOrTitle() {
             var articleList = data.articleList;
             var s = "";
             if (articleList.length > 0) {
-                s += '<table class="table table-hover">';
-                s += '<thead><tr><th>No.</th><th>Title</th><th>Create time</th></tr></thead><tbody>';
+//                s += '<table class="table table-hover">';
+//                s += '<thead><tr><th>No.</th><th>Title</th><th>Create time</th></tr></thead><tbody>';
                 for (var i = 0; i < articleList.length; i++) {
                     s += '<tr><td>' + (i + 1) + '</td><td><a href="article.jsp?articleID=' + articleList[i].ID + '">';
                     s += articleList[i].title + '</a></td>';
-                    s += '<td>' + articleList[i].txtCreateTime + '</td></tr>';
+                    s += '<td>' + articleList[i].txtCreateTime + '</td>';
+                    s += '<td>' + articleList[i].status + '</td></tr>';
                 }
-                s += '</tbody></table>';
+//                s += '</tbody></table>';
             } else {
                 s = '<p>Không tìm thấy bài viết nào</p>';
             }

@@ -77,13 +77,18 @@ public class UserDAO {
         return user;
     }
 
-    public ArrayList<UserDTO> getAllUser() { //trừ thằng admin và moderator
+    public ArrayList<UserDTO> getAllUser(int pos, int size) {
         ArrayList<UserDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
             String sql = "select u.ID, u.Username,u.Name,u.Email,r.Name as [RoleName]"
-                    + "from [User] u inner join Role r on u.RoleId = r.Id";
+                    + "from [User] u inner join Role r on u.RoleId = r.Id\n"
+                    + "order by DateOfJoin desc\n"
+                    + "OFFSET ? ROWS\n"
+                    + "FETCH NEXT ? ROWS ONLY";
             preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, pos);
+            preStm.setInt(2, size);
             rs = preStm.executeQuery();
             UserDTO user;
             while (rs.next()) {
