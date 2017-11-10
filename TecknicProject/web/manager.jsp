@@ -56,9 +56,10 @@
                                         <thead>
                                             <tr>
                                                 <th>STT</th>
-                                                <th>Tiêu đề</th>
-                                                <th>Ngày tạo</th>
-                                                <th>Trạng thái</th>
+                                                <th>Tài khoản</th>
+                                                <th>Tên thành viên</th>
+                                                <th>Email</th>
+                                                <th>Chức vụ</th>
                                             </tr>
                                         </thead>
                                         <tbody id="allUserContain">
