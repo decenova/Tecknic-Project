@@ -20,6 +20,7 @@
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
+        <script src="trung/managerAjax.js" type="application/javascript"></script>
     </head>
     <body onsubmit="return false">
         <s:include value="header.jsp"></s:include>
@@ -29,7 +30,7 @@
                     <div class="managerInfo">
                         <div class="info">
                             <p class="title">Manager page</p>
-                            <p class="role">ADMIN</p>
+                            <p class="role"><s:property value="#session.ROLE"/></p>
                             <p class="numOfPost"><b>2</b> bài viết chưa duyệt</p>
                         </div>
                         <div class="tabControl selfclear">
@@ -73,8 +74,21 @@
                                         <span><input type="checkbox" name="cbxTag" value="3"> Khác</span>
                                     </div>
                                     <hr/>
-                                    <div class="overTable" id="ArticleContain">
-                                    </div>
+                                    <!--<div class="overTable" id="ArticleContain">
+                                    dua cai lis vao day ne
+                                    </div>-->
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Create time</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="ArticleContain">
+                                            
+                                        </tbody>
+                                    </table>
                                 </div>
                             </form>
                         </div>
