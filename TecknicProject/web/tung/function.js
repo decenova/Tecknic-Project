@@ -97,13 +97,15 @@ function getCommentOfArticle() {
 }
 //Thêm comment
 function addCommentToArticle() {
-    console.log($('#articleId').val());
+    if($('#contentComment').val().toString().trim().length <= 0)
+        return;
     $.ajax({
         method: "POST",
         url: "/Tecknic/addComment",
         data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
         success: function () {
             $('#contentComment').val("");
+            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
             getCommentOfArticle();
         }
     });

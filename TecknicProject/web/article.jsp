@@ -73,7 +73,7 @@
                     <div class="postControl fixPadding widthNarrow">
                         <%-- số lượt view và số lượt bình luận --%>
                         <span><i class="fa fa-eye"></i> ${requestScope.Article.numOfView}</span>
-                        <span><i class="fa fa-comment-o"></i> 12</span>
+                        <span><i class="fa fa-comment-o"></i> <span id="numOfComment">${requestScope.NumOfComment}</span></span>
                     </div>
                     <hr>
                     <s:if test="%{#session.ROLE != null}">

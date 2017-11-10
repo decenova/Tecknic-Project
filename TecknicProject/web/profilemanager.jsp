@@ -21,6 +21,7 @@
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
         <script src="tung/validation.js" type="application/javascript"></script>
+        <script src="thang/uploadImage.js" type="application/javascript"></script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
@@ -55,11 +56,10 @@
                                 <div class="inputText">
                                     <label>Avatar</label>
                                     <div class="avatar avatarProfile">
-                                        <%-- avatar hiện tại, sẽ là avatar mới nếu input hình lên, nên dùng javascript để thực hiện --%>
-                                        <!--                                        <img src="img/avartar01.jpg">-->
-                                        <img src="<s:property value="%{#request.Profile.avatar}"/>">
+                                        <img id="imgShow" src="<s:property value="%{#request.Profile.avatar}"/>">
                                     </div>
-                                    <input type="file" name="flAvatar" placeholder="Url hình ảnh">
+                                    <input type="hidden" id="urlHidden" name="txtAvatar" value="<s:property value="%{#request.Profile.avatar}"/>"/>
+                                    <input id="urlCoverImage" type="file" onchange="getURLAvartarImage()"/>
                                 </div>
                                 <div class="inputText">
                                     <label>Tên</label>
@@ -106,16 +106,16 @@
                             </thead>
                             <tbody id="userArticleList">
                                 <%-- bảng những bài viết, bài viết bao gồm tất cả các trạng thái luôn --%>
-<!--                                <tr class="success">
-                                    <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
-                                    <td>12:30 12/3/2017</td>
-                                    <td>Posted</td>
-                                </tr>
-                                <tr class="danger">
-                                    <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
-                                    <td>11:30 12/3/2017</td>
-                                    <td>Reject</td>
-                                </tr>-->
+                                <!--                                <tr class="success">
+                                                                    <td><a href="post.html">Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a></td>
+                                                                    <td>12:30 12/3/2017</td>
+                                                                    <td>Posted</td>
+                                                                </tr>
+                                                                <tr class="danger">
+                                                                    <td><a href="post.html">Ori and the lind forest giảm giá mùa đông này</a></td>
+                                                                    <td>11:30 12/3/2017</td>
+                                                                    <td>Reject</td>
+                                                                </tr>-->
                             </tbody>
                         </table>
                     </div>

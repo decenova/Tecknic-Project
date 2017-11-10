@@ -27,6 +27,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    background-color: #ffffff;
 }
 .avatar img {
     width: 100%;

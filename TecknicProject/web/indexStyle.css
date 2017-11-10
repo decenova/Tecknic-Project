@@ -111,6 +111,7 @@ svg {
     position: relative;
     overflow: hidden;
     border-radius: 50%;
+    background-color: #ffffff;
 }
 .avatar img {
     width: 100%;
@@ -202,6 +203,11 @@ svg {
     font-size: 1.5em;
     color: #333333;
     text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
 }
 .postBody a>p{
     font-size: 1em;
