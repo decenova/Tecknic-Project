@@ -105,31 +105,31 @@ function loadBestArticle() {
         success: function (data) {
             var json = data.json;
             numOfBest = json.length;
+            if (numOfBest === 0)
+                return;
             tag.empty();
             var s = "";
-            for (var item in json){
-                s += "<div class='slide' style='background-image: url(\""+ json[item].coverImage +"\")'>";
-                s += "<a href='/Tecknic/showArticle?articleId="+json[item].ID+"'>"+ json[item].title +"</a>";
+            for (var item in json) {
+                s += "<div class='slide' style='background-image: url(\"" + json[item].coverImage + "\")'>";
+                s += "<a href='/Tecknic/showArticle?articleId=" + json[item].ID + "'>" + json[item].title + "</a>";
                 s += "</div>";
             }
             tag.append(s);
-            if (json.length < 5) {
-                $('#slideContain').css("width", (numOfBest * 100) + "%");
-                $('#slideContain .slide').css("width", (100 / numOfBest) + "%");
-            }
-            slideInterval = setInterval(slideShow,3000);
+            $('#slideContain').css("width", (numOfBest * 100) + "%");
+            $('#slideContain .slide').css("width", (100 / numOfBest) + "%");
+            slideInterval = setInterval(slideShow, 3000);
         }
     });
 }
 
-function slideShow(){
+function slideShow() {
     var tag = $('#slideContain');
     if (left === (-100 * (numOfBest - 1)))
         leftFlag = 100;
     if (left === 0)
         leftFlag = -100;
     left += leftFlag;
-    tag.animate({left: (left) + "%"},1000,"swing");
+    tag.animate({left: (left) + "%"}, 1000, "swing");
 }
 
 
