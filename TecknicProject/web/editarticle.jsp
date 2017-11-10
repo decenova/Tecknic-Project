@@ -78,7 +78,7 @@
                 </div>
             </form>
         </div>
-        <s:include value="header.jsp"></s:include>
+        <s:include value="fooder.jsp"></s:include>
         <script>
             $(function () {
                 $('#editor').froalaEditor({
@@ -89,8 +89,6 @@
                     }
                 });
             });
-            
-
         </script>
     </body>
 </html>
