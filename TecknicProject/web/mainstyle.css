@@ -72,6 +72,25 @@ header img{
     overflow: hidden;
 }
 
+#search {
+    height: 26px;
+    margin: 7px 0px;
+    width: 100%;
+    padding: 0px 0px 0px 1em;
+    border: 0px solid #ffffff;
+    border-left: 2px solid #226699;
+    
+}
+#searchButton{
+    width: 40px;
+    height: 26px;
+    margin: 7px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 26px;
+    text-align: center;
+}
 
 /*main body*/
 .main {

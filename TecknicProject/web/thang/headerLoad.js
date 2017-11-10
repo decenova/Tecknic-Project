@@ -6,6 +6,11 @@
 
 $(document).ready(function () {
     showAllHeaderTag();
+    $('#searchButton').click(function () {
+        var tagId = $('#tagIdFilter').val();
+        var search = $('#search').val();
+        window.location.href = 'loadIndex?tagId=' + tagId + '&search=' + search;
+    });
 });
 
 function showAllHeaderTag() {

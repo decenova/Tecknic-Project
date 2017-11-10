@@ -23,6 +23,7 @@
     </head>
     <body>
         <input type="hidden" id="tagIdFilter" value="<s:property value="%{tagId}"></s:property>"/>
+        <input type="hidden" id="searchFilter" value="<s:property value="%{search}"></s:property>"/>
         <s:include value="header.jsp">
         </s:include>
         <div class="slideShow">

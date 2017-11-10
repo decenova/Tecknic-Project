@@ -1,3 +1,28 @@
+function banMember(userId, modId) {
+    var reason = document.getElementById("txtReason").value;
+    $.ajax({
+        method: 'POST',
+        data: {userId: userId, modId: modId, reason: reason},
+        url: "banMember",
+        success: function (data) {
+            location.reload();
+        }
+    });
+
+}
+
+function upgradeMember(userId) {
+    var roleId = document.getElementById("txtRole").value;
+
+    $.ajax({
+        method: 'POST',
+        data: {userId: userId, roleId: roleId},
+        url: "upgradeMember",
+        success: function (data) {
+            location.reload();
+        }
+    });
+}
 function showAllTag(articleId) {
 //    if (articleId === null || articleId === undefined) {
     $.ajax({
@@ -22,6 +47,7 @@ function showAllTag(articleId) {
         }
     });
 }
+
 function showAllTag() {
 //    if (articleId === null || articleId === undefined) {
     $.ajax({
@@ -44,6 +70,7 @@ function showAllTag() {
         }
     });
 }
+
 function checkTag(articleId) {
     $.ajax({
         method: 'GET',
@@ -143,6 +170,16 @@ function showOwnArticleTab(id) {
             div.append(s);
         }
     });
+}
+
+function checkArticle(articleId, statusId) {
+    $.ajax({
+        url: "checkArticle",
+        data: {articleId: articleId, statusId: statusId},
+        success: function (data) {
+            location.reload();
+        }
+    })
 }
 
 

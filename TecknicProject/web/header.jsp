@@ -25,12 +25,10 @@
                 <div class="menuButton" onclick="showNav()"><i class="fa fa-bars"></i></div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-3">
-                <form>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input id="search" type="text" class="form-control" name="search" placeholder="search...">
-                    </div>
-                </form>
+                <input id="search" type="text" class="" name="search" placeholder="search...">
+                <div class="button buttonPrimary" id="searchButton">
+                    <i class="fa fa-search"></i>
+                </div>
             </div>
             <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2">
                 <s:if test="%{#session.ROLE == null}">
