@@ -113,22 +113,20 @@ function checkCoverImage() {
     }
 }
 function checkContent() {
-    var tag = $('#editor');
-    var value = tag.val().toString().trim();
+    var tag = $('div.fr-element.fr-view')[0];
+    var value = $(tag).text().toString().trim();
     //  lấy thẻ cha để có thể thêm vào cái popover
-    var parent = tag.parent();
-    if (value === null || value.length <= 0 || value.length > 200) {
+    var parent = $('#editorParent');
+    if (value === null || value.length <= 0) {
 //      thêm popover
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
 //      thêm câu thông báo vào popover
         
-        tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Nội dung không thể không có');
+        parent.find('div.popover-content').html('Nội dung không thể không có kí tự nào');
         return false;
     } else {
 //      xóa popover nếu nhập đúng
-        tag.css({"border-left-color": "#226699"});
         parent.children('div.mypopover').remove();
         return true;
     }

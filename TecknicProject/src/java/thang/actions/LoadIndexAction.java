@@ -18,6 +18,7 @@ import org.apache.struts2.convention.annotation.Result;
 public class LoadIndexAction extends ActionSupport {
     
     private int tagId;
+    private String search;
     
     public LoadIndexAction() {
     }
@@ -35,6 +36,14 @@ public class LoadIndexAction extends ActionSupport {
 
     public void setTagId(int tagId) {
         this.tagId = tagId;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
     
 }

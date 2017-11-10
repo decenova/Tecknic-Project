@@ -53,13 +53,13 @@
                     <div class="inputText">
                         <label>Ảnh bìa</label>
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
-                        <input id="urlCoverImage" type="file" onblur="checkCoverImage()" onchange="getURLCoverImage()"/>
+                        <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
                         <div class="postImage">
                             <img id="imgShow" src="img/No_image_available.svg" />
                         </div>
                     </div>
                     <hr/>
-                    <div class="inputText">
+                    <div class="inputText" id="editorParent">
                         <label>Nội dung*</label>
                         <textarea onblur="checkContent()" name="txtContent" id="editor"><s:property value="article.content"/></textarea>
                     </div>
