@@ -9,6 +9,7 @@ import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -74,6 +75,7 @@ public class ArticleDAO {
         }
         return list;
     }
+
     public ArrayList<ArrayList> loadIndexArticle(int size, int pos, int tagId) {
         ArrayList<ArrayList> list = new ArrayList<>();
         ArrayList sublist;
@@ -107,6 +109,7 @@ public class ArticleDAO {
         }
         return list;
     }
+
     public ArrayList<ArrayList> loadIndexArticle(int size, int pos, String search) {
         ArrayList<ArrayList> list = new ArrayList<>();
         ArrayList sublist;
@@ -123,7 +126,7 @@ public class ArticleDAO {
                     + " FETCH NEXT ? ROWS ONLY;");
             prestmt.setInt(2, pos);
             prestmt.setInt(3, size);
-            prestmt.setString(1, search);
+            prestmt.setString(1, '%' + search + '%');
             rs = prestmt.executeQuery();
             while (rs.next()) {
                 articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));
@@ -140,6 +143,7 @@ public class ArticleDAO {
         }
         return list;
     }
+
     public ArrayList<ArrayList> loadIndexArticle(int size, int pos, int tagId, String search) {
         ArrayList<ArrayList> list = new ArrayList<>();
         ArrayList sublist;
@@ -215,5 +219,26 @@ public class ArticleDAO {
             closeConnection();
         }
         return result;
+    }
+
+    public ArrayList<ArticleDTO> loadBestArticle(Timestamp startTime, Timestamp endTime) {
+        ArrayList<ArticleDTO> list = new ArrayList<>();
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select top 5 Id, Title, CoverImage \n"
+                    + " from article where ModifyTime between ? and ?\n"
+                    + " order by NumOfView desc, ModifyTime asc");
+            prestmt.setTimestamp(2, endTime);
+            prestmt.setTimestamp(1, startTime);
+            rs = prestmt.executeQuery();
+            while (rs.next()) {
+                list.add(new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return list;
     }
 }

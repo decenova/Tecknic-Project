@@ -8,7 +8,7 @@ $(document).ready(function () {
     showAllHeaderTag();
     $('#searchButton').click(function () {
         var tagId = $('#tagIdFilter').val();
-        var search = $('#search').val();
+        var search = $('#search').val().toString().trim();
         window.location.href = 'loadIndex?tagId=' + tagId + '&search=' + search;
     });
 });

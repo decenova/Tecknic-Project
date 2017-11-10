@@ -27,21 +27,8 @@
         <s:include value="header.jsp">
         </s:include>
         <div class="slideShow">
-            <div class="slideContain selfclear">
+            <div class="slideContain selfclear" id="slideContain">
                 <div class="slide" style="background-image: url('img/cover01.jpg')">
-                    <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
-                </div>
-                <div class="slide" style="background-image: url('img/cover02.jpg')">
-                    <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
-                </div>
-                <div class="slide" style="background-image: url('img/cover01.jpg')">
-                    <a href="#">Ori and the lind forest giảm giá mùa đông này</a>
-                </div>
-                <div class="slide" style="background-image: url('img/cover02.jpg')">
-                    <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
-                </div>
-                <div class="slide" style="background-image: url('img/cover01.jpg')">
-                    <a>Child of light: The dark of Luis V sẽ ra mắt vào tháng 11</a>
                 </div>
             </div>
         </div>

@@ -29,9 +29,9 @@ public class IndexLoadArticleAction extends ActionSupport {
     }
 
     @Action(value = "/indexLoadArticle", results = {
-        @Result(name = SUCCESS, type = "json")
-        ,
-        @Result(name = INPUT, type = "json"),})
+        @Result(name = SUCCESS, type = "json"),
+        @Result(name = INPUT, type = "json")
+    })
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
         if (tagId == 0 && search.isEmpty()) {

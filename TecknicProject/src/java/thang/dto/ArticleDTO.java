@@ -53,6 +53,12 @@ public class ArticleDTO {
         this.statusID = statusId;
         this.status = status;
     }
+    
+    public ArticleDTO(int ID, String title, String coverImage) {
+        this.ID = ID;
+        this.title = title;
+        this.coverImage = coverImage;
+    }
 
     public ArticleDTO() {
     }
