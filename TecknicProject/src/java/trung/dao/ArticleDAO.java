@@ -49,7 +49,7 @@ public class ArticleDAO {
 
     public boolean checkArticle(int articleId, int statusId, int modId, String reason) {
         boolean result = false;
-
+        
         try {
             thang.dao.ArticleDAO thangArticleDAO = new thang.dao.ArticleDAO();
             if (thangArticleDAO.changeStatus(articleId, statusId)) {
@@ -60,7 +60,7 @@ public class ArticleDAO {
                     pre.setTimestamp(1, Utils.getTimeSystem());
                     pre.setInt(2, modId);
                     pre.setInt(3, articleId);
-                } else if (statusId == 4) {
+                } else if (statusId == 4 || statusId == 5) {
                     String sql = "update Article set ModifyTime = ?, ModifierId = ?, Reason = ? where Id = ?";
                     pre = conn.prepareStatement(sql);
                     pre.setTimestamp(1, Utils.getTimeSystem());

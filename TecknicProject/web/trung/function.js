@@ -174,11 +174,15 @@ function showOwnArticleTab(id) {
 }
 
 function checkArticle(articleId, statusId, modId, reason) {
+    console.log(articleId);
+    console.log(statusId);
+    console.log(modId);
+    console.log(reason);
     $.ajax({
         url: "checkArticle",
         data: {articleId: articleId, statusId: statusId, modId: modId, reason: reason},
         success: function (data) {
-            window.location.replace("manager.jsp");
+//            window.location.replace("manager.jsp");
         }
     });
 }
