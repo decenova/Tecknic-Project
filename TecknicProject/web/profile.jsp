@@ -96,20 +96,32 @@
                 <div class="popupcontain">
                     <i class="fa fa-times" onclick="closePopup('popupUpgrade')"></i>
                     <!--<form action="" method="POST">-->
-                        <div class="formContain" style="margin: 0">
-                            <div class="inputText">
-                                <label>Vai trò*</label>
-                                <select id="txtRole" value='<s:property value="user.roleId"/>'>
-                                    <option value="1">Member</option>
-                                    <option value="2">Colaborator</option>
-                                    <option value="3">Moderator</option>
-                                </select>
-                            </div>
-                            <hr/>
-                            <div class="buttonGroup">
-                                <input class="button buttonPrimary" style="width: 100%" onclick="upgradeMember(<s:property value="user.id"/>)" value="Ok">
-                            </div>
+                    <div class="formContain" style="margin: 0">
+                        <div class="inputText">
+                            <label>Vai trò*</label>
+                            <select id="txtRole">       
+                                <s:if test="%{user.roleId == 1}">
+                                    <option id="role1" value="1" selected="true">Member</option>
+                                    <option id="role2" value="2">Colaborator</option>
+                                    <option id="role3" value="3">Moderator</option>
+                                </s:if>
+                                <s:elseif test="%{user.roleId == 2}">
+                                    <option id="role1" value="1">Member</option>
+                                    <option id="role2" value="2" selected="true">Colaborator</option>
+                                    <option id="role3" value="3">Moderator</option>
+                                </s:elseif>
+                                <s:elseif test="%{user.roleId == 3}">
+                                    <option id="role1" value="1">Member</option>
+                                    <option id="role2" value="2">Colaborator</option>
+                                    <option id="role3" value="3" selected="true">Moderator</option>
+                                </s:elseif>
+                            </select>
                         </div>
+                        <hr/>
+                        <div class="buttonGroup">
+                            <input class="button buttonPrimary" style="width: 100%" onclick="upgradeMember(<s:property value="user.id"/>)" value="Ok">
+                        </div>
+                    </div>
                     <!--</form>-->
                 </div>
             </div>
@@ -119,19 +131,19 @@
                     <i class="fa fa-times" onclick="closePopup('popupBan')"></i>
                     <p></p>
                     <!--<form action="" method="POST">-->
-                        <div class="formContain" style="margin: 0">
-                            <div class="inputText">
-                                <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>
-                            </div>
-                            <div class="inputText">
-                                <label>Lý do</label>
-                                <input type="text" id="txtReason"/>
-                            </div>
-                            <hr/>
-                            <div class="buttonGroup">
-                                <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>, <s:property value="#session.ID"/>)" value="Ok">
-                            </div>
+                    <div class="formContain" style="margin: 0">
+                        <div class="inputText">
+                            <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>
                         </div>
+                        <div class="inputText">
+                            <label>Lý do</label>
+                            <input type="text" id="txtReason"/>
+                        </div>
+                        <hr/>
+                        <div class="buttonGroup">
+                            <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>, <s:property value="#session.ID"/>)" value="Ok">
+                        </div>
+                    </div>
                     <!--</form>-->
                 </div>
             </div>
