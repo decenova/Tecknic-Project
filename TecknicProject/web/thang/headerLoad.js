@@ -8,6 +8,8 @@ $(document).ready(function () {
     showAllHeaderTag();
     $('#searchButton').click(function () {
         var tagId = $('#tagIdFilter').val();
+        if (tagId === undefined)
+            tagId = 0;
         var search = $('#search').val().toString().trim();
         window.location.href = 'loadIndex?tagId=' + tagId + '&search=' + search;
     });
