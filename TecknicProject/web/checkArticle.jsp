@@ -117,10 +117,10 @@
 
                 </div>
             </div>
-                    <!--            <script>
-                                    //            getCommentOfArticle();
-                                    getCommentOfArticleV2();
-                                </script>-->
+            <script>
+                //            getCommentOfArticle();
+                getCommentOfArticleV2();
+            </script>
             <s:include value="footer.jsp"></s:include>
     </body>
 </html>
