@@ -74,6 +74,107 @@ public class ArticleDAO {
         }
         return list;
     }
+    public ArrayList<ArrayList> loadIndexArticle(int size, int pos, int tagId) {
+        ArrayList<ArrayList> list = new ArrayList<>();
+        ArrayList sublist;
+        ArticleDTO articleDto;
+        UserDTO userDto;
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,1000), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar"
+                    + " from  Article a inner join [User] u on a.CreatorId = u.Id"
+                    + " where a.StatusId = (Select Id from [Status] where name = 'posted')"
+                    + " and a.Id in (select ArticleId from ArticleTag where TagId = ?)"
+                    + " order by ModifyTime desc"
+                    + " OFFSET ? ROWS"
+                    + " FETCH NEXT ? ROWS ONLY;");
+            prestmt.setInt(2, pos);
+            prestmt.setInt(3, size);
+            prestmt.setInt(1, tagId);
+            rs = prestmt.executeQuery();
+            while (rs.next()) {
+                articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));
+                userDto = new UserDTO(rs.getInt(7), rs.getString(8), rs.getString(9));
+                sublist = new ArrayList();
+                sublist.add(articleDto);
+                sublist.add(userDto);
+                list.add(sublist);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return list;
+    }
+    public ArrayList<ArrayList> loadIndexArticle(int size, int pos, String search) {
+        ArrayList<ArrayList> list = new ArrayList<>();
+        ArrayList sublist;
+        ArticleDTO articleDto;
+        UserDTO userDto;
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,1000), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar"
+                    + " from  Article a inner join [User] u on a.CreatorId = u.Id"
+                    + " where a.StatusId = (Select Id from [Status] where name = 'posted')"
+                    + " and a.Title like ?"
+                    + " order by ModifyTime desc"
+                    + " OFFSET ? ROWS"
+                    + " FETCH NEXT ? ROWS ONLY;");
+            prestmt.setInt(2, pos);
+            prestmt.setInt(3, size);
+            prestmt.setString(1, search);
+            rs = prestmt.executeQuery();
+            while (rs.next()) {
+                articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));
+                userDto = new UserDTO(rs.getInt(7), rs.getString(8), rs.getString(9));
+                sublist = new ArrayList();
+                sublist.add(articleDto);
+                sublist.add(userDto);
+                list.add(sublist);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return list;
+    }
+    public ArrayList<ArrayList> loadIndexArticle(int size, int pos, int tagId, String search) {
+        ArrayList<ArrayList> list = new ArrayList<>();
+        ArrayList sublist;
+        ArticleDTO articleDto;
+        UserDTO userDto;
+        try {
+            con = MyConnection.getConnection();
+            prestmt = con.prepareStatement("select a.Id, a.Title, SUBSTRING(a.Content,0,1000), a.CoverImage, a.ModifyTime, a.NumOfView, u.Id, u.Name, u.Avatar"
+                    + " from  Article a inner join [User] u on a.CreatorId = u.Id"
+                    + " where a.StatusId = (Select Id from [Status] where name = 'posted')"
+                    + " and a.Id in (select ArticleId from ArticleTag where TagId = ?)"
+                    + " and a.Title like ?"
+                    + " order by ModifyTime desc"
+                    + " OFFSET ? ROWS"
+                    + " FETCH NEXT ? ROWS ONLY;");
+            prestmt.setInt(3, pos);
+            prestmt.setInt(4, size);
+            prestmt.setInt(1, tagId);
+            prestmt.setString(2, '%' + search + '%');
+            rs = prestmt.executeQuery();
+            while (rs.next()) {
+                articleDto = new ArticleDTO(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getTimestamp(5), rs.getInt(6));
+                userDto = new UserDTO(rs.getInt(7), rs.getString(8), rs.getString(9));
+                sublist = new ArrayList();
+                sublist.add(articleDto);
+                sublist.add(userDto);
+                list.add(sublist);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return list;
+    }
 
     public ArrayList<ArticleDTO> findAllBySubmitedOrCheckingArticle() {
         ArrayList<ArticleDTO> list = new ArrayList<>();

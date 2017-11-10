@@ -21,18 +21,31 @@ public class IndexLoadArticleAction extends ActionSupport {
 
     private int size;
     private int pos;
+    private int tagId;
+    private String search;
     private ArrayList json;
 
     public IndexLoadArticleAction() {
     }
 
     @Action(value = "/indexLoadArticle", results = {
-        @Result(name = SUCCESS, type = "json"),
-        @Result(name = INPUT, type = "json"),
-    })
+        @Result(name = SUCCESS, type = "json")
+        ,
+        @Result(name = INPUT, type = "json"),})
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
-        json = dao.loadIndexArticle(size, pos);
+        if (tagId == 0 && search.isEmpty()) {
+            json = dao.loadIndexArticle(size, pos);
+        }
+        if (tagId != 0 && search.isEmpty()) {
+            json = dao.loadIndexArticle(size, pos, tagId);
+        }
+        if (tagId == 0 && !search.isEmpty()) {
+            json = dao.loadIndexArticle(size, pos, search);
+        }
+        if (tagId != 0 && !search.isEmpty()) {
+            json = dao.loadIndexArticle(size, pos, tagId, search);
+        }
         return SUCCESS;
     }
 
@@ -46,6 +59,14 @@ public class IndexLoadArticleAction extends ActionSupport {
 
     public void setPos(int pos) {
         this.pos = pos;
+    }
+
+    public void setTagId(int tagId) {
+        this.tagId = tagId;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 
 }

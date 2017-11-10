@@ -16,8 +16,9 @@ function getURLCoverImage() {
         contentType: false,
         success: function (data) {
             if (data.link != null) {
-                $('#urlHidden').val(data.link);
-                $('#imgShow').attr('src', data.link);
+                var link = data.link.replace('addArticle','');
+                $('#urlHidden').val(link);
+                $('#imgShow').attr('src', link);
             } else {
 
             }

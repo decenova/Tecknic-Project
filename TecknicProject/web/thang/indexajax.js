@@ -10,27 +10,36 @@ $(document).ready(function () {
     size = 5;
     pos = 0;
     $('#postContaint').empty();
-    loadindex(size, pos);
+    var tagId = $('#tagIdFilter').val();
+    var search = $('#searchFilter').val();
+    loadindex(size, pos, tagId, search);
     $(window).scroll(function () {
-        
         if (size > 0 && !isLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 200) {
             isLoad = true;
             pos += size;
-            loadindex(size, pos);
+            loadindex(size, pos, tagId, search);
         }
     });
 });
-function loadindex(sizePage, positon) {
+function checkEmpty() {
+    if ($('#postContaint').html() == "") {
+        $('#postContaint').append('<div style="height: 100%">' +
+                '<h1 style="text-align: center;font-size: 5em;margin: auto">Sorry nha!<br/>Không có gì để đọc cả.</h1>'
+                + '<div>');
+    }
+}
+function loadindex(sizePage, positon, tagId, search) {
     var parent = $('#postContaint');
     var s = "";
     $.ajax({
         url: "indexLoadArticle",
         method: "post",
-        data: {size: sizePage, pos: positon},
+        data: {size: sizePage, pos: positon, tagId: tagId, search: search},
         success: function (data) {
             var array = data.json;
-            if (array.length == 0){
+            if (array.length == 0) {
                 size = 0;
+                checkEmpty();
                 return;
             }
             var json;
@@ -70,15 +79,15 @@ function loadindex(sizePage, positon) {
         }
     });
 }
-function loadNumOfComment(articleId){
+function loadNumOfComment(articleId) {
     var tag = $('#numOfComment' + articleId);
     $.ajax({
-       url: "getAmountOfComment",
-       method: "post",
-       data: {articleId:articleId},
-       success: function (data){
-           tag.text(data.numOfComment);
-       }
+        url: "getAmountOfComment",
+        method: "post",
+        data: {articleId: articleId},
+        success: function (data) {
+            tag.text(data.numOfComment);
+        }
     });
 }
 
