@@ -16,7 +16,6 @@ $(document).ready(function () {
 
 });
 function goNextCmt() {
-    console.log('haha');
     pos += size;
     getCommentOfArticleV2(size, pos);
     $(window).scroll(function () {
