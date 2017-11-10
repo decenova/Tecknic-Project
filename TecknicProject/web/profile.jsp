@@ -129,7 +129,6 @@
                 <div class="closebackground" onclick="closePopup('popupBan')"></div>
                 <div class="popupcontain">
                     <i class="fa fa-times" onclick="closePopup('popupBan')"></i>
-                    <p></p>
                     <div class="formContain" style="margin: 0">
                         <div class="inputText">
                             <label>Bạn muốn cấm tài khoản <s:property value="user.username"/> của <s:property value="user.name"/>?</label>

@@ -46,14 +46,14 @@
                                 <c:if test="${requestScope.Article.status eq 'submited' && sessionScope.ROLE != 'Colaborator'}">
                                     <div class="buttonCircle buttonSuccess" onclick="checkArticle(${requestScope.Article.id}, 3, ${sessionScope.ID}, null)"><i class="fa fa-check"></i></div>
                                     <div class="buttonCircle buttonWarning" onclick="checkArticle(${requestScope.Article.id}, 4, ${sessionScope.ID}, 'chuaco')"><i class="fa fa-times"></i></div>
-                                </c:if>
-                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                    </c:if>
+                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
-                                </c:if>
-                                <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
+                                    </c:if>
+                                    <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                </c:if>
-                            </c:if>
+                                        </c:if>
+                                    </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>
@@ -121,8 +121,9 @@
                 //            getCommentOfArticle();
                 getCommentOfArticleV2();
             </script>
-            <s:include value="footer.jsp"></s:include>
-            
+        </div>
+        <s:include value="footer.jsp"></s:include>
+
             <div class="popup" id="popupReject">
                 <div class="closebackground" onclick="closePopup('popupReject')"></div>
                 <div class="popupcontain">
@@ -131,17 +132,17 @@
                     <div class="formContain" style="margin: 0">
                         <div class="inputText">
                             <label>Bạn muốn reject bài viết của ${requestScope.Creator.name}?</label>
-                        </div>
-                        <div class="inputText">
-                            <label>Lý do</label>
-                            <input type="text" id="txtReason"/>
-                        </div>
-                        <hr/>
-                        <div class="buttonGroup">
-                            <input class="button buttonPrimary" style="width: 100%" onclick="" value="Ok">
-                        </div>
+                    </div>
+                    <div class="inputText">
+                        <label>Lý do</label>
+                        <input type="text" id="txtReason"/>
+                    </div>
+                    <hr/>
+                    <div class="buttonGroup">
+                        <input class="button buttonPrimary" style="width: 100%" onclick="" value="Ok">
                     </div>
                 </div>
             </div>
+        </div>
     </body>
 </html>
