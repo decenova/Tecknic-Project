@@ -43,17 +43,13 @@
                         </div>
                         <div class="info col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
-                                <c:if test="${requestScope.Article.status eq 'submited' && sessionScope.ROLE != 'Colaborator'}">
-                                    <div class="buttonCircle buttonSuccess" onclick="checkArticle(${requestScope.Article.id}, 3, ${sessionScope.ID}, null)"><i class="fa fa-check"></i></div>
-                                    <div class="buttonCircle buttonWarning" onclick="checkArticle(${requestScope.Article.id}, 4, ${sessionScope.ID}, 'chuaco')"><i class="fa fa-times"></i></div>
-                                    </c:if>
-                                    <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
-                                    <div class="buttonCircle buttonDanger"><i class="fa fa-trash"></i></div>
-                                    </c:if>
-                                    <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
+                                <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
+                                    <div class="buttonCircle buttonDanger" onclick="showPopup('popupRemove')"><i class="fa fa-trash"></i></div>
+                                </c:if>
+                                <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                        </c:if>
-                                    </c:if>
+                                </c:if>
+                            </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>
@@ -123,15 +119,15 @@
             </script>
         </div>
         <s:include value="footer.jsp"></s:include>
-
-            <div class="popup" id="popupReject">
-                <div class="closebackground" onclick="closePopup('popupReject')"></div>
+        
+        <div class="popup" id="popupRemove">
+                <div class="closebackground" onclick="closePopup('popupRemove')"></div>
                 <div class="popupcontain">
-                    <i class="fa fa-times" onclick="closePopup('popupReject')"></i>
+                    <i class="fa fa-times" onclick="closePopup('popupRemove')"></i>
                     <p></p>
                     <div class="formContain" style="margin: 0">
                         <div class="inputText">
-                            <label>Bạn muốn reject bài viết của ${requestScope.Creator.name}?</label>
+                            <label>Bạn muốn remove bài viết của ${requestScope.Creator.name}?</label>
                     </div>
                     <div class="inputText">
                         <label>Lý do</label>
@@ -139,7 +135,7 @@
                     </div>
                     <hr/>
                     <div class="buttonGroup">
-                        <input class="button buttonPrimary" style="width: 100%" onclick="" value="Ok">
+                        <input class="button buttonPrimary" style="width: 100%" onclick="checkArticle(${requestScope.Article.id}, 5, ${sessionScope.ID}, document.getElementById('txtReason').value)" value="Ok">
                     </div>
                 </div>
             </div>

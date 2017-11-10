@@ -44,7 +44,7 @@ public class CheckArticle extends ActionSupport{
         
         article = aDAO.viewArticleForUpdate(articleId);
         
-        if (article.getStatus().compareToIgnoreCase("submited") == 0) {
+        if (article.getStatus().compareToIgnoreCase("submited") == 0 || article.getStatus().compareToIgnoreCase("posted") == 0) {
             result = aDAO.checkArticle(articleId, statusId, modId, reason);
         }
         
