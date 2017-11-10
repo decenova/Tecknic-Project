@@ -20,36 +20,6 @@
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
         <script src="trung/function.js" type="application/javascript"></script>
-        <script>
-
-
-            function banMember(userId) {
-                var reason = document.getElementById("txtReason").value;
-                var modId = <s:property value="#session.ID"/>;
-                $.ajax({
-                    method: 'POST',
-                    data: {userId: userId, modId: modId, reason: reason},
-                    url: "banMember",
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
-
-            }
-
-            function upgradeMember(userId) {
-                var roleId = document.getElementById("txtRole").value;
-                
-                $.ajax({
-                    method: 'POST',
-                    data: {userId: userId, roleId: roleId},
-                    url: "upgradeMember",
-                    success: function (data) {
-                        location.reload();
-                    }
-                });
-            }
-        </script>
     </head>
     <body>
         <s:include value="header.jsp"></s:include>
@@ -159,7 +129,7 @@
                             </div>
                             <hr/>
                             <div class="buttonGroup">
-                                <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>)" value="Ok">
+                                <input class="button buttonPrimary" style="width: 100%" onclick="banMember(<s:property value="user.id"/>, <s:property value="#session.ID"/>)" value="Ok">
                             </div>
                         </div>
                     <!--</form>-->
