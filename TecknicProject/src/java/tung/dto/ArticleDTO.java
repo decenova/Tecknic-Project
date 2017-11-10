@@ -21,6 +21,7 @@ public class ArticleDTO {
     private int creatorID;
     private Timestamp modifyTime;
     private int statusID;
+    private String status;
     private String reason;
     private int numOfView;
 
@@ -128,6 +129,15 @@ public class ArticleDTO {
     public void setTxtCreateTime(String txtCreateTime) {
         this.txtCreateTime = txtCreateTime;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     
     
     

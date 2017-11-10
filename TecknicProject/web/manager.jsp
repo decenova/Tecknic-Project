@@ -51,7 +51,20 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <div class="overTable" id="allUserContain">
+                                <div class="overTable">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Tiêu đề</th>
+                                                <th>Ngày tạo</th>
+                                                <th>Trạng thái</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="allUserContain">
+                                            
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <!--                        </form>-->
@@ -80,9 +93,10 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Title</th>
-                                                <th>Create time</th>
-                                                <th>Status</th>
+                                                <th>STT</th>
+                                                <th>Tiêu đề</th>
+                                                <th>Ngày tạo</th>
+                                                <th>Trạng thái</th>
                                             </tr>
                                         </thead>
                                         <tbody id="ArticleContain">
@@ -119,7 +133,8 @@
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
             </div>                          
             <script>
-                getAllUser();
+                loadAutoArticle();
+                loadAutoUser();
             </script>                              
         <s:include value="footer.jsp"></s:include>        
     </body>

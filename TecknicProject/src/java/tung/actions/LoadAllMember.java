@@ -23,7 +23,8 @@ import tung.dto.UserDTO;
  */
 @ParentPackage("json-default")
 public class LoadAllMember extends ActionSupport {
-    
+    int pos;
+    int size;
     private ArrayList<UserDTO> memberList;
     
     public LoadAllMember() {
@@ -33,13 +34,30 @@ public class LoadAllMember extends ActionSupport {
     })
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
-        memberList = dao.getAllUser();
+        memberList = dao.getAllUser(pos, size);
         return SUCCESS;
     }
 
     public ArrayList<UserDTO> getMemberList() {
         return memberList;
     }
+
+    public int getPos() {
+        return pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+    
 
     
 }

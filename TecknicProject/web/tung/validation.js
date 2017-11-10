@@ -124,8 +124,6 @@ function checkContent() {
 //      thêm câu thông báo vào popover
 
         tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Nội dung không thể không có');
-        
         parent.find('div.popover-content').html('Nội dung không thể không có kí tự nào');
         return false;
     } else {

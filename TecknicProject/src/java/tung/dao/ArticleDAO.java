@@ -143,8 +143,9 @@ public class ArticleDAO {
         ArrayList<ArticleDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
-            String sql = "select distinct a.ID, a.Title, a.CreateTime "
-                    + "from Article a inner join ArticleTag at on a.Id = at.ArticleID"
+            String sql = "select distinct a.ID, a.Title, a.CreateTime, s.Name "
+                    + "from (Article a inner join ArticleTag at on a.Id = at.ArticleID) "
+                    + "inner join Status s on StatusId = s.Id"
                     + " where Title like ? and StatusId in (?,?) and at.TagId in (?,?,?)";
             preStm = conn.prepareStatement(sql);
             preStm.setString(1, "%" + title + "%");
@@ -174,6 +175,7 @@ public class ArticleDAO {
                 article.setID(rs.getInt("ID"));
                 article.setTitle(rs.getString("Title"));
                 article.setTxtCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
+                article.setStatus(rs.getString("Name"));
                 result.add(article);
             }
         } catch (Exception e) {
