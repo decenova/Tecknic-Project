@@ -178,7 +178,7 @@ function checkArticle(articleId, statusId, modId, reason) {
         url: "checkArticle",
         data: {articleId: articleId, statusId: statusId, modId: modId, reason: reason},
         success: function (data) {
-            location.reload();
+            window.location.replace("manager.jsp");
         }
     });
 }
