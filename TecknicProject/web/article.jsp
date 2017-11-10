@@ -122,5 +122,26 @@
                 getCommentOfArticleV2();
             </script>
             <s:include value="footer.jsp"></s:include>
+            
+            <div class="popup" id="popupReject">
+                <div class="closebackground" onclick="closePopup('popupReject')"></div>
+                <div class="popupcontain">
+                    <i class="fa fa-times" onclick="closePopup('popupReject')"></i>
+                    <p></p>
+                    <div class="formContain" style="margin: 0">
+                        <div class="inputText">
+                            <label>Bạn muốn reject bài viết của ${requestScope.Creator.name}?</label>
+                        </div>
+                        <div class="inputText">
+                            <label>Lý do</label>
+                            <input type="text" id="txtReason"/>
+                        </div>
+                        <hr/>
+                        <div class="buttonGroup">
+                            <input class="button buttonPrimary" style="width: 100%" onclick="" value="Ok">
+                        </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
