@@ -32,7 +32,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <!--<body>-->
         <!-- Include external JS libs. -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
@@ -40,45 +40,84 @@
 
         <!-- Include Editor JS files. -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
-    <body onload="showAllTag(<s:property value="articleId"/>)">
+    <body onload="showAllTag(<s:property value="articleId"/>), checkTag(<s:property value="articleId"/>)">
         <s:include value="header.jsp"></s:include>
             <div class="main selfclear fixPadingTop">
+            <s:if test="%{articleId == null}">
                 <form action="addArticle" method="POST" id="addPostForm">
                     <div class="formContain formBox">
                         <h1>Đăng bài</h1>
                         <div class="inputText">
                             <label>Tiêu đề*</label>
-                            <input type="text" id="title" onblur="checkTitle()" name="txtTitle" maxlength="200" value="<s:property value="article.title"/>">
-                    </div>
-                    <div class="inputText">
-                        <label>Ảnh bìa</label>
-                        <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
-                        <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
-                        <div class="postImage">
-                                <img id="imgShow" src="<s:property value="article.coverImage"/>" />
+                            <input type="text" id="title" onblur="checkTitle()" name="txtTitle" maxlength="200" value="">
+                        </div>
+                        <div class="inputText">
+                            <label>Ảnh bìa</label>
+                            <input type="hidden" id="urlHidden" name="txtImage" value=""/>
+                            <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
+                            <div class="postImage">
+                                <img id="imgShow" src="" />
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="inputText" id="editorParent">
+                            <label>Nội dung*</label>
+                            <textarea onblur="checkContent()" name="txtContent" id="editor"></textarea>
+                        </div>
+                        <hr/>
+
+                        <div class="" id="tagList">
+                            <!--<label>Thể loại*</label>
+                                <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
+                                <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
+                                <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        </div>
+                        <hr/> 
+                        <div class="buttonGroup">
+                            <input class="button buttonPrimary" style="width: 100%" onclick="addPost('addPostForm')" value="Đăng bài">
                         </div>
                     </div>
-                    <hr/>
-                    <div class="inputText" id="editorParent">
-                        <label>Nội dung*</label>
-                        <textarea onblur="checkContent()" name="txtContent" id="editor"><s:property value="article.content"/></textarea>
-                    </div>
-                    <hr/>
+                </form>
+            </s:if>
+            <s:else>
+                <form action="updateArticle" method="POST" id="updatePostForm">
+                    <input type="hidden" value="<s:property value="articleId"/>" name="txtId"/>
+                    <div class="formContain formBox">
+                        <h1>Cập nhật bài viết</h1>
+                        <div class="inputText">
+                            <label>Tiêu đề*</label>
+                            <input type="text" id="title" onblur="checkTitle()" name="txtTitle" maxlength="200" value="<s:property value="article.title"/>">
+                        </div>
+                        <div class="inputText">
+                            <label>Ảnh bìa</label>
+                            <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
+                            <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
+                            <div class="postImage">
+                                <img id="imgShow" src="<s:property value="article.coverImage"/>" />
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="inputText" id="editorParent">
+                            <label>Nội dung*</label>
+                            <textarea onblur="checkContent()" name="txtContent" id="editor"><s:property value="article.content"/></textarea>
+                        </div>
+                        <hr/>
 
-                    <div class="" id="tagList">
-                        <!--<label>Thể loại*</label>
-                            <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
-                            <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
-                            <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        <div class="" id="tagList">
+                            <!--<label>Thể loại*</label>
+                                <p><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</p>
+                                <p><input type="checkbox" name="cbxTag" value="2"> Laptop</p>
+                                <p><input type="checkbox" name="cbxTag" value="3"> Khác</p>-->
+                        </div>
+                        <hr/> 
+                        <div class="buttonGroup">
+                            <input class="button buttonPrimary" style="width: 100%" onclick="addPost('updatePostForm')" value="Cập nhật bài viết">
+                        </div>
                     </div>
-                    <hr/>
-                    <div class="buttonGroup">
-                        <input class="button buttonPrimary" style="width: 100%" onclick="addPost('addPostForm')" value="Đăng bài">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </s:else>
         </div>
-        <s:include value="fooder.jsp"></s:include>
+        <s:include value="footer.jsp"></s:include>
         <script>
             $(function () {
                 $('#editor').froalaEditor({
