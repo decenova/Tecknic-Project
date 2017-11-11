@@ -1,22 +1,14 @@
 var size = 5;
-var pos = 0;
-var isload = false;
+var pos = 0;    
 var countArticle = 0;
+
 function loadAutoArticle() {
     $(document).ready(function () {
         size = 5;
         pos = 0;
         $('#ArticleContain').empty();
         loadUncheckArticle(size, pos);
-        $(window).scroll(function () {
-            if (size > 0 && !isLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
-                isLoad = true;
-                pos += size;
-                loadUncheckArticle(size, pos);
-            }
-        });
     });
-
 }
 function loadUncheckArticle(sizePage, positon) {
     var parent = $('#ArticleContain');
@@ -40,13 +32,19 @@ function loadUncheckArticle(sizePage, positon) {
                     s += articleList[i].status;
                     s += "</td></tr>";
                 }
-            } else {
-                var tb = (div.parent()).parent();
-                tb.empty();
-                tb.append("<h3>Không có bài viết nào</h3>");
             }
             parent.append(s);
-            isLoad = false;
+            
+            if (articleList.length === 5) {
+                $('#ViewMoreUncheckArticle').empty();
+                
+                var d = "";
+                d += '<a onclick="loadUncheckArticle(' + size + ',' + ++pos + ')">Lấy thêm uncheck article</a>';
+                
+                $('#ViewMoreUncheckArticle').append(d);
+            } else {
+                 $('#ViewMoreUncheckArticle').empty();
+            }
         }
     });
 }

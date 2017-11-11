@@ -1,6 +1,6 @@
 var size = 5;
 var pos = 0;
-var isload = false;
+var isLoad = false;
 var countUser = 0;
 function loadAutoUser() {
     $(document).ready(function () {

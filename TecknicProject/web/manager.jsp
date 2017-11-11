@@ -41,7 +41,6 @@
                     </div>
                     <div class="profileMainContaint widthNarrow">
                         <div class="tabContent widthNarrow" id="searchProfile">
-                            <!--                            <form>-->
                             <div class="formContain">
                                 <div class="inputText">
                                     <label>Tìm kiếm tài khoản</label>
@@ -68,7 +67,6 @@
                                     </table>
                                 </div>
                             </div>
-                            <!--                        </form>-->
                         </div>
                         <div class="tabContent widthNarrow" id="postHistory">
                             <form>
