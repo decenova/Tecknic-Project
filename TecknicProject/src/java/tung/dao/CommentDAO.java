@@ -74,7 +74,7 @@ public class CommentDAO {
         ArrayList<CommentDTO> result = new ArrayList<>();
         try {
             conn = MyConnection.getConnection();
-            String sql = "select c.Id, u.Name, u.Avatar, c.CreateTime, c.Content\n"
+            String sql = "select c.Id as Id, u.Id as uId, u.Name, u.Avatar, c.CreateTime, c.Content\n"
                     + "from Comment c inner join [User] u on c.UserId = u.Id\n"
                     + "where c.ArticleId=? order by c.CreateTime DESC\n"
                     + "OFFSET ? ROWS\n"
@@ -90,6 +90,7 @@ public class CommentDAO {
                 comment.setID(rs.getInt("Id"));
                 comment.setNameUser(rs.getString("Name"));
                 comment.setAvatarUser(rs.getString("Avatar"));
+                comment.setUserID(rs.getInt("uId"));
 //                comment.setCreateTime(rs.getTimestamp("CreateTime"));
                 comment.setTxtCreateTime(Utils.convertToDateV3(rs.getTimestamp("CreateTime")));
                 comment.setContent(rs.getString("Content"));
