@@ -33,9 +33,8 @@ public class GetUserReport extends ActionSupport {
     public String execute() throws Exception {
         UserDAO dao = new UserDAO();
         Timestamp from = Utils.parseToDate(txtFrom);
-        Timestamp to = Utils.parseToDate(txtTo);
+        Timestamp to = Utils.parseToDateV2(txtTo + " 23:59:59.9"); //hết ngày
         arrayList = dao.getUserByViewAndJoin(from, to);
-        System.out.println(arrayList.size());
         return SUCCESS;
     }
 
@@ -59,4 +58,11 @@ public class GetUserReport extends ActionSupport {
     public ArrayList<UserDTO> getArrayList() {
         return arrayList;
     }
+
+    public void setArrayList(ArrayList<UserDTO> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+ 
+    
 }
