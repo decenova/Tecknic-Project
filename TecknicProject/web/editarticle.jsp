@@ -55,7 +55,7 @@
                         <input type="hidden" id="urlHidden" name="txtImage" value="<s:property value="article.coverImage"/>"/>
                         <input id="urlCoverImage" type="file" onchange="getURLCoverImage()"/>
                         <div class="postImage">
-                            <img id="imgShow" src="img/No_image_available.svg" />
+                                <img id="imgShow" src="<s:property value="article.coverImage"/>" />
                         </div>
                     </div>
                     <hr/>
