@@ -10,11 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import trung.dto.ArticleDTO;
 import trung.dto.TagDTO;
 import tung.utils.Utils;
@@ -230,7 +227,7 @@ public class ArticleDAO {
 //    Lấy ra
 //    Trả về giá trị 
 //    Ghi chú: 0(Không sửa), 1(Thêm), 2(Xóa)
-    public boolean updateArticle(ArticleDTO dto, Map<Integer, Integer> changeTagList) {
+    public boolean updateArticle(ArticleDTO dto) {
         boolean result = false;
 
         try {
@@ -244,22 +241,19 @@ public class ArticleDAO {
             pre.setString(3, dto.getCoverImage());
             pre.setInt(4, dto.getId());
             if (pre.executeUpdate() == 1) { //nếu update đúng 1 Article
-
+                sql = "delete from ArticleTag where ArticleId = ?";
+                pre = conn.prepareStatement(sql);
+                pre.setInt(1, dto.getId());
+                pre.execute();
                 //Update bảng ArticleTag
-                for (Map.Entry<Integer, Integer> entry : changeTagList.entrySet()) {
-                    if (entry.getValue() == 1) { //Nếu giá trị của TagID là 1 ta thêm vào DB
+                for (Map.Entry<Integer, Integer> entry : dto.getTagList().entrySet()) {
+                    
                         sql = "insert into ArticleTag (ArticleId, TagId) values (?,?)";
                         pre = conn.prepareStatement(sql);
                         pre.setInt(1, dto.getId());
                         pre.setInt(2, entry.getKey());
                         pre.execute();
-                    } else if (entry.getValue() == 2) { //Nếu giá trị của TagID là 2 ta xóa
-                        sql = "delete from ArticleTag where ArticleId  = ? and TagId = ?";
-                        pre = conn.prepareStatement(sql);
-                        pre.setInt(1, dto.getId());
-                        pre.setInt(2, entry.getKey());
-                        pre.execute();
-                    }
+                    
                 }
                 result = true;
 

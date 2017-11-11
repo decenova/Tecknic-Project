@@ -27,15 +27,16 @@ function getUserReport(from, to) {
             var div = $("#bestUserContain");
             div.empty();
             var listBestUser = data.arrayList;
-            console.log(listBestUser.length);
+            console.log(from);
+            console.log(to);
             var s = '';
             if (listBestUser.length > 0) {
                 s += '<table class="table table-hover">';
-                s += '<thead><tr><th>STT</th><th>Username</th><th>Name</th></tr></thead><tbody>';
+                s += '<thead><tr><th>STT</th><th>Tài khoản</th><th>Tên thành viên</th><th>Ngày tham gia</th><th>Tổng lượt xem bài viết</th></tr></thead><tbody>';
                 for (var i = 0; i < listBestUser.length; i++) {
                     s += '<tr>';
-                    s += '<td>' + ++i + '</td>';
-                    s += '<td>' + listBestUser[i].username + '</td>';
+                    s += '<td>' + (i + 1) + '</td>';
+                    s += '<td><a href="">' + listBestUser[i].username + '</a></td>';
                     s += '<td>' + listBestUser[i].name + '</td>';
                     s += '<td>' + listBestUser[i].txtDateOfJoin + '</td>';
                     s += '<td>' + listBestUser[i].totalOfView + '</td>';
