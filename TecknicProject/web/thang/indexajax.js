@@ -39,7 +39,7 @@ function loadindex(sizePage, positon, tagId, search) {
     $.ajax({
         url: "indexLoadArticle",
         method: "post",
-        data: {size: sizePage, pos: positon, tagId: tagId, search: search},
+        data: {size: sizePage, pos: positon, tagId: Number(tagId), search: search},
         success: function (data) {
             var array = data.json;
             if (array.length == 0) {
