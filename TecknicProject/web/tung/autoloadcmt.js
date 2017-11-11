@@ -32,7 +32,9 @@ function getCommentOfArticleV2(sizePage, position) {
             if (commentList.length > 0) {
                 var s = "";
                 for (var i = 0; i < commentList.length; i++) {
-                    s += '<div class="commentContain fixPadding widthNarrow"><div class="comment">';
+                    s += '<div class="commentContain fixPadding widthNarrow"><div class="comment" style="position: relative">';
+                    if ($("#cmtUserId").val() == commentList[i].userID)
+                        s += '<i class="fa fa-times" style="position: absolute;right: 10px;"></i>';
                     s += '<div class="commentInfo"><div class="avatar">';
                     s += '<img src="' + commentList[i].avatarUser + '">';
                     s += '</div><div class="info">';
