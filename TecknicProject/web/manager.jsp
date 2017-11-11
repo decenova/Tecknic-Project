@@ -93,7 +93,6 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>STT</th>
                                                 <th>Tiêu đề</th>
                                                 <th>Ngày tạo</th>
                                                 <th>Trạng thái</th>

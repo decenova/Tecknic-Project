@@ -25,6 +25,6 @@ FETCH NEXT 10 ROWS ONLY;
 select count(Id) as Amount from Comment where ArticleId = 27
 
 
-select top 5 id, modifytime, numofview 
+select top 5 Id, Title, CoverImage 
 from article where ModifyTime between '2017-11-1 00:00:00' and  '2017-11-15 00:00:00'
 order by NumOfView desc, ModifyTime asc
