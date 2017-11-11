@@ -22,6 +22,8 @@ public class UserDTO {
     private String email;
     private String phoneNum;
     private Timestamp doj;
+    private String txtDateOfJoin;
+    private long totalOfView;
 
     public Timestamp getDoj() {
         return doj;
@@ -127,6 +129,24 @@ public class UserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getTxtDateOfJoin() {
+        return txtDateOfJoin;
+    }
+
+    public void setTxtDateOfJoin(String txtDateOfJoin) {
+        this.txtDateOfJoin = txtDateOfJoin;
+    }
+
+    public long getTotalOfView() {
+        return totalOfView;
+    }
+
+    public void setTotalOfView(long totalOfView) {
+        this.totalOfView = totalOfView;
+    }
+    
+    
 
     @Override
     public String toString() {

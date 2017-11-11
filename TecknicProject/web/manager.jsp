@@ -84,7 +84,7 @@
                                     <div class="">
                                         <label>Thể loại</label>
                                         <span><input type="checkbox" name="cbxTag" value="1" checked> Điện thoại</span>
-                                        <span><input type="checkbox" name="cbxTag" value="2"> Laptop</span>
+                                        <span><input type="checkbox" name="cbxTag" value="2" > Laptop</span>
                                         <span><input type="checkbox" name="cbxTag" value="3"> Khác</span>
                                     </div>
                                     <hr/>
@@ -121,10 +121,11 @@
                                 </div>
                                 <br/>
                                 <div class="buttonGroup">
-                                    <div class="button buttonPrimary" onclick="findUserByLike()"> <i class="fa fa-search"></i> </div>
+                                    <div class="button buttonPrimary" onclick="getUserReport($('#startDay').val(), $('#endDay').val())"> <i class="fa fa-search"></i> </div>
                                 </div>
                                 <br/>
                                 <div class="overTable" id="bestUserContain">
+                                    
                                 </div>
                             </div>
                             <!--                        </form>-->

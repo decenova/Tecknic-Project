@@ -36,7 +36,6 @@ public class ShowArticleForCheck extends ActionSupport{
         
         ArticleDAO aDao = new ArticleDAO();
         UserDAO uDao = new UserDAO();
-        
         ArticleDTO article = aDao.viewArticleForUpdate(articleId);
         UserDTO creator = uDao.findOtherProfileByUserID(article.getCreatorId());
         HttpServletRequest request = ServletActionContext.getRequest();
