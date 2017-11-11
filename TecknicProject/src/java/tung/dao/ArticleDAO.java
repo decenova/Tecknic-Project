@@ -185,5 +185,25 @@ public class ArticleDAO {
         }
         return result;
     }
-
+public int getAmountOfUncheckArticle() {
+        int number = 0;
+        try {
+            conn = MyConnection.getConnection();
+            String sql = "select count(ID) as Number from Article"
+                    + " where StatusId = ? or StatusId = ?";
+            preStm = conn.prepareStatement(sql);
+            preStm.setInt(1, SUBMITED);
+            preStm.setInt(2, REVIEWING);
+            rs = preStm.executeQuery();
+            ArticleDTO article;
+            if (rs.next()) {
+                number = rs.getInt("Number");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return number;
+    }
 }

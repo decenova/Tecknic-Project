@@ -105,9 +105,9 @@
 
                                     </tbody>
                                 </table>
-                                
+
                                 <div id="ViewMoreUncheckArticle">
-                                   
+
                                 </div>
                             </div>
                         </form>
@@ -129,19 +129,20 @@
                                 <div class="button buttonPrimary" onclick="findUserByLike()"> <i class="fa fa-search"></i> </div>
                             </div>
                             <br/>
-                            <div class="overTable" id="bestUserContain">
+                            <div class="overTable" id="bestUserContain">    
                             </div>
                         </div>
                         <!--                        </form>-->
                     </div>
                 </div>
-            </div>
-            <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
-        </div>                          
-        <script>
-            loadAutoArticle();
-            loadAutoUser();
-        </script>                              
+                <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
+            </div>                          
+            <script>
+                getAmountOfUnchecked();
+                loadAutoArticle();
+                loadAutoUser();
+            </script>                              
+        </div>
         <s:include value="footer.jsp"></s:include>        
     </body>
 </html>

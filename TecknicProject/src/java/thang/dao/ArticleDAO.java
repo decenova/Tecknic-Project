@@ -226,7 +226,9 @@ public class ArticleDAO {
         try {
             con = MyConnection.getConnection();
             prestmt = con.prepareStatement("select top 5 Id, Title, CoverImage \n"
-                    + " from article where ModifyTime between ? and ?\n"
+                    + " from article"
+                    + " where (ModifyTime between ? and ?)"
+                    + " and (StatusId = (Select Id from [Status] where name = 'posted'))"
                     + " order by NumOfView desc, ModifyTime asc");
             prestmt.setTimestamp(2, endTime);
             prestmt.setTimestamp(1, startTime);
