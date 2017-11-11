@@ -83,6 +83,7 @@
                                     </div>
                                     <div class="info">
                                         <%-- cho tên user đang đọc bài viết --%>
+                                        <input type="hidden" id="cmtUserId" value="<s:property value="%{#session.ID}"/>"/>
                                         <a><span class="poster"><s:property value="%{#session.NAME}"/></span></a>
                                         <br/>
                                         <span class="datepost"></span>
