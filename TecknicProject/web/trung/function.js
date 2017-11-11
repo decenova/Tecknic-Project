@@ -110,7 +110,7 @@ function showArticleTab(id) {
             } else {
                 var tb = (div.parent()).parent();
                 tb.empty();
-                tb.append("<h3>Don't have Article</h3>");
+                tb.append("<h3>Không có bài viết nào</h3><br/><br/>");
             }
             div.append(s);
         }
@@ -166,7 +166,7 @@ function showOwnArticleTab(id) {
             } else {
                 var tb = (div.parent()).parent();
                 tb.empty();
-                tb.append("<h3>Don't have Article</h3>");
+                tb.append("<h3>Không có bài viết nào</h3><br/><br/>");
             }
             div.append(s);
         }

@@ -31,7 +31,7 @@
                         <div class="info">
                             <p class="title">Manager page</p>
                             <p class="role"><s:property value="#session.ROLE"/></p>
-                        <p class="numOfPost"><b id="numOfUnchecked">2</b> bài viết chưa duyệt</p>
+                        <p class="numOfPost"><b id="numOfUnchecked">0</b> bài viết chưa duyệt</p>
                         </div>
                         <div class="tabControl selfclear">
                             <div class="tab tabSelect" onclick="showTab('#postHistory', this)">Bài viết</div>

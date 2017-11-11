@@ -26,16 +26,7 @@
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
                 <div class="postContaint col-xs-12 col-sm-12 col-md-10 col-lg-10">
                     <div class="post">
-                        <div class="postInfo fixPadding widthNarrow selfclear">
-                            <div class="avatar">
-                                <img src="img/logo.svg">
-                            </div>
-                            <div class="info">
-                                <a><span class="poster">Admin</span></a>
-                                <br/>
-                                <span class="datepost">12:30 1/1/2017</span>
-                            </div>
-                        </div>
+                        
                         <div class="postImage">
                             <img src="img/rule.png">
                         </div>
@@ -96,11 +87,6 @@
                                     <br/>-Bài trả lời không lạc đề, phải có tính xây dựng, nội dung rõ ràng.
                                 </p>
                             </div>
-                        </div>
-                        <hr/>
-                        <div class="postControl fixPadding widthNarrow">
-                            <span><i class="fa fa-eye"></i> 12000</span>
-                            <span><i class="fa fa-comment-o"></i> 12</span>
                         </div>
                     </div>
                 </div>

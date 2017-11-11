@@ -59,7 +59,7 @@ function loadindex(sizePage, positon, tagId, search) {
                 s += '    <div class="info">';
                 s += '        <a href="/Tecknic/viewOtherProfile?userId=' + json[1].id + '"><span class="poster">' + json[1].name + '</span></a>';
                 s += '        <br/>';
-                s += '        <span class="datepost">' + json[0].modifyTime + '</span>';
+                s += '        <span class="datepost">' + formatDateIndex(json[0].modifyTime) + '</span>';
                 s += '    </div>';
                 s += '</div>';
                 s += '<div class="postImage">';
@@ -133,4 +133,9 @@ function slideShow() {
     tag.animate({left: (left) + "%"}, 1000, "swing");
 }
 
+function formatDateIndex(str){
+    str = str.replace('T',' ');
+    str = str.replace(/-/g,'\/');
+    return str;
+}
 

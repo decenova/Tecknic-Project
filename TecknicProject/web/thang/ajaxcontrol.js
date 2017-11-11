@@ -142,7 +142,7 @@ function checkEmail() {
     }
 }
 function checkPhone() {
-    var tag = $('#phone').toString();
+    var tag = $('#phone');
     var value = tag.val().toString().trim();
     var parent = tag.parent();
     if (!(/^([0-9]{9,11})?$/.test(value))) {
@@ -159,7 +159,7 @@ function checkPhone() {
     }
 }
 function checkCheckBox() {
-    var tag = $('#checkbox').toString();
+    var tag = $('#checkbox');
     var value = tag[0].checked;
     var parent = tag.parent();
     if (!value) {

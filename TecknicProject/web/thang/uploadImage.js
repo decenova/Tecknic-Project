@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var hostLink = "http://localhost:8084/Tecknic/files/";
 
 function getURLCoverImage() {
     var fd = new FormData();
@@ -16,7 +16,9 @@ function getURLCoverImage() {
         contentType: false,
         success: function (data) {
             if (data.link != null) {
-                var link = data.link.replace('addArticle','');
+                var link = data.link.split('/');
+                link = link[link.length - 1];
+                link = hostLink + link;
                 $('#urlHidden').val(link);
                 $('#imgShow').attr('src', link);
             } else {
@@ -36,8 +38,9 @@ function getURLAvartarImage() {
         contentType: false,
         success: function (data) {
             if (data.link != null) {
-                var link = data.link.replace('loadProfile','');
-                console.log(link);
+                var link = data.link.split('/');
+                link = link[link.length - 1];
+                link = hostLink + link;
                 $('#urlHidden').val(link);
                 $('#imgShow').attr('src', link);
             } else {
