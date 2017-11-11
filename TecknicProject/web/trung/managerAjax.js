@@ -30,6 +30,7 @@ function loadUncheckArticle(sizePage, positon) {
                 var s = "";
                 for (var i = 0; i < articleList.length; i++) {
                     s += "<tr>";
+                    s += "<td>" + ++countArticle + "</td>";
                     s += "<td><a href='showArticleForCheck?articleId=" + articleList[i].id + "'>";
                     s += articleList[i].title;
                     s += "</a></td>";

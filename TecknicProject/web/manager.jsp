@@ -31,7 +31,7 @@
                         <div class="info">
                             <p class="title">Manager page</p>
                             <p class="role"><s:property value="#session.ROLE"/></p>
-                            <p class="numOfPost"><b>2</b> bài viết chưa duyệt</p>
+                        <p class="numOfPost"><b id="numOfUnchecked">2</b> bài viết chưa duyệt</p>
                         </div>
                         <div class="tabControl selfclear">
                             <div class="tab tabSelect" onclick="showTab('#postHistory', this)">Bài viết</div>
@@ -134,6 +134,7 @@
                 <div class="hidden-xs hidden-sm col-md-1 col-lg-1"></div>
             </div>                          
             <script>
+                getAmountOfUnchecked();
                 loadAutoArticle();
                 loadAutoUser();
             </script>                              
