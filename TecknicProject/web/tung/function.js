@@ -17,6 +17,38 @@ function loadAutoUser() {
         });
     });
 }
+//------------------------------------------REPORT---------------------------------
+function getUserReport(from, to) {
+    $.ajax({
+        method: "POST",
+        url: "getUserReport",
+        data: {txtFrom: from, txtTo: to},
+        success: function (data) {
+            var div = $("#bestUserContain");
+            div.empty();
+            var listBestUser = data.arrayList;
+            console.log(listBestUser.length);
+            var s = '';
+            if (listBestUser.length > 0) {
+                s += '<table class="table table-hover">';
+                s += '<thead><tr><th>STT</th><th>Username</th><th>Name</th></tr></thead><tbody>';
+                for (var i = 0; i < listBestUser.length; i++) {
+                    s += '<tr>';
+                    s += '<td>' + ++i + '</td>';
+                    s += '<td>' + listBestUser[i].username + '</td>';
+                    s += '<td>' + listBestUser[i].name + '</td>';
+                    s += '<td>' + listBestUser[i].txtDateOfJoin + '</td>';
+                    s += '<td>' + listBestUser[i].totalOfView + '</td>';
+                }
+                s += '</tbody></table>';
+            } else {
+                s = '<p>Không có thành viên nào</p>';
+            }
+            div.append(s);
+        }
+        
+    });
+}
 
 //-------------------------------------------USER------------------------------------------
 //lấy hết thành viên
@@ -59,9 +91,7 @@ function findUserByLike() {
             var searchUserList = data.searchUserList;
             var s = '';
             if (searchUserList.length > 0) {
-                s += '<table class="table table-hover"><thead>';
-                s += '<tr><th>No.</th><th>Username</th><th>Name</th><th>Email</th><th>Role</th>';
-                s += '</tr></thead><tbody>';
+
                 for (var i = 0; i < searchUserList.length; i++) {
                     s += '<tr>';
                     s += '<td>' + (i + 1) + '</td>';
@@ -167,15 +197,12 @@ function findArticleByTagOrTitle() {
             var articleList = data.articleList;
             var s = "";
             if (articleList.length > 0) {
-//                s += '<table class="table table-hover">';
-//                s += '<thead><tr><th>No.</th><th>Title</th><th>Create time</th></tr></thead><tbody>';
                 for (var i = 0; i < articleList.length; i++) {
-                    s += '<tr><td>' + (i + 1) + '</td><td><a href="article.jsp?articleID=' + articleList[i].ID + '">';
+                    s += '<tr><td>' + (i + 1) + '</td><td><a href="showArticleForCheck?articleID=' + articleList[i].ID + '">';
                     s += articleList[i].title + '</a></td>';
                     s += '<td>' + articleList[i].txtCreateTime + '</td>';
                     s += '<td>' + articleList[i].status + '</td></tr>';
                 }
-//                s += '</tbody></table>';
             } else {
                 s = '<p>Không tìm thấy bài viết nào</p>';
             }

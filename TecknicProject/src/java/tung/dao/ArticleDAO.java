@@ -9,7 +9,9 @@ import db.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import tung.dto.ArticleDTO;
 import tung.utils.Utils;
 
@@ -195,7 +197,6 @@ public int getAmountOfUncheckArticle() {
             preStm.setInt(1, SUBMITED);
             preStm.setInt(2, REVIEWING);
             rs = preStm.executeQuery();
-            ArticleDTO article;
             if (rs.next()) {
                 number = rs.getInt("Number");
             }
@@ -206,4 +207,6 @@ public int getAmountOfUncheckArticle() {
         }
         return number;
     }
+
+
 }

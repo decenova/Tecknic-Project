@@ -11,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+
 import tung.dto.UserDTO;
+import tung.utils.Utils;
 
 /**
  *
@@ -40,6 +42,39 @@ public class UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<UserDTO> getUserByViewAndJoin(Timestamp from, Timestamp to) {
+        ArrayList<UserDTO> result = new ArrayList<>();
+        try {
+            conn = MyConnection.getConnection();
+            //ban đầu đếm lượt view của mỗi thằng
+            //sau đó lấy thông tin thằng đó rồi
+            String sql = "select top 5 u.Username, u.Name, u.DateOfJoin, a.TotalOfView\n" +
+                        "from [User] u inner join \n" +
+                        "(select a.CreatorId, sum(a.NumOfView) as TotalOfView from Article a\n" +
+                        "where ModifyTime between ? and ?\n" +
+                        "group by (a.CreatorId)) a\n" +
+                        "on u.Id = a.CreatorId\n" +
+                        "order by a.TotalOfView desc, DateOfJoin desc";
+            preStm = conn.prepareStatement(sql);
+            preStm.setTimestamp(1, from);
+            preStm.setTimestamp(2, to);
+            rs = preStm.executeQuery();
+            UserDTO user;
+            while (rs.next()) {
+                user = new UserDTO();
+                user.setUsername("Username");
+                user.setName(rs.getString("Name"));
+                user.setTxtDateOfJoin(Utils.convertToDateV3(rs.getTimestamp("DateOfJoin")));
+                user.setTotalOfView(rs.getLong("TotalOfView"));
+                result.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return result;
     }
 
     public UserDTO loadUser(int userID) {
