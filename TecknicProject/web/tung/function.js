@@ -182,7 +182,19 @@ function findArticleByTagOrTitle() {
             div.append(s);
         }
     });
+    }
     //-------------------------------------------URL Image Cover------------------------------------------
 //đã chuyển sang thang/upfile
+//------------------------------
+function getAmountOfUnchecked() {
+    $.ajax({
+        method: "POST",
+        url: "getAmountOfUnchecked",
+        success: function (data) {
+            console.log(data.numberOfUnchecked);
+            $('#numOfUnchecked').html(data.numberOfUnchecked);
+        }
+    });
 }
+
 
