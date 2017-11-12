@@ -63,7 +63,7 @@ public class UserDAO {
             UserDTO user;
             while (rs.next()) {
                 user = new UserDTO();
-                user.setUsername("Username");
+                user.setUsername(rs.getString("Username"));
                 user.setName(rs.getString("Name"));
                 user.setTxtDateOfJoin(Utils.convertToDateV3(rs.getTimestamp("DateOfJoin")));
                 user.setTotalOfView(rs.getLong("TotalOfView"));

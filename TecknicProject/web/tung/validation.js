@@ -136,7 +136,7 @@ function checkNewTag() {
     var tag = $('[name="cbxTag"]:checked');
     //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = $('#tagList');
-    if (tag.length == 0) {
+    if (tag.length === 0) {
 //      thêm popover
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
@@ -168,7 +168,7 @@ function checkNewTag() {
     var tag = $('[name="cbxTag"]:checked');
     //  lấy thẻ cha để có thể thêm vào cái popover
     var parent = $('#tagList');
-    if (tag.length == 0) {
+    if (tag.length === 0) {
 //      thêm popover
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
@@ -269,3 +269,20 @@ function submitChangePassword(tagId) {
     }
 }
 
+function checkFromDay() {
+    var tag = $('#startDay');
+    var value = tag.val().toString().trim();
+    var parent = tag.parent();
+     if (!($('#new').val() === value)) {
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Không trùng với password trên');
+        return false;
+    } else {
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}

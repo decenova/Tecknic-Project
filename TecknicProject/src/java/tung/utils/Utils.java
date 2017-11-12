@@ -23,6 +23,10 @@ public class Utils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return new Timestamp(sdf.parse(dob).getTime());
     }
+        public static Timestamp parseToDateV2(String dob) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return new Timestamp(sdf.parse(dob).getTime());
+    }
 
     public static boolean parseToGender(String txtGender) {
 
