@@ -19,9 +19,6 @@ function getURLCoverImage() {
                 var link = data.link.split('/');
                 link = link[link.length - 1];
                 link = 'files/' + link;
-                
-                console.log(hostLink);
-                console.log(link);
                 $('#urlHidden').val(link);
                 $('#imgShow').attr('src', link);
             } else {
