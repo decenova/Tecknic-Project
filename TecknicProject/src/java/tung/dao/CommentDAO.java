@@ -76,13 +76,14 @@ public class CommentDAO {
             conn = MyConnection.getConnection();
             String sql = "select c.Id as Id, u.Id as uId, u.Name, u.Avatar, c.CreateTime, c.Content\n"
                     + "from Comment c inner join [User] u on c.UserId = u.Id\n"
-                    + "where c.ArticleId=? order by c.CreateTime DESC\n"
+                    + "where c.ArticleId=? and c.Status=? order by c.CreateTime DESC\n"
                     + "OFFSET ? ROWS\n"
                     + "FETCH NEXT ? ROWS ONLY";
             preStm = conn.prepareStatement(sql);
             preStm.setInt(1, articleID);
-            preStm.setInt(2, pos);
-            preStm.setInt(3, size);
+            preStm.setBoolean(2, true);
+            preStm.setInt(3, pos);
+            preStm.setInt(4, size);
             rs = preStm.executeQuery();
             CommentDTO comment;
             while (rs.next()) {
@@ -132,9 +133,10 @@ public class CommentDAO {
         boolean result = false;
         try {
             conn = MyConnection.getConnection();
-            String sql = "delete from Comment where Id = ?";
+            String sql = "update Comment set Status = ? where Id = ?";
             preStm = conn.prepareStatement(sql);
-            preStm.setInt(1, commentID);
+            preStm.setBoolean(1, false);
+            preStm.setInt(2, commentID);
             if (preStm.executeUpdate() > 0) {
                 result = true;
             }
@@ -150,9 +152,10 @@ public class CommentDAO {
         int count = 0;
         try {
             conn = MyConnection.getConnection();
-            String sql = "select count(Id) as Amount from Comment where ArticleId = ?";
+            String sql = "select count(Id) as Amount from Comment where ArticleId = ? and Status = ?";
             preStm = conn.prepareStatement(sql);
             preStm.setInt(1, articleID);
+            preStm.setBoolean(2, true);
             rs = preStm.executeQuery();
             if (rs.next()) {
                 count = rs.getInt("Amount");

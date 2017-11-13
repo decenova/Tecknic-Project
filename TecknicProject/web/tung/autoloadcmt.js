@@ -37,6 +37,20 @@ function addCommentToArticle() {
         }
     });
 }
+function removeCmtById(cmtId) {
+    $.ajax({
+        method: "POST",
+        url: "removeCmt",
+        data: {cmtId: cmtId},
+        success: function () {
+            $('#contentComment').val("");
+            $('#numOfComment').text(Number($('#numOfComment').text()) - 1);
+            $("#CommentContain").empty();
+            pos = 0;
+            getCommentOfArticleV2(5,0);
+        }
+    });
+}
 
 function getCommentOfArticleV2(sizePage, position) {
     $.ajax({
@@ -50,8 +64,9 @@ function getCommentOfArticleV2(sizePage, position) {
                 var s = "";
                 for (var i = 0; i < commentList.length; i++) {
                     s += '<div class="commentContain fixPadding widthNarrow"><div class="comment" style="position: relative">';
-                    if ($("#cmtUserId").val() == commentList[i].userID)
-                        s += '<i class="fa fa-times" style="position: absolute;right: 10px;"></i>';
+                    if ($("#cmtUserId").val() == commentList[i].userID) {
+                        s += '<i onclick="removeCmtById('+ commentList[i].ID +')" class="fa fa-times" style="position: absolute;right: 10px;"></i>';
+                    }
                     s += '<div class="commentInfo"><div class="avatar">';
                     s += '<img src="' + commentList[i].avatarUser + '">';
                     s += '</div><div class="info">';
