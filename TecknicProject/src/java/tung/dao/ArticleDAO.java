@@ -192,10 +192,9 @@ public int getAmountOfUncheckArticle() {
         try {
             conn = MyConnection.getConnection();
             String sql = "select count(ID) as Number from Article"
-                    + " where StatusId = ? or StatusId = ?";
+                    + " where StatusId = ?";
             preStm = conn.prepareStatement(sql);
             preStm.setInt(1, SUBMITED);
-            preStm.setInt(2, REVIEWING);
             rs = preStm.executeQuery();
             if (rs.next()) {
                 number = rs.getInt("Number");
