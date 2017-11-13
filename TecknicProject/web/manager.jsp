@@ -19,6 +19,7 @@
         <script src="jquery.min.js" type="application/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="application/javascript"></script>
         <script src="UIControll.js" type="application/javascript"></script>
+        <script src="tung/validation.js" type="application/javascript"></script>
         <script src="tung/function.js" type="application/javascript"></script>
         <script src="trung/managerAjax.js" type="application/javascript"></script>
     </head>
@@ -115,11 +116,11 @@
                                 <h2>Tài khoản mới có nhiều lượt xem nhất</h2>
                                 <div class="inputText">
                                     <label>Từ ngày</label>
-                                    <input id="startDay" type="date" name="startDay">
+                                    <input id="startDay" onblur="checkNullDay('#startDay')" type="date" name="startDay">
                                 </div>
                                 <div class="inputText">
                                     <label>Từ ngày</label>
-                                    <input id="endDay" type="date" name="endDay">
+                                    <input id="endDay" onblur="checkNullDay('#endDay'), checkEndDay()" type="date" name="endDay">
                                 </div>
                                 <br/>
                                 <div class="buttonGroup">
