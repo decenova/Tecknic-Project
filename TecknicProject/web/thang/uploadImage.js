@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var hostLink = "http://localhost:8084/Tecknic/files/";
+var hostLink = "http://192.168.137.1:8084/Tecknic/files/";
 
 function getURLCoverImage() {
     var fd = new FormData();
@@ -18,7 +18,10 @@ function getURLCoverImage() {
             if (data.link != null) {
                 var link = data.link.split('/');
                 link = link[link.length - 1];
-                link = hostLink + link;
+                link = 'files/' + link;
+                
+                console.log(hostLink);
+                console.log(link);
                 $('#urlHidden').val(link);
                 $('#imgShow').attr('src', link);
             } else {
@@ -40,7 +43,7 @@ function getURLAvartarImage() {
             if (data.link != null) {
                 var link = data.link.split('/');
                 link = link[link.length - 1];
-                link = hostLink + link;
+                link = 'files/' + link;
                 $('#urlHidden').val(link);
                 $('#imgShow').attr('src', link);
             } else {
