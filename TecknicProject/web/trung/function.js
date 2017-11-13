@@ -73,6 +73,8 @@ function showAllTag() {
 }
 
 function checkTag(articleId) {
+    if (articleId == undefined)
+        return;
     $.ajax({
         method: 'GET',
         url: "/Tecknic/getTagListForEdit?articleId=" + articleId,
