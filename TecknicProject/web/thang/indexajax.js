@@ -118,7 +118,10 @@ function loadBestArticle() {
             $('#slideContain').css("width", (numOfBest * 100) + "%");
             $('#slideContain .slide').css("width", (100 / numOfBest) + "%");
             clearInterval(slideInterval);
-            slideInterval = setInterval(slideShow, 3000);
+            if (numOfBest > 1)
+                slideInterval = setInterval(slideShow, 3000);
+            else
+                clearInterval(slideInterval);
         }
     });
 }
