@@ -21,6 +21,23 @@ function goNextCmt() {
         });
 }
 
+function addCommentToArticle() {
+    if ($('#contentComment').val().toString().trim().length <= 0)
+        return;
+    $.ajax({
+        method: "POST",
+        url: "/Tecknic/addComment",
+        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
+        success: function () {
+            $('#contentComment').val("");
+            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
+            $("#CommentContain").empty();
+            pos = 0;
+            getCommentOfArticleV2(5,0);
+        }
+    });
+}
+
 function getCommentOfArticleV2(sizePage, position) {
     $.ajax({
         url: "/Tecknic/loadAutoCmt",

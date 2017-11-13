@@ -79,7 +79,7 @@
                                 <div class="commentInfo">
                                     <div class="avatar">
                                         <%-- cho avatar của user đang đọc bài viết --%>
-                                        <img src="<s:property value="%{#session.AVATAR}"/>">
+                                        <img id="userAvatar" src="<s:property value="%{#session.AVATAR}"/>">
                                     </div>
                                     <div class="info">
                                         <%-- cho tên user đang đọc bài viết --%>

@@ -47,7 +47,7 @@ function getUserReport(from, to) {
             }
             div.append(s);
         }
-        
+
     });
 }
 
@@ -142,20 +142,21 @@ function getCommentOfArticle() {
     });
 }
 //Thêm comment
-function addCommentToArticle() {
-    if ($('#contentComment').val().toString().trim().length <= 0)
-        return;
-    $.ajax({
-        method: "POST",
-        url: "/Tecknic/addComment",
-        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
-        success: function () {
-            $('#contentComment').val("");
-            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
-            getCommentOfArticle();
-        }
-    });
-}
+//function addCommentToArticle() {
+//    if ($('#contentComment').val().toString().trim().length <= 0)
+//        return;
+//    $.ajax({
+//        method: "POST",
+//        url: "/Tecknic/addComment",
+//        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
+//        success: function () {
+//            $('#contentComment').val("");
+//            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
+//            $("#CommentContain").empty();
+//            getCommentOfArticleV2(5,0);
+//        }
+//    });
+//}
 //-------------------------------------------ARTICLE------------------------------------------
 function findArticleByTitle() {
     $.ajax({
@@ -210,8 +211,8 @@ function findArticleByTagOrTitle() {
             div.append(s);
         }
     });
-    }
-    //-------------------------------------------URL Image Cover------------------------------------------
+}
+//-------------------------------------------URL Image Cover------------------------------------------
 //đã chuyển sang thang/upfile
 //------------------------------
 function getAmountOfUnchecked() {
