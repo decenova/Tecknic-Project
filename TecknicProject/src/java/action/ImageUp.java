@@ -52,7 +52,8 @@ public class ImageUp extends ActionSupport {
     public String execute() throws Exception {
         // The route on which the file is saved.
         ServletContext context = ServletActionContext.getServletContext();
-        File uploads = new File(context.getRealPath("/") + "/img");
+        File uploads = new File(context.getRealPath("/") + "/files");
+//        uploads = new File("/img");
         // duong dan luu file
         String multipartContentType = "multipart/form-data";
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -89,7 +90,7 @@ public class ImageUp extends ActionSupport {
 
             // Create link.
             String path = request.getHeader("referer");
-            linkName = path + "files/" + name;
+            linkName = "/Tecknic/files/" + name;
 
             // Validate image.
             String mimeType = fileContentType;
