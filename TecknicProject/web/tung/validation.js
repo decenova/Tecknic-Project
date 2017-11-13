@@ -269,16 +269,35 @@ function submitChangePassword(tagId) {
     }
 }
 
-function checkFromDay() {
-    var tag = $('#startDay');
+function checkEndDay() {
+    var tag = $('#endDay');
     var value = tag.val().toString().trim();
+    console.log(value);
+    var startDay = new Date($('#startDay').val());
+    var endDay = new Date($('#endDay').val());
     var parent = tag.parent();
-     if (!($('#new').val() === value)) {
+     if (startDay > endDay) {
         parent.children('div.mypopover').remove();
         parent.append(popoverStr);
-
         tag.css({"border-left-color": "#ff8888"});
-        parent.find('div.popover-content').html('Không trùng với password trên');
+        parent.find('div.popover-content').html('Ngày kết thúc không thể trước ngày bắt đầu!');
+        return false;
+    } else {
+        tag.css({"border-left-color": "#226699"});
+        parent.children('div.mypopover').remove();
+        return true;
+    }
+}
+function checkNullDay(day) {
+    var tag = $(day);
+    var value = tag.val();
+    console.log(tag);
+    var parent = tag.parent();
+     if (value === null || value === "") {
+        parent.children('div.mypopover').remove();
+        parent.append(popoverStr);
+        tag.css({"border-left-color": "#ff8888"});
+        parent.find('div.popover-content').html('Nhập ngày trước khi tìm kiếm');
         return false;
     } else {
         tag.css({"border-left-color": "#226699"});

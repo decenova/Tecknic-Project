@@ -19,36 +19,38 @@ function loadAutoUser() {
 }
 //------------------------------------------REPORT---------------------------------
 function getUserReport(from, to) {
-    $.ajax({
-        method: "POST",
-        url: "getUserReport",
-        data: {txtFrom: from, txtTo: to},
-        success: function (data) {
-            var div = $("#bestUserContain");
-            div.empty();
-            var listBestUser = data.arrayList;
-            console.log(from);
-            console.log(to);
-            var s = '';
-            if (listBestUser.length > 0) {
-                s += '<table class="table table-hover">';
-                s += '<thead><tr><th>STT</th><th>Tài khoản</th><th>Tên thành viên</th><th>Ngày tham gia</th><th>Tổng lượt xem bài viết</th></tr></thead><tbody>';
-                for (var i = 0; i < listBestUser.length; i++) {
-                    s += '<tr>';
-                    s += '<td>' + (i + 1) + '</td>';
-                    s += '<td><a href="">' + listBestUser[i].username + '</a></td>';
-                    s += '<td>' + listBestUser[i].name + '</td>';
-                    s += '<td>' + listBestUser[i].txtDateOfJoin + '</td>';
-                    s += '<td>' + listBestUser[i].totalOfView + '</td>';
+    if (checkNullDay('#startDay') && checkNullDay('#endDay') && checkEndDay()) {
+        $.ajax({
+            method: "POST",
+            url: "getUserReport",
+            data: {txtFrom: from, txtTo: to},
+            success: function (data) {
+                var div = $("#bestUserContain");
+                div.empty();
+                var listBestUser = data.arrayList;
+                console.log(from);
+                console.log(to);
+                var s = '';
+                if (listBestUser.length > 0) {
+                    s += '<table class="table table-hover">';
+                    s += '<thead><tr><th>STT</th><th>Tài khoản</th><th>Tên thành viên</th><th>Ngày tham gia</th><th>Tổng lượt xem bài viết</th></tr></thead><tbody>';
+                    for (var i = 0; i < listBestUser.length; i++) {
+                        s += '<tr>';
+                        s += '<td>' + (i + 1) + '</td>';
+                        s += '<td><a href="">' + listBestUser[i].username + '</a></td>';
+                        s += '<td>' + listBestUser[i].name + '</td>';
+                        s += '<td>' + listBestUser[i].txtDateOfJoin + '</td>';
+                        s += '<td>' + listBestUser[i].totalOfView + '</td>';
+                    }
+                    s += '</tbody></table>';
+                } else {
+                    s = '<p>Không có thành viên nào</p>';
                 }
-                s += '</tbody></table>';
-            } else {
-                s = '<p>Không có thành viên nào</p>';
+                div.append(s);
             }
-            div.append(s);
-        }
 
-    });
+        });
+    }
 }
 
 //-------------------------------------------USER------------------------------------------
