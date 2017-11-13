@@ -37,10 +37,9 @@ function loadUncheckArticle(sizePage, positon) {
             
             if (articleList.length === 5) {
                 $('#ViewMoreUncheckArticle').empty();
-                
                 var d = "";
-                d += '<a onclick="loadUncheckArticle(' + size + ',' + ++pos + ')">Lấy thêm uncheck article</a>';
-                
+                pos += size;
+                d += '<a onclick="loadUncheckArticle(' + size + ',' + pos + ')">Lấy thêm bài viết</a>';
                 $('#ViewMoreUncheckArticle').append(d);
             } else {
                  $('#ViewMoreUncheckArticle').empty();
