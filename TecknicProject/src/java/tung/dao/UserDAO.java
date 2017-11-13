@@ -49,7 +49,7 @@ public class UserDAO {
             conn = MyConnection.getConnection();
             //ban đầu đếm lượt view của mỗi thằng
             //sau đó lấy thông tin thằng đó rồi
-            String sql = "select top 5 u.Username, u.Name, u.DateOfJoin, a.TotalOfView\n" +
+            String sql = "select top 5 u.Id, u.Username, u.Name, u.DateOfJoin, a.TotalOfView\n" +
                         "from [User] u inner join \n" +
                         "(select a.CreatorId, sum(a.NumOfView) as TotalOfView from Article a\n" +
                         "where ModifyTime between ? and ?\n" +
@@ -63,6 +63,7 @@ public class UserDAO {
             UserDTO user;
             while (rs.next()) {
                 user = new UserDTO();
+                user.setId(rs.getInt("Id"));
                 user.setUsername(rs.getString("Username"));
                 user.setName(rs.getString("Name"));
                 user.setTxtDateOfJoin(Utils.convertToDateV3(rs.getTimestamp("DateOfJoin")));

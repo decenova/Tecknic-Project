@@ -32,8 +32,6 @@ public class GetAmountOfUncheckedArticle extends ActionSupport {
     })
     public String execute() throws Exception {
         ArticleDAO dao = new ArticleDAO();
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//        request.setAttribute("NumberOfUncheckArticle", dao.getAmountOfUncheckArticle());
         numberOfUnchecked = dao.getAmountOfUncheckArticle();
         return SUCCESS;
     }

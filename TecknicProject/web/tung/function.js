@@ -8,13 +8,6 @@ function loadAutoUser() {
         pos = 0;
         $('#allUserContain').empty();
         getAllUser(size, pos);
-        $(window).scroll(function () {
-            if (size > 0 && !isLoad && $(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
-                isLoad = true;
-                pos += size;
-                getAllUser(size, pos);
-            }
-        });
     });
 }
 //------------------------------------------REPORT---------------------------------
@@ -28,8 +21,6 @@ function getUserReport(from, to) {
                 var div = $("#bestUserContain");
                 div.empty();
                 var listBestUser = data.arrayList;
-                console.log(from);
-                console.log(to);
                 var s = '';
                 if (listBestUser.length > 0) {
                     s += '<table class="table table-hover">';
@@ -37,7 +28,7 @@ function getUserReport(from, to) {
                     for (var i = 0; i < listBestUser.length; i++) {
                         s += '<tr>';
                         s += '<td>' + (i + 1) + '</td>';
-                        s += '<td><a href="">' + listBestUser[i].username + '</a></td>';
+                        s += '<td><a href="/Tecknic/viewOtherProfile?userId=' + listBestUser[i].id + '">' + listBestUser[i].username + '</a></td>';
                         s += '<td>' + listBestUser[i].name + '</td>';
                         s += '<td>' + listBestUser[i].txtDateOfJoin + '</td>';
                         s += '<td>' + listBestUser[i].totalOfView + '</td>';
@@ -74,9 +65,21 @@ function getAllUser(size, pos) {
                     s += '<td>' + memberList[i].role + '</td>';
                     s += '</tr>';
                 }
+            } else {
+                s = '<p>Không có thành viên nào</p>';
             }
             div.append(s);
-            isLoad = false;
+
+
+            if (memberList.length === 5) {
+                $('#ViewMoreUser').empty();
+                var d = "";
+                pos += size;
+                d += '<a onclick="getAllUser(' + size + ',' + pos + ')">Tải thêm thành viên</a>';
+                $('#ViewMoreUser').append(d);
+            } else {
+                $('#ViewMoreUser').empty();
+            }
         }
     });
 }
@@ -84,33 +87,41 @@ function getAllUser(size, pos) {
 
 
 function findUserByLike() {
-    $.ajax({
-        method: "POST",
-        url: "/Tecknic/searchLikeName",
-        data: "searchName=" + $('#sName').val(),
-        success: function (data) {
-            var div = $("#allUserContain");
-            div.empty();
-            var searchUserList = data.searchUserList;
-            var s = '';
-            if (searchUserList.length > 0) {
-
-                for (var i = 0; i < searchUserList.length; i++) {
-                    s += '<tr>';
-                    s += '<td>' + (i + 1) + '</td>';
-                    s += '<td><a href=profile.jsp?userID="' + searchUserList[i].id + '">' + searchUserList[i].username + '</a></td>';
-                    s += '<td>' + searchUserList[i].name + '</td>';
-                    s += '<td>' + searchUserList[i].email + '</td>';
-                    s += '<td>' + searchUserList[i].role + '</td>';
-                    s += '</tr>';
+    if (checkSearchName('#sName')) {
+        $.ajax({
+            method: "POST",
+            url: "/Tecknic/searchLikeName",
+            data: "searchName=" + $('#sName').val(),
+            success: function (data) {
+                var parent = $("#userContain");
+                parent.show();
+                var div = $("#allUserContain");
+                var noti = $("#showNoRecordUser");
+                noti.empty();
+                div.empty();
+                var searchUserList = data.searchUserList;
+                var s = '';
+                if (searchUserList.length > 0) {
+                    for (var i = 0; i < searchUserList.length; i++) {
+                        s += '<tr>';
+                        s += '<td>' + (i + 1) + '</td>';
+                        s += '<td><a href=profile.jsp?userID="' + searchUserList[i].id + '">' + searchUserList[i].username + '</a></td>';
+                        s += '<td>' + searchUserList[i].name + '</td>';
+                        s += '<td>' + searchUserList[i].email + '</td>';
+                        s += '<td>' + searchUserList[i].role + '</td>';
+                        s += '</tr>';
+                    }
+                    s += '</tbody></table>';
+                } else {
+                    parent.hide();
+                    $('#ViewMoreUser').hide();
+                    var tmpS = 'Không tìm thấy bài viết nào';
+                    noti.html(tmpS);
                 }
-                s += '</tbody></table>';
-            } else {
-                s = '<p>No record is not found!</p>';
+                div.append(s);
             }
-            div.append(s);
-        }
-    });
+        });
+    }
 }
 //-------------------------------------------COMMENT------------------------------------------
 //tải comment theo bài viết
@@ -143,22 +154,6 @@ function getCommentOfArticle() {
         }
     });
 }
-//Thêm comment
-//function addCommentToArticle() {
-//    if ($('#contentComment').val().toString().trim().length <= 0)
-//        return;
-//    $.ajax({
-//        method: "POST",
-//        url: "/Tecknic/addComment",
-//        data: "txtComment=" + $('#contentComment').val() + "&articleID=" + $('#articleId').val(),
-//        success: function () {
-//            $('#contentComment').val("");
-//            $('#numOfComment').text(Number($('#numOfComment').text()) + 1);
-//            $("#CommentContain").empty();
-//            getCommentOfArticleV2(5,0);
-//        }
-//    });
-//}
 //-------------------------------------------ARTICLE------------------------------------------
 function findArticleByTitle() {
     $.ajax({
@@ -188,44 +183,55 @@ function findArticleByTitle() {
 }
 //Tag or Title
 function findArticleByTagOrTitle() {
-    var names = $('input:checked').map(function () {
-        return $(this).val();
-    }).get();
-    $.ajax({
-        method: "POST",
-        url: "/Tecknic/findArticleV2",
-        data: "searchTitle=" + $('#sTitle').val() + "&cbxTag=" + names,
-        success: function (data) {
-            var div = $("#ArticleContain");
-            div.empty();
-            var articleList = data.articleList;
-            var s = "";
-            if (articleList.length > 0) {
-                for (var i = 0; i < articleList.length; i++) {
-                    s += '<tr><td>' + (i + 1) + '</td><td><a href="showArticleForCheck?articleID=' + articleList[i].ID + '">';
-                    s += articleList[i].title + '</a></td>';
-                    s += '<td>' + articleList[i].txtCreateTime + '</td>';
-                    s += '<td>' + articleList[i].status + '</td></tr>';
+    if (checkSearchName('#sTitle')) {
+        var names = $('input:checked').map(function () {
+            return $(this).val();
+        }).get();
+        $.ajax({
+            method: "POST",
+            url: "/Tecknic/findArticleV2",
+            data: "searchTitle=" + $('#sTitle').val() + "&cbxTag=" + names,
+            success: function (data) {
+                var parent = $('#tbArticle');
+                parent.show();
+                var div = $("#ArticleContain");
+                var noti = $('#showNoRecord');
+                div.empty();
+                var articleList = data.articleList;
+                var s = "";
+                if (articleList.length > 0) {
+                    noti.empty();
+                    for (var i = 0; i < articleList.length; i++) {
+                        s += '<tr><td>' + (i + 1) + '</td><td><a href="showArticleForCheck?articleID=' + articleList[i].ID + '">';
+                        s += articleList[i].title + '</a></td>';
+                        s += '<td>' + articleList[i].txtCreateTime + '</td>';
+                        s += '<td>' + articleList[i].status + '</td></tr>';
+                    }
+                } else {
+                    parent.hide();
+                    $('#ViewMoreUncheckArticle').hide();
+                    var tmpS = 'Không tìm thấy bài viết nào';
+                    noti.html(tmpS);
                 }
-            } else {
-                s = '<p>Không tìm thấy bài viết nào</p>';
+                div.append(s);
             }
-            div.append(s);
-        }
-    });
+        });
+    }
 }
 //-------------------------------------------URL Image Cover------------------------------------------
 //đã chuyển sang thang/upfile
 //------------------------------
 function getAmountOfUnchecked() {
+    var number;
     $.ajax({
         method: "POST",
         url: "getAmountOfUnchecked",
         success: function (data) {
-            console.log(data.numberOfUnchecked);
             $('#numOfUnchecked').html(data.numberOfUnchecked);
+            number = data.numberOfUnchecked;
         }
     });
+    return number;
 }
 
 
