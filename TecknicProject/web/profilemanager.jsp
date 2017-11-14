@@ -38,7 +38,6 @@
                         <p class="member"><s:property value="%{#request.Profile.name}"/></p>
                         <p class="role"><s:property value="%{#request.Profile.role}"/></p>
                         <!--                    tính sau-->
-                        <p class="numOfPost"><b id="numOfArticle">0</b> bài viết</p> 
                         <p class="datejoin">Ngày gia nhập: <span class="date"><s:property value="%{#request.JoiningDate}"/></span> </p>
                     </div>
                     <div class="tabControl selfclear">

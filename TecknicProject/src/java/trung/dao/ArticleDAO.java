@@ -195,7 +195,8 @@ public class ArticleDAO {
 
         try {
             conn = MyConnection.getConnection();
-            String sql = "select Title, [Content], CoverImage, CreateTime, Name, CreatorId, NumOfView from Article a inner join [Status] s on a.StatusId = s.Id "
+            String sql = "select Title, [Content], CoverImage, CreateTime, Name, CreatorId, NumOfView, s.Name as [Status] "
+                    + "from Article a inner join [Status] s on a.StatusId = s.Id "
                     + "where a.Id = ?";
             pre = conn.prepareStatement(sql);
             pre.setInt(1, articleID);
@@ -212,6 +213,7 @@ public class ArticleDAO {
                 result.setCreateTime(util.convertToDateV2(rs.getTimestamp("CreateTime")));
                 result.setCreatorId(rs.getInt("CreatorId"));
                 result.setNumOfView(rs.getInt("NumOfView"));
+                result.setStatus(rs.getString("Status"));
             }
         } catch (Exception e) {
             e.printStackTrace();

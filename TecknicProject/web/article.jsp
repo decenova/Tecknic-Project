@@ -45,11 +45,11 @@
                             <c:if test="${sessionScope.ROLE eq 'Administrator' || sessionScope.ROLE eq 'Colaborator' || sessionScope.ROLE eq 'Moderator'}">
                                 <c:if test="${sessionScope.ROLE eq 'Administrator' && requestScope.Article.status eq 'posted'}">
                                     <div class="buttonCircle buttonDanger" onclick="showPopup('popupRemove')"><i class="fa fa-trash"></i></div>
-                                </c:if>
-                                <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
+                                    </c:if>
+                                    <c:if test="${(requestScope.Article.status == 'reject' || requestScope.Article.status == 'remove') && requestScope.Article.creatorId eq sessionScope.ID}">
                                     <a href="getArticleForUpdate?articleId=${requestScope.Article.id}"><div class="buttonCircle buttonDanger"><i class="fa fa-pencil"></i></div></a>
-                                </c:if>
-                            </c:if>
+                                        </c:if>
+                                    </c:if>
                         </div>
                     </div>
                     <%--Chưa thêm hình--%>
@@ -71,33 +71,40 @@
                         <span><i class="fa fa-eye"></i> ${requestScope.Article.numOfView}</span>
                         <span><i class="fa fa-comment-o"></i> <span id="numOfComment">${requestScope.NumOfComment}</span></span>
                     </div>
-                    <hr>
+                    
                     <s:if test="%{#session.ROLE != null}">
-                        <%-- chỗ comment của người dùng --%>
-                        <div class="commentContain fixPadding widthNarrow">
-                            <div class="comment">
-                                <div class="commentInfo">
-                                    <div class="avatar">
-                                        <%-- cho avatar của user đang đọc bài viết --%>
-                                        <img id="userAvatar" src="<s:property value="%{#session.AVATAR}"/>">
+                        <s:if test="%{#request.Article.status eq 'posted'}">
+                            <hr>
+                            <%-- chỗ comment của người dùng --%>
+                            <div class="commentContain fixPadding widthNarrow">
+                                <div class="comment">
+                                    <div class="commentInfo">
+                                        <div class="avatar">
+                                            <%-- cho avatar của user đang đọc bài viết --%>
+                                            <img id="userAvatar" src="<s:property value="%{#session.AVATAR}"/>">
+                                        </div>
+                                        <div class="info">
+                                            <%-- cho tên user đang đọc bài viết --%>
+                                            <input type="hidden" id="cmtUserId" value="<s:property value="%{#session.ID}"/>"/>
+                                            <a><span class="poster"><s:property value="%{#session.NAME}"/></span></a>
+                                            <br/>
+                                            <span class="datepost"></span>
+                                        </div>
                                     </div>
-                                    <div class="info">
-                                        <%-- cho tên user đang đọc bài viết --%>
-                                        <input type="hidden" id="cmtUserId" value="<s:property value="%{#session.ID}"/>"/>
-                                        <a><span class="poster"><s:property value="%{#session.NAME}"/></span></a>
-                                        <br/>
-                                        <span class="datepost"></span>
-                                    </div>
+
+
+                                    <form>
+                                        <div class="commentContent">
+                                            <%-- nhúng texteditor --%>
+                                            <textarea id="contentComment" name="txtComment" rows="4"></textarea>
+                                            <button class="button buttonPrimary" onclick="addCommentToArticle()"><i class="fa fa-send"></i></button>
+                                        </div>
+                                    </form>
+
+
                                 </div>
-                                <form>
-                                    <div class="commentContent">
-                                        <%-- nhúng texteditor --%>
-                                        <textarea id="contentComment" name="txtComment" rows="4"></textarea>
-                                        <button class="button buttonPrimary" onclick="addCommentToArticle()"><i class="fa fa-send"></i></button>
-                                    </div>
-                                </form>
                             </div>
-                        </div>
+                        </s:if>
                     </s:if>
                     <s:else>
                         <div class="fixPadding widthNarrow">
@@ -105,23 +112,23 @@
                         </div>
                     </s:else>
                     <hr>
-                    <!-- Tung xử lý ajax -->
+
+
                     <div id="CommentContain">
                     </div>
-                    <!--                    <div class="buttonGroup">
-                                            <div class="col-xs-6 button buttonPrimary" onclick="">Xem thêm bình luận</div>
-                                        </div>-->
+
+
 
                 </div>
             </div>
+
             <script>
-                //            getCommentOfArticle();
                 getCommentOfArticleV2();
             </script>
         </div>
         <s:include value="footer.jsp"></s:include>
-        
-        <div class="popup" id="popupRemove">
+
+            <div class="popup" id="popupRemove">
                 <div class="closebackground" onclick="closePopup('popupRemove')"></div>
                 <div class="popupcontain">
                     <i class="fa fa-times" onclick="closePopup('popupRemove')"></i>
