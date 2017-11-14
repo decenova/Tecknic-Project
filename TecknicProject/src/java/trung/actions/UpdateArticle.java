@@ -32,7 +32,11 @@ public class UpdateArticle extends ActionSupport{
     }
     
     @Action(value = "/updateArticle", results = {
-        @Result(name = "success", location = "/index.jsp")
+        @Result(name = "success", type = "redirectAction", params = {
+            "namespace", "/",
+            "articleId", "${txtId}",
+            "actionName", "showArticle"
+        })
     })
     public String execute() throws Exception {       
         
@@ -44,8 +48,6 @@ public class UpdateArticle extends ActionSupport{
         aDto.setCoverImage(txtImage);
         aDto.setContent(txtContent);
         Map<Integer,Integer> tagList = new HashMap<>();
-        
-        
         
         for (int i = 0; i < cbxTag.size(); i++) {
             tagList.put(cbxTag.get(i), 1);
@@ -65,6 +67,12 @@ public class UpdateArticle extends ActionSupport{
     public void setTxtId(int txtId) {
         this.txtId = txtId;
     }
+
+    public int getTxtId() {
+        return txtId;
+    }
+
+    
     
     
 

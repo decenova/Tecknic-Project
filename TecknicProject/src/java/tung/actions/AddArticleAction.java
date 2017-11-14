@@ -25,12 +25,17 @@ public class AddArticleAction extends ActionSupport {
     private String txtImage;
     private String txtContent;
     private ArrayList<Integer> cbxTag;
+    private int id;
 
     public AddArticleAction() {
     }
 
     @Action(value = "/addArticle", results = {
-        @Result(name = "success", location = "/editarticle.jsp")
+        @Result(name = "success", type = "redirectAction", params = {
+            "namespace", "/",
+            "articleId", "${id}",
+            "actionName", "showArticle"
+        })
 
     })
     public String execute() throws Exception {
@@ -42,10 +47,20 @@ public class AddArticleAction extends ActionSupport {
         Map session = ServletActionContext.getContext().getSession();
         article.setCreatorID((int) session.get("ID"));
         dao.addArticle(article);
-        dao.addTagToArticle(dao.getCurrentArticleID(), cbxTag);
+        
+        id = dao.getCurrentArticleID();
+        
+        dao.addTagToArticle(id, cbxTag);
 
+        
+        
         return SUCCESS;
     }
+
+    public int getId() {
+        return id;
+    }
+    
 
     public String getTxtTitle() {
         return txtTitle;
